@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stroll</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
     {% for walk in walks %}
         {{ walk.start_point }} <br>
         {{ walk.end_point }} <br>
@@ -19,5 +14,4 @@
         {{ walk.bike_path}} <br>
         {{ walk.difficulty}} <br>
     {% endfor %}
-</body>
-</html>
+    {% endblock %}
