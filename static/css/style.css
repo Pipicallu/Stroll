@@ -29,7 +29,6 @@ h1 {
 
 .body-border{
     border: 5px solid var(--text-color-default);
-    border-radius: 14px;
     height: 100vh;
 }
 /* navbar */
@@ -45,6 +44,7 @@ h1 {
     background-color: transparent;
     color: var(--text-color-default);
 }
+
 
 
 .navbar-light .navbar-brand:hover {
