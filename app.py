@@ -23,6 +23,7 @@ mongo = PyMongo(app)
 @app.route("/show_walks")
 def show_walks():
     walks = mongo.db.walks.find()
+    #this passes the walks variable so that it may be used in the template 
     return render_template("walks.html", walks=walks)
 
 
