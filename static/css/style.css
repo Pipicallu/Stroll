@@ -1,27 +1,72 @@
-@font-face{
-    font-family: titleFont;
-    src: url("../assets/fonts/Kayak-Bold.woff") format('woff'), url("../assets/fonts/Kayak-Bold.woff2") format('woff2');
-    
+/* fonts */
+
+@font-face {
+  font-family: titleFont;
+  src: url("../assets/fonts/Kayak-Bold.woff") format("woff"),
+    url("../assets/fonts/Kayak-Bold.woff2") format("woff2");
 }
 
-@font-face{
-    font-family: bodyFont;
-    src: url("../assets/fonts/kayak-regular.woff") format('woff'), url("../assets/fonts/kayak-regular.woff2") format('woff2');
-    
+@font-face {
+  font-family: bodyFont;
+  src: url("../assets/fonts/kayak-regular.woff") format("woff"),
+    url("../assets/fonts/kayak-regular.woff2") format("woff2");
 }
-
+/* root variables */
 :root {
-  --background-default:  #EEEDFF;
-  --text-color-default: #6C63FF;
+  --background-default: #eeedff;
+  --text-color-default: #6c63ff;
+}
+/* Main CSS */
+body {
+  background-color: var(--backgrounsd-default);
+  color: var(--text-color-default);
+  font-family: bodyFont;
 }
 
-body{
-    background-color: var(--backgrounsd-default);
+h1 {
+  font-family: titleFont;
+}
+
+.body-border{
+    border: 5px solid var(--text-color-default);
+    border-radius: 14px;
+    height: 100vh;
+}
+/* navbar */
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+.navbar-nav{
+    background-color: transparent;
     color: var(--text-color-default);
-    font-family: bodyFont;
+}
+
+
+.navbar-light .navbar-brand:hover {
+    color: var(--text-color-default);
     
 }
 
-h1{
-    font-family: titleFont;
+.navbar-light .navbar-nav .nav-link {
+    color: var(--text-color-default);
+    transition: 0.4s;
+    
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #6b63ff91;
+    
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
+    color:#FC6681;
+}
+
+.hvr-sink {
+    transition: 0.4s;
 }
