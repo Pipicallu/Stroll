@@ -1,0 +1,27 @@
+@font-face{
+    font-family: titleFont;
+    src: url("../assets/fonts/Kayak-Bold.woff") format('woff'), url("../assets/fonts/Kayak-Bold.woff2") format('woff2');
+    
+}
+
+@font-face{
+    font-family: bodyFont;
+    src: url("../assets/fonts/kayak-regular.woff") format('woff'), url("../assets/fonts/kayak-regular.woff2") format('woff2');
+    
+}
+
+:root {
+  --background-default:  #EEEDFF;
+  --text-color-default: #6C63FF;
+}
+
+body{
+    background-color: var(--backgrounsd-default);
+    color: var(--text-color-default);
+    font-family: bodyFont;
+    
+}
+
+h1{
+    font-family: titleFont;
+}
