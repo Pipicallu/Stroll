@@ -70,3 +70,54 @@ h1 {
 .hvr-sink {
     transition: 0.4s;
 }
+
+/* hamburger button */
+.navbar-light .navbar-toggler {
+    color: transparent;
+    border-color: transparent;
+    z-index: 2;
+}
+
+.menu-btn {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height:30px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    border: 2px solid var(--text-color-default);
+}
+
+.menu-btn_burger{
+    width: 12px;
+    height: 2px;
+    background: var(--text-color-default);
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+}
+
+.menu-btn_burger::before,
+.menu-btn_burger::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background: var(--text-color-default);
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+}
+
+.menu-btn_burger::before {
+    transform: translate(-6px,-5px);
+    
+}
+
+.menu-btn_burger::after {
+        transform: translate(-6px, 5px);
+    
+
+
+}
