@@ -34,37 +34,25 @@
   <body>
     <div class="body-border">
       <!--NavBar section-->
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand ml-3" href="#"
-          ><img
+      <nav class="NavBar">
+        <div class="brand-title">
+          <img
             src="{{url_for('static', filename='assets/images/logo.svg')}}"
             alt="logo"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <div class="menu-btn">
-            <span class="menu-btn_burger "></span>
-          </div>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ml-auto mr-3">
-            <a class="nav-link hvr-sink active" href="#"
-              >walk.<span class="sr-only">(current)</span></a
-            >
-            <a class="nav-link hvr-sink" href="#">login.</a>
-            <a class="nav-link hvr-sink" href="#">register.</a>
-            <a class="nav-link hvr-sink" href="#">support.</a>
-          </div>
+          />
+        </div>
+        <div class="menu-btn">
+          <div class="menu-btn_burger"></div>
+        </div>
+        <div class="NavBar-links">
+          <ul>
+            <li class="hvr-sink"><a href="#">walks.</a></li>
+            <li class="hvr-sink"><a href="#">login.</a></li>
+            <li class="hvr-sink"><a href="#">register.</a></li>
+            <li class="hvr-sink"><a href="#">support.</a></li>
+          </ul>
         </div>
       </nav>
-      <h1>testing base template</h1>
       {% block content %} {% endblock %}
 
       <script
