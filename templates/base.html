@@ -31,8 +31,8 @@
     {% block styles %} {% endblock %}
     <title>Stroll</title>
   </head>
-  <body>
-    <div class="body-border">
+  <body >
+    <div class="body-border container-fluid" >
       <!--NavBar section-->
       <nav class="NavBar">
         <div class="brand-title">
@@ -54,7 +54,7 @@
         </div>
       </nav>
       {% block content %} {% endblock %}
-
+      </div>
       <script
         src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -75,6 +75,6 @@
         type="text/javascript"
       ></script>
       {% block scripts %} {% endblock %}
-    </div>
+    
   </body>
 </html>
