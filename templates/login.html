@@ -1,35 +1,9 @@
 {% extends "base.html" %} {% block content %}
 <div class="row">
-  <form class="col-12" method="POST" action="{{ url_for('register') }}">
+  <form class="col-12" method="POST" action="{{ url_for('login') }}">
     <div class="card text-center">
       <div class="card-header">Create New User</div>
       <div class="card-body">
-        <!--Email-->
-        <div class="form-group">
-          <label for="Email">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            name="Email"
-            id="Email"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
-        </div>
-        <!--FULL NAME-->
-        <div class="form-group">
-          <label for="FullName">Full Name</label>
-          <input
-            type="text"
-            class="form-control"
-            name="FullName"
-            id="FullName"
-            placeholder="Name & Surname"
-          />
-        </div>
         <!--USERNAME-->
         <div class="form-group">
           <label for="UserID">Username</label>
@@ -59,10 +33,10 @@
           />
         </div>
 
-        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <button type="submit" class="btn btn-primary">Sign In</button>
       </div>
       <div class="card-footer text-muted">
-       Already a have an account with us? Then <a href="{{url_for('login')}}">log in</a> here!
+      Not already a user? Then <a href="{{url_for('register')}}">register</a> here!
       </div>
     </div>
   </form>
