@@ -76,6 +76,11 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/profile", methods=["GET"])
+def profile():
+    return render_template("profile.html")
+
+
 # If the module (python file being run) is the main
 # one then this is from where to run our application
 if __name__ == "__main__":

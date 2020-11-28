@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12" method="POST" action="{{ url_for('profile') }}">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="profile-picture col col-md-4">
+            <img
+              src="{{url_for('static', filename='assets/images/avatar.svg')}}"
+              width="120"
+              height="120"
+              class="rounded-circle float-left"
+              alt="avatar"
+            />
+            <h3 class="fullname d-block">Nuha Rabee</h3>
+            </div>
+            <div class="stroll-total col-4 col-md-3">
+              <h3>5</h3>
+              <h3 class="">Strolls</h3>
+            </div>
+            <div class="cycle-total col-4 col-md-3">
+              <h3>10</h3>
+              <h3 class="">Cycles</h3>
+            </div>
+            <div class="post-total col-4 col-md-2">
+              <h3>2</h3>
+              <h3 class="">posts</h3>
+            </div>
+            <div class="row"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
