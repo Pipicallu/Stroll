@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template, 
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
 
 if os.path.exists("env.py"):
@@ -25,6 +26,29 @@ def show_walks():
     walks = mongo.db.walks.find()
     #this passes the walks variable so that it may be used in the template 
     return render_template("walks.html", walks=walks)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        #looks in the users collection to check if username already exists.
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("UserID").lower()})
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for('register'))
+
+        register = {
+            "email_address": request.form.get("Email").lower(),
+            "full_name": request.form.get("FullName"),
+            "username": request.form.get("UserID").lower(),
+            "password": generate_password_hash(request.form.get('password'))
+        }
+        mongo.db.users.insert_one(register)
+        # put the user information into a session cookie so that they are remembered by the website.
+        session["user"] = request.form.get('UserID').lower()
+        flash("Registration Successful!")
+    return render_template("register.html")
 
 
 # If the module (python file being run) is the main
