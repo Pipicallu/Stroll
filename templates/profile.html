@@ -1,31 +1,31 @@
 {% extends "base.html" %} {% block content %}
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-12" method="POST" action="{{ url_for('profile') }}">
-      <div class="card">
+    <div class="user-profile col-12" method="POST" action="{{ url_for('profile') }}">
+      <div class="card profile-card">
         <div class="card-body">
           <div class="row">
-            <div class="profile-picture col col-md-4">
+            <div class="pic-and-name col-12 col-md-3">
             <img
               src="{{url_for('static', filename='assets/images/avatar.svg')}}"
               width="120"
               height="120"
-              class="rounded-circle float-left"
+              class="rounded-circle float-left profile-picture "
               alt="avatar"
             />
-            <h3 class="fullname d-block">Nuha Rabee</h3>
+            <h4 class="fullname">Nuha Rabee</h4>
             </div>
-            <div class="stroll-total col-4 col-md-3">
-              <h3>5</h3>
-              <h3 class="">Strolls</h3>
+            <div class="stroll-total user-stats col-4 col-md-3">
+              <h4>5</h4>
+              <h4 class="">Strolls</h4>
             </div>
-            <div class="cycle-total col-4 col-md-3">
-              <h3>10</h3>
-              <h3 class="">Cycles</h3>
+            <div class="cycle-total user-stats col-4 col-md-3">
+              <h4>10</h4>
+              <h4 class="">Cycles</h4>
             </div>
-            <div class="post-total col-4 col-md-2">
-              <h3>2</h3>
-              <h3 class="">posts</h3>
+            <div class="post-total user-stats col-4 col-md-3">
+              <h4>2</h4>
+              <h4 class="">posts</h4>
             </div>
             <div class="row"></div>
           </div>
