@@ -92,8 +92,18 @@ def profile(UserID):
         {"username": session["user"]})["strolls"]
     posts = mongo.db.users.find_one(
         {"username": session["user"]})["posts"]
-    return render_template("profile.html", UserID=fullName,
-                           cycles=cycles, strolls=strolls, posts=posts)
+    if session["user"]:
+        return render_template("profile.html", UserID=fullName,
+                               cycles=cycles, strolls=strolls, posts=posts)
+    else:
+        return redirect(url_for('login'))
+
+@app.route("/logout")
+def logout():
+    #log user out of session 
+    flash('You have been successfully logged out.')
+    session.pop('user')
+    return redirect(url_for('login'))
 
 
 # If the module (python file being run) is the main

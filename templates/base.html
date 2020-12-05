@@ -49,11 +49,15 @@
             <li class="hvr-sink">
               <a href="{{url_for('show_walks')}}">walks.</a>
             </li>
-            <li class="hvr-sink"><a href="{{url_for('login')}}">login.</a></li>
-            <li class="hvr-sink">
-              <a href="{{url_for('register')}}">register.</a>
-            </li>
-            <li class="hvr-sink"><a href="{{url_for('profile', UserID=session['user'])}}">profile.</a></li>
+            {% if session.user: %}
+                <li class="hvr-sink"><a href="{{url_for('profile', UserID=session['user'])}}">profile.</a></li>
+                <li class="hvr-sink"><a href="{{url_for('logout')}}">logout.</a></li>
+            {% else %}
+                <li class="hvr-sink"><a href="{{url_for('login')}}">login.</a></li>
+                <li class="hvr-sink">
+                    <a href="{{url_for('register')}}">register.</a>
+                </li>
+            {% endif %}
             <li class="hvr-sink"><a href="#">support.</a></li>
           </ul>
         </div>
