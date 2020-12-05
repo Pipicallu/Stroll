@@ -32,6 +32,7 @@ def show_walks():
 def register():
     if request.method == "POST":
         #looks in the users collection to check if username already exists.
+        startingNumber = "0"
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("UserID").lower()})
         existing_email = mongo.db.users.find_one(
@@ -46,7 +47,10 @@ def register():
             "email_address": request.form.get("Email").lower(),
             "full_name": request.form.get("FullName"),
             "username": request.form.get("UserID").lower(),
-            "password": generate_password_hash(request.form.get('password'))
+            "password": generate_password_hash(request.form.get('password')),
+            "strolls": startingNumber,
+            "cycles": startingNumber,
+            "posts": startingNumber
         }
         mongo.db.users.insert_one(register)
         # put the user information into a session cookie so that they are remembered by the website.
@@ -82,7 +86,14 @@ def login():
 def profile(UserID):
     fullName = mongo.db.users.find_one(
         {"username": session["user"]})["full_name"]
-    return render_template("profile.html", UserID=fullName)
+    cycles = mongo.db.users.find_one(
+        {"username": session["user"]})["cycles"]
+    strolls = mongo.db.users.find_one(
+        {"username": session["user"]})["strolls"]
+    posts = mongo.db.users.find_one(
+        {"username": session["user"]})["posts"]
+    return render_template("profile.html", UserID=fullName,
+                           cycles=cycles, strolls=strolls, posts=posts)
 
 
 # If the module (python file being run) is the main
