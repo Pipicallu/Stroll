@@ -53,7 +53,7 @@
             <li class="hvr-sink">
               <a href="{{url_for('register')}}">register.</a>
             </li>
-            <li class="hvr-sink"><a href="{{url_for('profile')}}">profile.</a></li>
+            <li class="hvr-sink"><a href="{{url_for('profile', UserID=session['user'])}}">profile.</a></li>
             <li class="hvr-sink"><a href="#">support.</a></li>
           </ul>
         </div>

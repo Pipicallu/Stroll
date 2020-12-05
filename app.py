@@ -52,6 +52,7 @@ def register():
         # put the user information into a session cookie so that they are remembered by the website.
         session["user"] = request.form.get('UserID').lower()
         flash("Registration Successful!")
+        return redirect(url_for('profile', UserID=session["user"]))
     return render_template("register.html")
 
 
@@ -67,6 +68,7 @@ def login():
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get('UserID').lower()
                 flash("Welcome {}".format(request.form.get('UserID')))
+                return redirect(url_for('profile', UserID=session["user"]))
             else:
                 flash("Incorrect Username and/or Password, Please try again.")
                 return redirect(url_for("login"))
@@ -76,9 +78,11 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile", methods=["GET"])
-def profile():
-    return render_template("profile.html")
+@app.route("/profile/<UserID>", methods=["GET", "POST"])
+def profile(UserID):
+    fullName = mongo.db.users.find_one(
+        {"username": session["user"]})["full_name"]
+    return render_template("profile.html", UserID=fullName)
 
 
 # If the module (python file being run) is the main
