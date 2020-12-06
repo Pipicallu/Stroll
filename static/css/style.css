@@ -18,7 +18,7 @@
 }
 /* Main CSS */
 body {
-  background-color: var(--backgrounsd-default);
+  background-color: var(--background-default);
   color: var(--text-color-default);
   font-family: bodyFont;
 }
@@ -198,4 +198,19 @@ h1 {
      border: 3px solid;
      border-radius: 32px;
      max-width: 1000px;
+ }
+
+ /* card */
+
+ .walk-card{
+    border: 3px solid  var(--text-color-default);
+    border-radius: 7px;
+    background-color: var(--text-color-default);
+    color: var(--background-default);
+ }
+
+ .small-text-style {
+    color: var(--background-default);
+
+
  }

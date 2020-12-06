@@ -2,7 +2,7 @@
 {% block content %}
 {% for walk in walks %}
 <div class="card-deck">
-  <div class="card">
+  <div class="card walk-card">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ walk.walk_name }}</h5>
@@ -11,7 +11,7 @@
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Expand
 </button>
-      <p class="card-text"><small class="text-muted">location: </small>{{ walk.location }}</p>
+      <p class="card-text"><small class="small-text-style">location: </small>{{ walk.location }}</p>
     </div>
   </div>
   <!-- Modal -->
@@ -46,17 +46,18 @@
       </div>
       </div>
        <div class="row">
+       {% if walk.bike_path == "Y" %}
       <div class="col-6">
-       Bike Path: {{ walk.bike_path }} 
+       Bike Path: <i class="fas fa-check-circle"></i>
       </div>
+      {% endif %}
       <div class=" col-6">
        Difficulty: {{ walk.difficulty }} 
       </div>
       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -79,19 +80,4 @@
     </div>
   </div>
 </div>
-
-
-    {% for walk in walks %}
-        {{ walk.start_point }} <br>
-        {{ walk.end_point }} <br>
-        {{ walk.walk_name }} <br>
-        {{ walk.walk_description }} <br>
-        {{ walk.environment}} <br>
-        {{ walk.location}} <br>
-        {{ walk.distance}} <br>
-        {{ walk.duration}} <br>
-        {{ walk.cycle_duration}} <br>
-        {{ walk.bike_path}} <br>
-        {{ walk.difficulty}} <br>
-    {% endfor %}
     {% endblock %}
