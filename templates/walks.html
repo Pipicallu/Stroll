@@ -1,37 +1,86 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="row">
-<div class="col-12 col-md-6 col-lg-4">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+{% for walk in walks %}
+<div class="card-deck">
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ walk.walk_name }}</h5>
+      <p class="card-text">{{ walk.walk_description }}</p>
+      <!-- Button trigger for modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Expand
+</button>
+      <p class="card-text"><small class="text-muted">location: </small>{{ walk.location }}</p>
+    </div>
+  </div>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ walk.walk_name }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ walk.walk_description }}
+      </div>
+      <div class="modal-body">
+      <div class="row">
+      <div class="col-6">
+       Environment: {{ walk.environment}} 
+      </div>
+      <div class=" col-6">
+       Location: {{ walk.location}} 
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-6">
+       Distance:  {{ walk.distance}}
+      </div>
+      <div class=" col-6">
+       Duration: {{ walk.duration}} <br>
+       Cycle Duration: {{ walk.cycle_duration }}
+      </div>
+      </div>
+       <div class="row">
+      <div class="col-6">
+       Bike Path: {{ walk.bike_path }} 
+      </div>
+      <div class=" col-6">
+       Difficulty: {{ walk.difficulty }} 
+      </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-<div class="col-12 col-md-6 col-lg-4">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+{% endfor %}
+<div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
   </div>
 </div>
-</div>
-<div class="col-12 col-md-6 col-lg-4">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-</div>
+
+
     {% for walk in walks %}
         {{ walk.start_point }} <br>
         {{ walk.end_point }} <br>

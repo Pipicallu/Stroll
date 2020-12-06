@@ -17,3 +17,9 @@ const navbarLinks = document.getElementsByClassName('NavBar-links')[0]
 menuBtn.addEventListener('click', () =>{
     navbarLinks.classList.toggle('active');
 });
+
+/* walk Modal */
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})

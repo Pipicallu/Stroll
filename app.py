@@ -32,7 +32,7 @@ def show_walks():
 def register():
     if request.method == "POST":
         #looks in the users collection to check if username already exists.
-        startingNumber = "0"
+        startingNumber = int("0")
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("UserID").lower()})
         existing_email = mongo.db.users.find_one(
