@@ -214,3 +214,10 @@ h1 {
 
 
  }
+
+ /* map */
+
+  #map {
+    height: 200px;
+    width: 100px;
+  }

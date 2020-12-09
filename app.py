@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_googlemaps import GoogleMaps
 from bson.objectid import ObjectId
 
 if os.path.exists("env.py"):
@@ -17,6 +18,9 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+app.config['GOOGLEMAPS_KEY'] = os.environ.get("GOOGLEMAPS_KEY")
+
+GoogleMaps(app)
 mongo = PyMongo(app)
 
 

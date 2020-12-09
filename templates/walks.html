@@ -55,6 +55,19 @@
        Difficulty: {{ walk.difficulty }} 
       </div>
       </div>
+      <div class="row">
+      <div class="col-12" id="map">
+      <script>
+      let map;
+
+    function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: {lat: 51.5074, lng: 0.1278},
+    zoom: 8,
+  });
+}</script>
+      </div>
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
