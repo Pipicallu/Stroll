@@ -26,6 +26,7 @@
       </div>
       <div class="modal-body">
         {{ walk.walk_description }}
+        {{ walk.end_point }}
       </div>
       <div class="modal-body">
       <div class="row">
@@ -57,15 +58,35 @@
       </div>
       <div class="row">
       <div class="col-12" id="map">
+
+      
       <script>
+      
+      let endPoint = JSON.parse({{ end_point | tojson }})
       let map;
 
     function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: 51.5074, lng: 0.1278},
-    zoom: 8,
+        const startPoint = {{ walk.start_point | tojson }}
+        const endPoint = {{ walk.end_point | tojson }}
+   map = new google.maps.Map(document.getElementById("map"), {
+    center: startPoint,
+    zoom: 12,
   });
-}</script>
+
+  const markerA = new google.maps.Marker({
+    position: startPoint,
+    map: map,
+  });
+  
+  const markerB = new google.maps.Marker({
+    position: endPoint,
+    map: map,
+  });
+}
+
+</script>
+
+
       </div>
       </div>
       </div>

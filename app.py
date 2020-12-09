@@ -1,6 +1,6 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, json, flash, render_template, 
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -28,8 +28,11 @@ mongo = PyMongo(app)
 @app.route("/show_walks")
 def show_walks():
     walks = mongo.db.walks.find()
+    start_point = json.dumps(mongo.db.walkes.find_one("start_point"))
+    end_point = mongo.db.walkes.find_one("end_point")
     #this passes the walks variable so that it may be used in the template 
-    return render_template("walks.html", walks=walks)
+    return render_template("walks.html", walks=walks,
+                           start_point=start_point, end_point=end_point)
 
 
 @app.route("/register", methods=["GET", "POST"])
