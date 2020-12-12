@@ -66,12 +66,12 @@
                                 
                                 function initMap() {
                                     directionsService = new google.maps.DirectionsService();
-                                    directionsRenderer = new google.maps.DirectionsRenderer();
+                                    directionsRenderer = new google.maps.DirectionsRenderer({preserveViewport: true});
                                     startPoint = {{ walk.start_point | tojson}};
                                     endPoint = {{ walk.end_point | tojson }};
                                     mapOptions = {
+                                        zoom: 13.4,
                                         center: startPoint,
-                                        zoom: 12,
                                     }
                                     map = new google.maps.Map(document.getElementById('map'), mapOptions);
                                     directionsRenderer.setMap(map);
