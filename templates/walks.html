@@ -2,116 +2,130 @@
 {% block content %}
 {% for walk in walks %}
 <div class="card-deck">
-  <div class="card walk-card">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ walk.walk_name }}</h5>
-      <p class="card-text">{{ walk.walk_description }}</p>
-      <!-- Button trigger for modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Expand
-</button>
-      <p class="card-text"><small class="small-text-style">location: </small>{{ walk.location }}</p>
+    <div class="card walk-card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ walk.walk_name }}</h5>
+            <p class="card-text">{{ walk.walk_description }}</p>
+            <!-- Button trigger for modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Expand
+            </button>
+            <p class="card-text"><small class="small-text-style">location: </small>{{ walk.location }}</p>
+        </div>
     </div>
-  </div>
-  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ walk.walk_name }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        {{ walk.walk_description }}
-        {{ walk.end_point }}
-      </div>
-      <div class="modal-body">
-      <div class="row">
-      <div class="col-6">
-       Environment: {{ walk.environment}} 
-      </div>
-      <div class=" col-6">
-       Location: {{ walk.location}} 
-      </div>
-      </div>
-      <div class="row">
-      <div class="col-6">
-       Distance:  {{ walk.distance}}
-      </div>
-      <div class=" col-6">
-       Duration: {{ walk.duration}} <br>
-       Cycle Duration: {{ walk.cycle_duration }}
-      </div>
-      </div>
-       <div class="row">
-       {% if walk.bike_path == "Y" %}
-      <div class="col-6">
-       Bike Path: <i class="fas fa-check-circle"></i>
-      </div>
-      {% endif %}
-      <div class=" col-6">
-       Difficulty: {{ walk.difficulty }} 
-      </div>
-      </div>
-      <div class="row">
-      <div class="col-12" id="map">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ walk.walk_name }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ walk.walk_description }}
 
-      
-      <script>
-      
-      let endPoint = JSON.parse({{ end_point | tojson }})
-      let map;
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            Environment: {{ walk.environment}}
+                            
+                        </div>
+                        <div class=" col-6">
+                            Location: {{ walk.location}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Distance: {{ walk.distance}}
+                        </div>
+                        <div class=" col-6">
+                            Duration: {{ walk.duration}} <br>
+                            Cycle Duration: {{ walk.cycle_duration }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% if walk.bike_path == "Y" %}
+                        <div class="col-6">
+                            Bike Path: <i class="fas fa-check-circle"></i>
+                        </div>
+                        {% endif %}
+                        <div class=" col-6">
+                            Difficulty: {{ walk.difficulty }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" id="map">
+                            
 
-    function initMap() {
-        const startPoint = {{ walk.start_point | tojson }}
-        const endPoint = {{ walk.end_point | tojson }}
-   map = new google.maps.Map(document.getElementById("map"), {
-    center: startPoint,
-    zoom: 12,
-  });
+                            <script>
+                                let map, directionsService, directionsRenderer, startPoint, endPoint, mapOptions;
+                                
+                                function initMap() {
+                                    directionsService = new google.maps.DirectionsService();
+                                    directionsRenderer = new google.maps.DirectionsRenderer();
+                                    startPoint = {{ walk.start_point | tojson}};
+                                    endPoint = {{ walk.end_point | tojson }};
+                                    mapOptions = {
+                                        center: startPoint,
+                                        zoom: 12,
+                                    }
+                                    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                                    directionsRenderer.setMap(map);
+                                    calcRoute();
+                                }
 
-  const markerA = new google.maps.Marker({
-    position: startPoint,
-    map: map,
-  });
-  
-  const markerB = new google.maps.Marker({
-    position: endPoint,
-    map: map,
-  });
+                                function calcRoute() {
+                                    let start = {{ walk.start_point | tojson }}
+                                    let end = {{ walk.end_point | tojson }}
+                                    var request = {
+                                        origin: start,
+                                        destination: end,
+                                        travelMode: "WALKING"
+                                    };
+
+                                directionsService.route(request, function (result, status) {
+                                    if (status == 'OK') {
+                                        directionsRenderer.setDirections(result);
+                                    }
+                                });
+
+                                // document.getElementById("map").onload = () => {
+                                //     calcRoute();
+                                // };
 }
+                            </script>
 
-</script>
 
-
-      </div>
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+    {% endfor %}
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This card has even longer content than the first to show that equal height action.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
 </div>
-{% endfor %}
-<div class="card">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
-    {% endblock %}
+{% endblock %}
