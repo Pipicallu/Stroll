@@ -35,6 +35,7 @@
                     </li>
                     {% if session.user: %}
                     <li class="hvr-sink"><a href="{{url_for('profile', UserID=session['user'])}}">profile.</a></li>
+                    <li class="hvr-sink"><a href="{{url_for('new_walk')}}">new walk.</a></li>
                     <li class="hvr-sink"><a href="{{url_for('logout')}}">logout.</a></li>
                     {% else %}
                     <li class="hvr-sink"><a href="{{url_for('login')}}">login.</a></li>

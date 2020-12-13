@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3 class="col-12 text-center mb-5">Create New Walk</h3>
+    </div>
+    <div class="row">
+        <form class="col text-center">
+            <div class="row mb-3">
+                <div class="col-3 mb-3">
+                    <label for="start-lat" class="form-label mb-2">Starting lat</label>
+                    <input type="text" class="form-control form-control-sm" id="start-lat" name="start-lat"
+                        placeholder="Degrees Please">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="start-lng" class="form-label mb-2">Starting lng</label>
+                    <input type="text" class="form-control form-control-sm" id="start-lng" name="start-lng"
+                        placeholder="Degrees Please">
+                </div>
+
+                <div class="col-3 mb-3">
+                    <label for="end-lat" class="form-label mb-2 ">End lat</label>
+                    <input type="text" class="form-control form-control-sm" id="end-lat" name="end-lat"
+                        placeholder="Degrees Please">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="end-lng" class="form-label mb-2">End lng</label>
+                    <input type="text" class="form-control form-control-sm" id="end-lng" name="end-lng"
+                        placeholder="Degrees Please">
+                </div>
+            </div>
+            <div class="col-12 mb-3">
+                <label for="walk-name" class="form-label mb-2">Title</label>
+                <input type="text" class="form-control" id="walk-name" name="walk-name"
+                    placeholder="Name your new Stroll...">
+            </div>
+            <div class="col-12 mb-3">
+                <label for="walk-description" class="form-label mb-2">Add Description</label>
+                <textarea class="form-control" id="walk-description" name="walk-description"
+                    placeholder="Paint us a word picture..." rows="3"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="walk-environment" class="form-label mb-2">Environment</label>
+                    <select id="walk-environment" name="walk-environment" class="col-12 form-select"
+                        aria-label="walk-environment">
+                        <option selected>choose...</option>
+                        <option value="1">Urban</option>
+                        <option value="2">Outdoor</option>
+                    </select>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="walk-location" class="form-label mb-2">Location</label>
+                    <input type="text" class="form-control form-control-sm" id="walk-location" name="walk-location"
+                        placeholder="Add a location.">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="walk-distance" class="form-label mb-2">Distance</label>
+                    <input type="text" class="form-control form-control-sm" id="walk-distance" name="walk-distance"
+                        placeholder="km">
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="walk-duration" class="form-label mb-2">Duration</label>
+                    <input type="text" class="form-control form-control-sm" id="walk-duration" name="walk-duration"
+                        placeholder="how long is it?">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="walk-cycle-duration" class="form-label mb-2">Cycle Duration</label>
+                    <input type="text" class="form-control form-control-sm" id="walk-cycle-duration"
+                        name="walk-cycle-duration" placeholder="km">
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="walk-difficulty" class="form-label mb-2">Difficulty</label>
+                    <select id="walk-difficulty" name="walk-difficulty" class="col-12 form-select"
+                        aria-label="walk-difficulty">
+                        <option selected>choose...</option>
+                        <option value="1">Novice</option>
+                        <option value="2">Intermediate</option>
+                        <option value="3">Expert</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

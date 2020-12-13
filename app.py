@@ -126,6 +126,10 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route("/new_walk")
+def new_walk():
+    return render_template("new_walk.html")
+
 # If the module (python file being run) is the main
 # one then this is from where to run our application
 if __name__ == "__main__":
