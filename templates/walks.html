@@ -3,19 +3,19 @@
 {% for walk in walks %}
 <div class="card-deck">
     <div class="card walk-card">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="{{ hydePark }}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{ walk.walk_name }}</h5>
             <p class="card-text">{{ walk.walk_description }}</p>
             <!-- Button trigger for modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ loop.index }}">
                 Expand
             </button>
             <p class="card-text"><small class="small-text-style">location: </small>{{ walk.location }}</p>
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -51,6 +51,10 @@
                         {% if walk.bike_path == "Y" %}
                         <div class="col-6">
                             Bike Path: <i class="fas fa-check-circle"></i>
+                        </div>
+                        {% else %}
+                        <div class="col-6">
+                            Bike Path: <i class="fas fa-times-circle"></i>
                         </div>
                         {% endif %}
                         <div class=" col-6">

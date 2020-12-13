@@ -1,11 +1,13 @@
 import os
 from flask import (
-    Flask, json, flash, render_template, 
+    Flask, json, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_googlemaps import GoogleMaps
+import cloudinary as Cloud
 from bson.objectid import ObjectId
+
 
 if os.path.exists("env.py"):
     import env
@@ -20,6 +22,15 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 app.config['GOOGLEMAPS_KEY'] = os.environ.get("GOOGLEMAPS_KEY")
 
+Cloud.config.update = ({
+    'cloud_name': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'api_key': os.environ.get('CLOUDINARY_API_KEY'),
+    'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
+})
+
+
+
+
 GoogleMaps(app)
 mongo = PyMongo(app)
 
@@ -27,12 +38,14 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/show_walks")
 def show_walks():
-    walks = mongo.db.walks.find()
+    hydePark = Cloud.CloudinaryImage("HydePark.jpg")
+    walks = list(mongo.db.walks.find())
     start_point = json.dumps(mongo.db.walks.find_one("start_point"))
     end_point = mongo.db.walks.find_one("end_point")
     #this passes the walks variable so that it may be used in the template 
     return render_template("walks.html", walks=walks,
-                           start_point=start_point, end_point=end_point)
+                           start_point=start_point, end_point=end_point,
+                           hydePark=hydePark)
 
 
 @app.route("/register", methods=["GET", "POST"])
