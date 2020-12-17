@@ -27,10 +27,10 @@ h1 {
   font-family: titleFont;
 }
 
-.body-border{
+/* body{
     border: 5px solid var(--text-color-default);
     height: 100vh;
-}
+} */
 /* navbar */
 
 .NavBar{

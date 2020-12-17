@@ -128,7 +128,11 @@ def logout():
 
 @app.route("/new_walk")
 def new_walk():
-    return render_template("new_walk.html")
+    environments = mongo.db.environments.find().sort("environment", 1)
+    difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
+    return render_template("new_walk.html",
+                           environments=environments,
+                           difficulties=difficulties)
 
 # If the module (python file being run) is the main
 # one then this is from where to run our application
