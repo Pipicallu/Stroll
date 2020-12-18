@@ -126,8 +126,38 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/new_walk")
+@app.route("/new_walk", methods=["GET", "POST"])
 def new_walk():
+    if request.method == "POST":
+        bikePath = ""
+        if request.form.get("bikePathY") == "Y":
+            bikePath == "Y"
+        else:
+            bikePath == "N"
+        walk = {
+            "start_point": [
+                            {"lat": request.form.get("start-lat"),
+                             "lng": request.form.get("start-lng")}
+            ],
+            "end_point": [
+                          {"lat": request.form.get("end-lat"),
+                           "lng": request.form.get("end-lng")}
+            ],
+            "walk_name": request.form.get("walk_name"),
+            "walk_description": request.form.get("walk_description"),
+            "environment": request.form.get("environment"),
+            "location": request.form.get("location"),
+            "distance": request.form.get("distance"),
+            "duration": request.form.get("duration"),
+            "cycle_duration": request.form.get("cycle_duration"),
+            "bike_path": bikePath,
+            "difficulty": request.form.get("difficulty"),
+            "created_by": session["user"]
+
+        }
+        mongo.db.walks.insert_one(walk)
+        flash("You Posted a New Walk")
+        return redirect(url_for('show_walks'))
     environments = mongo.db.environments.find().sort("environment", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
     return render_template("new_walk.html",
