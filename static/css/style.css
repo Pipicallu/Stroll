@@ -220,4 +220,10 @@ h1 {
   #map {
     height: 400px;
     width: 100px;
+   
+  }
+
+  .map-visual{
+    height: 400px;
+    width: 100px;
   }

@@ -4,7 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_googlemaps import GoogleMaps
+from flask_googlemaps  import GoogleMaps
 import cloudinary as Cloud
 from bson.objectid import ObjectId
 
@@ -135,14 +135,10 @@ def new_walk():
         else:
             bikePath == "N"
         walk = {
-            "start_point": [
-                            {"lat": request.form.get("start-lat"),
-                             "lng": request.form.get("start-lng")}
-            ],
-            "end_point": [
-                          {"lat": request.form.get("end-lat"),
-                           "lng": request.form.get("end-lng")}
-            ],
+            "start_point": {"lat": request.form.get("start-lat"),
+                            "lng": request.form.get("start-lng")},
+            "end_point":  {"lat": request.form.get("end-lat"),
+                           "lng": request.form.get("end-lng")},
             "walk_name": request.form.get("walk_name"),
             "walk_description": request.form.get("walk_description"),
             "environment": request.form.get("environment"),
@@ -155,6 +151,7 @@ def new_walk():
             "created_by": session["user"]
 
         }
+
         mongo.db.walks.insert_one(walk)
         flash("You Posted a New Walk")
         return redirect(url_for('show_walks'))

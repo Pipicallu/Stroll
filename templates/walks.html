@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 {% for walk in walks %}
-<div class="card-deck">
+<div class="card">
     <div class="card walk-card">
         <img src="{{ hydePark }}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{ walk.walk_name }}</h5>
             <p class="card-text">{{ walk.walk_description }}</p>
             <!-- Button trigger for modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ loop.index }}">
+
+            <button type="button" onclick="renderRoute({{ walk.start_point.lat }}, {{walk.start_point.lng}}, {{walk.end_point.lat}}, {{ walk.end_point.lng }}, {{ loop.index }} );" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ loop.index }}">
                 Expand
             </button>
             <p class="card-text"><small class="small-text-style">location: </small>{{ walk.location }}</p>
@@ -62,48 +63,8 @@
                             Difficulty: {{ walk.difficulty }}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12" id="map">
-                            
-
-                            <script>
-                                let map, directionsService, directionsRenderer, startPoint, endPoint, mapOptions;
-                                
-                                function initMap() {
-                                    directionsService = new google.maps.DirectionsService();
-                                    directionsRenderer = new google.maps.DirectionsRenderer({preserveViewport: true});
-                                    startPoint = {{ walk.start_point | tojson}};
-                                    endPoint = {{ walk.end_point | tojson }};
-                                    mapOptions = {
-                                        zoom: 13.4,
-                                        center: startPoint,
-                                    }
-                                    map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                                    directionsRenderer.setMap(map);
-                                    calcRoute();
-                                }
-
-                                function calcRoute() {
-                                    let start = {{ walk.start_point | tojson }}
-                                    let end = {{ walk.end_point | tojson }}
-                                    var request = {
-                                        origin: start,
-                                        destination: end,
-                                        travelMode: "WALKING"
-                                    };
-
-                                directionsService.route(request, function (result, status) {
-                                    if (status == 'OK') {
-                                        directionsRenderer.setDirections(result);
-                                    }
-                                });
-
-                                // document.getElementById("map").onload = () => {
-                                //     calcRoute();
-                                // };
-}
-                            </script>
-
+                    <div class="row modal-map">
+                        <div class="col-12 map-visual" id="map{{loop.index}}">
 
                         </div>
                     </div>
@@ -115,22 +76,5 @@
         </div>
     </div>
     {% endfor %}
-    <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This card has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-</div>
+    
 {% endblock %}
