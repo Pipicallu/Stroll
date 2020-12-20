@@ -275,3 +275,13 @@ a {
   .edit-del-buttons{
       text-align: end;
   }
+
+  .edit-tag{
+      text-decoration: none;
+      color: #eeedff;
+  }
+
+  .edit-tag:hover{
+      text-decoration: none;
+      color: #eeedff;
+  }
