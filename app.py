@@ -170,6 +170,29 @@ def my_walks():
 
 @app.route("/edit_walk/<walk_id>", methods=["GET", "POST"])
 def edit_walk(walk_id):
+    if request.method == "POST":
+        bikePath = "Y" if request.form.get("bikePath") == "Y" else "N"
+        submit = {
+            "start_point": {"lat": request.form.get("start-lat"),
+                            "lng": request.form.get("start-lng")},
+            "end_point":  {"lat": request.form.get("end-lat"),
+                           "lng": request.form.get("end-lng")},
+            "walk_name": request.form.get("walk_name"),
+            "walk_description": request.form.get("walk_description"),
+            "environment": request.form.get("environment"),
+            "location": request.form.get("location"),
+            "distance": request.form.get("distance"),
+            "duration": request.form.get("duration"),
+            "cycle_duration": request.form.get("cycle_duration"),
+            "bike_path": bikePath,
+            "difficulty": request.form.get("difficulty"),
+            "created_by": session["user"]
+
+        }
+
+        mongo.db.walks.update({"_id": ObjectId(walk_id)}, submit)
+        flash("You have Updated your walk")
+        return redirect(url_for('my_walks'))
     walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
     environments = mongo.db.environments.find().sort("environment", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
