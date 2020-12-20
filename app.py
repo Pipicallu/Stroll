@@ -162,6 +162,13 @@ def new_walk():
                            environments=environments,
                            difficulties=difficulties)
 
+@app.route("/my_walks")
+def my_walks():
+    walks = mongo.db.walks.find({"created_by": session["user"]})
+    return render_template("my_walks.html", walks=walks)
+
+
+
 # If the module (python file being run) is the main
 # one then this is from where to run our application
 if __name__ == "__main__":

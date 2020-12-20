@@ -32,6 +32,9 @@ h1 {
     height: 100vh;
 } */
 /* navbar */
+a {
+    text-decoration: none;
+}
 
 .NavBar{
     display: flex;
@@ -225,6 +228,20 @@ h1 {
     
 
  }
+
+.my-walks button{
+     color: #eeedff;
+     background-color: #6c64ff;
+     position: relative;
+     bottom: 150px;
+     left: 2rem;
+     margin: 20px 0;
+ }
+
+ .btn-dark{
+    border: none;
+ }
+
  /* card */
 
  .walk-card{
@@ -251,4 +268,10 @@ h1 {
   .map-visual{
     height: 400px;
     width: 100px;
+  }
+
+  /* my walks edit/del */
+
+  .edit-del-buttons{
+      text-align: end;
   }

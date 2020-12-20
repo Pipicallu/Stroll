@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="user-profile col-12">
             <div class="card profile-card">
@@ -36,6 +36,11 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 my-walks">
+            <button type="button" class="btn btn-lg btn-dark"><a href="{{url_for('my_walks')}}">My Walks</a></button>
         </div>
     </div>
 </div>
