@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3 class="col-12 text-center mb-5">Edit Walk</h3>
+    </div>
+    <div class="row">
+        <form class="col text-center" method="POST" action="{{url_for('edit_walk', walk_id=walk._id)}}">
+            <div class="row mb-3">
+                <!--start point-->
+                <div class="col-3 mb-3">
+                    <label for="start-lat" class="form-label mb-2">Starting lat</label>
+                    <input type="text" class="form-control form-control-sm" id="start-lat" name="start-lat"
+                        placeholder="Degrees Please">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="start-lng" class="form-label mb-2">Starting lng</label>
+                    <input type="text" class="form-control form-control-sm" id="start-lng" name="start-lng"
+                        placeholder="Degrees Please">
+                </div>
+                <!--end point-->
+                <div class="col-3 mb-3">
+                    <label for="end-lat" class="form-label mb-2 ">End lat</label>
+                    <input type="text" class="form-control form-control-sm" id="end-lat" name="end-lat"
+                        placeholder="Degrees Please">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="end-lng" class="form-label mb-2">End lng</label>
+                    <input type="text" class="form-control form-control-sm" id="end-lng" name="end-lng"
+                        placeholder="Degrees Please">
+                </div>
+            </div>
+            <div class="col-12 mb-3">
+                <label for="walk_name" class="form-label mb-2">Title</label>
+                <input type="text" class="form-control" id="walk_name" name="walk_name"
+                    placeholder="Name your new Stroll...">
+            </div>
+            <div class="col-12 mb-3">
+                <label for="walk_description" class="form-label mb-2">Add Description</label>
+                <textarea class="form-control" id="walk_description" name="walk_description"
+                    placeholder="Paint us a word picture..." rows="3"></textarea>
+            </div>
+            <div class="row">
+                <!--environment-->
+                <div class="col-6 mb-3">
+                    <label for="environment" class="form-label mb-2">Environment</label>
+                    <select id="environment" name="environment" class="col-12 form-select" aria-label="environment">
+                        <option disabled selected>choose...</option>
+                        {% for environment in environments %}
+                        <option value="{{environment.environment}}">{{environment.environment}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!--location-->
+                <div class="col-6 mb-3">
+                    <label for="location" class="form-label mb-2">Location</label>
+                    <input type="text" class="form-control form-control-sm" id="location" name="location"
+                        placeholder="Add a location.">
+                </div>
+            </div>
+            <div class="row">
+                <!--distance-->
+                <div class="col-6 mb-3">
+                    <label for="distance" class="form-label mb-2">Distance</label>
+                    <input type="text" class="form-control form-control-sm" id="distance" name="distance"
+                        placeholder="km">
+                </div>
+                <!-- duration-->
+                <div class="col-6 mb-3">
+                    <label for="duration" class="form-label mb-2">Duration</label>
+                    <input type="text" class="form-control form-control-sm" id="duration" name="duration"
+                        placeholder="Best time?">
+                </div>
+            </div>
+            <!-- cycle duration-->
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="cycle_duration" class="form-label mb-2">Cycle Duration</label>
+                    <input type="text" class="form-control form-control-sm" id="cycle_duration" name="cycle_duration"
+                        placeholder="Best time?">
+                </div>
+                <!-- difficilty-->
+                <div class="col-6 mb-3">
+                    <label for="difficulty" class="form-label mb-2">Difficulty</label>
+                    <select id="difficulty" name="difficulty" class="col-12 form-select" aria-label="difficulty">
+                        <option disabled selected>choose...</option>
+                        {% for difficulty in difficulties %}
+                        <option value="{{difficulty.difficulty}}">{{difficulty.difficulty}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <!--bike path-->
+            <div class="row">
+                <p class=" mr-1">Bike Path:</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bikePath" id="bikePathY"
+                        value="Y" >
+                    <label class="form-check-label" for="bikePathY">
+                        Y
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bikePath" id="bikePathN"
+                        value="N">
+                    <label class="form-check-label" for="bikePathN">
+                        N
+                    </label>
+                </div>
+            </div>
+            <!-- Submit button-->
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-lg">Edit your walk</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

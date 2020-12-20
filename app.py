@@ -168,6 +168,13 @@ def my_walks():
     return render_template("my_walks.html", walks=walks)
 
 
+@app.route("/edit_walk/<walk_id>", methods=["GET", "POST"])
+def edit_walk(walk_id):
+    walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
+    environments = mongo.db.environments.find().sort("environment", 1)
+    difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
+    return render_template("edit_walk.html", walk=walk)
+
 
 # If the module (python file being run) is the main
 # one then this is from where to run our application
