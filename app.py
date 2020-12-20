@@ -52,6 +52,7 @@ def show_walks():
 def register():
     if request.method == "POST":
         #looks in the users collection to check if username already exists.
+        bio = "Update your Bio and tell the community a little about yourself!"
         startingNumber = int("0")
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("UserID").lower()})
@@ -70,7 +71,8 @@ def register():
             "password": generate_password_hash(request.form.get('password')),
             "strolls": startingNumber,
             "cycles": startingNumber,
-            "posts": startingNumber
+            "posts": startingNumber,
+            "bio": bio
         }
         mongo.db.users.insert_one(register)
         # put the user information into a session cookie so that they are remembered by the website.
@@ -122,18 +124,14 @@ def profile(UserID):
 def logout():
     #log user out of session 
     flash('You have been successfully logged out.')
-    session.pop('user')
+    session.pop('user') 
     return redirect(url_for('login'))
 
 
 @app.route("/new_walk", methods=["GET", "POST"])
 def new_walk():
     if request.method == "POST":
-        bikePath = ""
-        if request.form.get("bikePathY") == "Y":
-            bikePath == "Y"
-        else:
-            bikePath == "N"
+        bikePath = "Y" if request.form.get("bikePath") == "Y" else "N"
         walk = {
             "start_point": {"lat": request.form.get("start-lat"),
                             "lng": request.form.get("start-lng")},

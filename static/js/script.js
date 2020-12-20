@@ -31,9 +31,10 @@ let directionsService;
 
 
 function initMap() {
+    // as its only referenced in the call back this is only called once
     directionsService = new google.maps.DirectionsService();
 }
-
+// THe function takes the variables and matches the map id by adding a loop index
 function renderRoute(start_lat, start_lng, end_lat, end_lng, loop_index) {
 
     var startPoint = {
@@ -53,6 +54,7 @@ function renderRoute(start_lat, start_lng, end_lat, end_lng, loop_index) {
 
     var map = new google.maps.Map(document.getElementById('map' + loop_index), mapOptions);
     var directionsRenderer = new google.maps.DirectionsRenderer({ preserveViewport: true });
+    // this is called for every map 
     directionsRenderer.setMap(map);
 
     var request = {
