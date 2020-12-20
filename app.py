@@ -114,9 +114,12 @@ def profile(UserID):
         {"username": session["user"]})["strolls"]
     posts = mongo.db.users.find_one(
         {"username": session["user"]})["posts"]
+    bio = mongo.db.users.find_one(
+        {"username": session["user"]})["bio"]
     if session["user"]:
         return render_template("profile.html", UserID=fullName,
-                               cycles=cycles, strolls=strolls, posts=posts)
+                               cycles=cycles, strolls=strolls,
+                               posts=posts, bio=bio)
     else:
         return redirect(url_for('login'))
 

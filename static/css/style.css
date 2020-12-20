@@ -219,7 +219,6 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: justify;
     padding: 0 100px;
     line-height: 1.8rem;
     letter-spacing: .3px;
