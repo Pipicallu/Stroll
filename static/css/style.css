@@ -37,6 +37,10 @@ a {
     color: #eeedff;
 }
 
+i{
+    text-decoration: none;
+}
+
 .NavBar{
     display: flex;
     justify-content: space-between;
@@ -285,4 +289,34 @@ a {
   .edit-tag:hover{
       text-decoration: none;
       color: #eeedff;
+  }
+
+  /*edit profile*/
+
+  .edit-profile-button{
+      background-color: transparent;
+      border: none;
+      color: #6c64ff;
+      font-size: 18px;
+      text-decoration: none;
+  }
+
+.edit-profile-href{
+      text-decoration: none;
+      color: #6c64ff;
+}
+
+
+.edit-profile-href:hover{
+      text-decoration: none;
+      color: #ffffff;
+}
+
+
+  .edit-profile-button:hover{
+      background-color: #f56681;
+      border: none;
+      color: #ffffff;
+      font-size: 18px;
+      text-decoration: none;
   }

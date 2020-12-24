@@ -201,6 +201,23 @@ def edit_walk(walk_id):
                            difficulties=difficulties)
 
 
+@app.route("/edit_profile/<UserId>")
+def edit_profile(UserId):
+    fullName = mongo.db.users.find_one(
+        {"username": session["user"]})["full_name"]
+    cycles = mongo.db.users.find_one(
+        {"username": session["user"]})["cycles"]
+    strolls = mongo.db.users.find_one(
+        {"username": session["user"]})["strolls"]
+    posts = mongo.db.users.find_one(
+        {"username": session["user"]})["posts"]
+    bio = mongo.db.users.find_one(
+        {"username": session["user"]})["bio"]
+    if session["user"]:
+        return render_template("edit_profile.html", UserID=fullName,
+                               cycles=cycles, strolls=strolls,
+                               posts=posts, bio=bio)
+
 # If the module (python file being run) is the main
 # one then this is from where to run our application
 if __name__ == "__main__":
