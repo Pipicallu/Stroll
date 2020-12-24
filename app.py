@@ -106,6 +106,8 @@ def login():
 
 @app.route("/profile/<UserID>", methods=["GET", "POST"])
 def profile(UserID):
+    usernumber = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
     fullName = mongo.db.users.find_one(
         {"username": session["user"]})["full_name"]
     cycles = mongo.db.users.find_one(
@@ -119,7 +121,7 @@ def profile(UserID):
     if session["user"]:
         return render_template("profile.html", UserID=fullName,
                                cycles=cycles, strolls=strolls,
-                               posts=posts, bio=bio)
+                               posts=posts, bio=bio, usernumber=usernumber)
     else:
         return redirect(url_for('login'))
 
@@ -162,6 +164,7 @@ def new_walk():
                            environments=environments,
                            difficulties=difficulties)
 
+
 @app.route("/my_walks")
 def my_walks():
     walks = mongo.db.walks.find({"created_by": session["user"]})
@@ -201,22 +204,10 @@ def edit_walk(walk_id):
                            difficulties=difficulties)
 
 
-@app.route("/edit_profile/<UserId>")
-def edit_profile(UserId):
-    fullName = mongo.db.users.find_one(
-        {"username": session["user"]})["full_name"]
-    cycles = mongo.db.users.find_one(
-        {"username": session["user"]})["cycles"]
-    strolls = mongo.db.users.find_one(
-        {"username": session["user"]})["strolls"]
-    posts = mongo.db.users.find_one(
-        {"username": session["user"]})["posts"]
-    bio = mongo.db.users.find_one(
-        {"username": session["user"]})["bio"]
-    if session["user"]:
-        return render_template("edit_profile.html", UserID=fullName,
-                               cycles=cycles, strolls=strolls,
-                               posts=posts, bio=bio)
+@app.route("/edit_profile/<User_Id>", methods=["GET", "POST"])
+def edit_profile(User_Id):
+    user = mongo.db.users.find_one({"_id": ObjectId(User_Id)})
+    return render_template('edit_profile.html', user=user)
 
 # If the module (python file being run) is the main
 # one then this is from where to run our application
