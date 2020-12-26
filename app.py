@@ -134,6 +134,7 @@ def profile(UserID):
     else:
         return redirect(url_for('login'))
 
+
 @app.route("/logout")
 def logout():
     #log user out of session 
@@ -240,6 +241,14 @@ def edit_profile(User_Id):
         return redirect(url_for('profile',  UserID=fullName))
     user = mongo.db.users.find_one({"_id": ObjectId(User_Id)})
     return render_template('edit_profile.html', user=user)
+
+
+@app.route("/delete_walk/<walk_id>")
+def delete_walk(walk_id):
+    walks = mongo.db.walks.find({"created_by": session["user"]})
+    mongo.db.walks.remove({"_id": ObjectId(walk_id)})
+    flash("You have deleted this stroll!")
+    return redirect(url_for('my_walks', walks=walks))
 
 # If the module (python file being run) is the main
 # one then this is from where to run our application
