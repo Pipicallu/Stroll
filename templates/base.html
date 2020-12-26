@@ -22,8 +22,16 @@
     <div class="body-border container-fluid">
         <!--NavBar section-->
         <nav class="NavBar">
-            <div class="brand-title">
+            <div class="brand-title d-flex">
                 <img src="{{url_for('static', filename='assets/images/logo.svg')}}" alt="logo" />
+                <div class="ml-2 d-flex">
+                    <form class="d-flex" action="{{ url_for('search') }}" method="POST">
+                        <input class="form-control me-2" type="search" placeholder="Search" name="query" id="query" >
+                        <button class="btn btn-sm search-button ml-2" type="submit"><i
+                                class="fas fa-search"></i></button>
+                        <a href="{{url_for('show_walks')}}" class="btn btn-sm search-button ml-2" type="submit"><i class="fas fa-arrow-left"></i></a>
+                    </form>
+                </div>
             </div>
             <div class="menu-btn">
                 <div class="menu-btn_burger"></div>
@@ -89,7 +97,7 @@
 
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiFMATVcwfqCjDZvLoeheO1fQUkV600Cc&callback=initMap">
-    </script>
+        </script>
     {% block scripts %} {% endblock %}
 </body>
 

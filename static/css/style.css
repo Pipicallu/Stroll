@@ -76,6 +76,16 @@ i{
     transition: all .3s ease-in-out;
 }
 
+.search-button{
+    border: none ;
+    color: #6c64ff;
+    font-size: 17px;
+}
+
+.search-button:hover{
+    color: #eeedff;
+    background-color: #6c64ff;
+}
 /* hamburger menu */
 .menu-btn{
     position: absolute;

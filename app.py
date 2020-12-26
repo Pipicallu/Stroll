@@ -48,6 +48,16 @@ def show_walks():
                            hydePark=hydePark)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    walks = list(mongo.db.walks.find({"$text": {"$search": query}}))
+    start_point = json.dumps(mongo.db.walks.find_one("start_point"))
+    end_point = mongo.db.walks.find_one("end_point")
+    return render_template("walks.html", walks=walks,
+                           start_point=start_point, end_point=end_point)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
