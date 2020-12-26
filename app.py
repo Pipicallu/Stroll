@@ -106,6 +106,9 @@ def login():
 
 @app.route("/profile/<UserID>", methods=["GET", "POST"])
 def profile(UserID):
+    i = 0
+    userPosts = list(mongo.db.walks.find({"created_by": session["user"]}))
+    postsUpdated = str(len(userPosts))
     usernumber = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     fullName = mongo.db.users.find_one(
@@ -118,6 +121,12 @@ def profile(UserID):
         {"username": session["user"]})["posts"]
     bio = mongo.db.users.find_one(
         {"username": session["user"]})["bio"]
+    for postNo in userPosts:
+        i += 1
+        if i != len(userPosts):
+            mongo.db.users.update_one(
+             {"username": session["user"]},
+             {"$set": {'posts': postsUpdated}})
     if session["user"]:
         return render_template("profile.html", UserID=fullName,
                                cycles=cycles, strolls=strolls,
@@ -206,6 +215,7 @@ def edit_walk(walk_id):
 
 @app.route("/edit_profile/<User_Id>", methods=["GET", "POST"])
 def edit_profile(User_Id):
+    # this to pre-render how many posts
     fullName = mongo.db.users.find_one(
         {"username": session["user"]})["full_name"]
     email = mongo.db.users.find_one(
