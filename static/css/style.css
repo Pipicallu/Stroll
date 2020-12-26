@@ -206,6 +206,8 @@ i{
      border: 3px solid;
      border-radius: 32px;
      max-width: 1000px;
+     position: relative;
+     z-index: 1;
  }
 
  .user-bio{
@@ -218,7 +220,7 @@ i{
     background-color: #6c64ff;
     position: relative;
     bottom: 150px;
-    z-index: -1;
+    z-index: 0;
     
  }
 
