@@ -206,6 +206,28 @@ def edit_walk(walk_id):
 
 @app.route("/edit_profile/<User_Id>", methods=["GET", "POST"])
 def edit_profile(User_Id):
+    fullName = mongo.db.users.find_one(
+        {"username": session["user"]})["full_name"]
+    email = mongo.db.users.find_one(
+        {"_id": ObjectId(User_Id)})['email_address']
+    password = mongo.db.users.find_one(
+        {"_id": ObjectId(User_Id)})['password']
+    username = mongo.db.users.find_one(
+        {"_id": ObjectId(User_Id)})['username']
+    if request.method == "POST":
+        userUpdated = {
+          "email_address": email,
+          "full_name": request.form.get('fullName'),
+          "username": username,
+          "password": password,
+          "strolls": request.form.get('strolls'),
+          "cycles": request.form.get('cycles'),
+          "posts": request.form.get('posts'),
+          "bio": request.form.get('bio')
+        }
+        mongo.db.users.update({"_id": ObjectId(User_Id)}, userUpdated)
+        flash('Profile Updated')
+        return redirect(url_for('profile',  UserID=fullName))
     user = mongo.db.users.find_one({"_id": ObjectId(User_Id)})
     return render_template('edit_profile.html', user=user)
 
