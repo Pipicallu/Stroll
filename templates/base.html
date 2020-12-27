@@ -26,10 +26,10 @@
                 <img src="{{url_for('static', filename='assets/images/logo.svg')}}" alt="logo" />
                 <div class="ml-2 d-flex">
                     <form class="d-flex" action="{{ url_for('search') }}" method="POST">
-                        <input class="form-control me-2" type="search" placeholder="Search" name="query" id="query" >
+                        <input class="form-control me-2" type="search" placeholder="Search" data-locations= "{{ locations }}" data-environments="{{ environments }}" name="query" id="query" >
                         <button class="btn btn-sm search-button ml-2" type="submit"><i
                                 class="fas fa-search"></i></button>
-                        <a href="{{url_for('show_walks')}}" class="btn btn-sm search-button ml-2" type="submit"><i class="fas fa-arrow-left"></i></a>
+                        <!-- <a href="{{url_for('show_walks')}}" class="btn btn-sm search-button ml-2" type="submit"><i class="fas fa-arrow-left"></i></a> -->
                     </form>
                 </div>
             </div>

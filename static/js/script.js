@@ -69,3 +69,14 @@ function renderRoute(start_lat, start_lng, end_lat, end_lng, loop_index) {
         }
     });
 }
+
+/* autocomplete jquery */
+// this is done so that the data can be injected dynamically, with each new city added the search will automatically expand.
+let locations = document.querySelectorAll('[data-locations]')
+let environments = document.querySelectorAll('[data-environments]')
+$(function(){
+    $("#query").autocomplete({
+        source: locations, environments
+    });
+});
+
