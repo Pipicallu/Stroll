@@ -202,6 +202,7 @@ def edit_walk(walk_id):
     if request.method == "POST":
         bikePath = "Y" if request.form.get("bikePath") == "Y" else "N"
         submit = {
+            "img_id": request.form.get("image_id"),
             "start_point": {"lat": request.form.get("start-lat"),
                             "lng": request.form.get("start-lng")},
             "end_point":  {"lat": request.form.get("end-lat"),
