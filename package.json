@@ -1,0 +1,24 @@
+{
+  "name": "stroll",
+  "version": "1.0.0",
+  "description": "The web app that allows users to share walking and cycling routes throughout London",
+  "main": "script.js",
+  "scripts": {
+    "test": "npm install jquery --save"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pipicallu/Stroll.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pipicallu/Stroll/issues"
+  },
+  "homepage": "https://github.com/Pipicallu/Stroll#readme",
+  "dependencies": {
+    "blueimp-file-upload": "^9.34.0",
+    "cloudinary-jquery-file-upload": "^2.11.3",
+    "jquery": "^3.5.1"
+  }
+}

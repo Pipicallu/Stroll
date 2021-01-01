@@ -80,3 +80,6 @@ $(function(){
     });
 });
 
+
+/* cloudinary configuration parameters */
+$.cloudinary.config({ cloud_name: 'tumascloud', secure: true});

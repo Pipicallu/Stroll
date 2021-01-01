@@ -38,7 +38,6 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/show_walks")
 def show_walks():
-    hydePark = Cloud.CloudinaryImage("HydePark.jpg")
     walks = list(mongo.db.walks.find())
     locations = mongo.db.walks.distinct("location")
     environments = mongo.db.walks.distinct("environment")
@@ -47,7 +46,6 @@ def show_walks():
     #this passes the walks variable so that it may be used in the template 
     return render_template("walks.html", walks=walks,
                            start_point=start_point, end_point=end_point,
-                           hydePark=hydePark,
                            locations=locations, environments=environments)
 
 
