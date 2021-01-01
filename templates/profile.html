@@ -6,8 +6,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="pic-and-name col-12 col-md-3">
+                            {% if profilePic == "" %}
                             <img src="{{url_for('static', filename='assets/images/avatar.svg')}}" width="120"
                                 height="120" class="rounded-circle float-left profile-picture " alt="avatar" />
+                            {% else %}
+                            <img src="https://res.cloudinary.com/tumascloud/{{profilePic}}" width="120"
+                                height="120" class="rounded-circle float-left profile-picture " alt="avatar" />
+                            {% endif %}
                             <h4 class="fullname">{{ UserID }}</h4>
                             <button type="button" class="edit-profile-button btn btn-primary"><a class="edit-profile-href" href="{{url_for('edit_profile', User_Id=usernumber)}}"><i class="fas fa-edit"></i></a></button>
                         </div>

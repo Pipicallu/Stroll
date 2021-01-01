@@ -87,7 +87,8 @@ def register():
             "strolls": startingNumber,
             "cycles": startingNumber,
             "posts": startingNumber,
-            "bio": bio
+            "bio": bio,
+            "img_id": ""
         }
         mongo.db.users.insert_one(register)
         # put the user information into a session cookie so that they are remembered by the website.
@@ -126,6 +127,8 @@ def profile(UserID):
     postsUpdated = str(len(userPosts))
     usernumber = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
+    profilePic = mongo.db.users.find_one(
+        {"username": session["user"]})["img_id"]
     fullName = mongo.db.users.find_one(
         {"username": session["user"]})["full_name"]
     cycles = mongo.db.users.find_one(
@@ -145,7 +148,8 @@ def profile(UserID):
     if session["user"]:
         return render_template("profile.html", UserID=fullName,
                                cycles=cycles, strolls=strolls,
-                               posts=posts, bio=bio, usernumber=usernumber)
+                               posts=posts, bio=bio, usernumber=usernumber,
+                               profilePic=profilePic)
     else:
         return redirect(url_for('login'))
 
@@ -244,6 +248,7 @@ def edit_profile(User_Id):
         {"_id": ObjectId(User_Id)})['username']
     if request.method == "POST":
         userUpdated = {
+          "img_id": request.form.get("image_id"),
           "email_address": email,
           "full_name": request.form.get('fullName'),
           "username": username,

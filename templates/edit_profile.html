@@ -7,8 +7,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="pic-and-name col-12 col-md-3">
-                                <img src="{{url_for('static', filename='assets/images/avatar.svg')}}" width="120"
-                                    height="120" class="rounded-circle float-left profile-picture " alt="avatar" />
+                                <label for="file" class="form-label mb-2">Upload a new image:</label>
+                                <input name="file" type="file" class="mb-3 cloudinary-fileupload"
+                                    data-cloudinary-field="image_id"
+                                    data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
+  &quot;callback&quot;: &quot;https://8080-bdc80bb0-9c82-4db1-a0e8-0426e97c248e.ws-eu03.gitpod.io/cloudinary_cors.html&quot;}">
+                                <input type="hidden" name="image_id">
                                 <h4 class="fullname"><input type="text" id="fullName" name="fullName"
                                         value="{{user.full_name}}"></h4>
                             </div>
@@ -33,9 +37,9 @@
             <div class="col-12 user-bio">
                 <div class="card profile-card biography">
                     <div class="card-body biography">
-                        <p> 
-                <textarea type="input" class="form-control" id="bio" name="bio"
-                    value="" rows="3">{{ user.bio }}</textarea>
+                        <p>
+                            <textarea type="input" class="form-control" id="bio" name="bio" value=""
+                                rows="3">{{ user.bio }}</textarea>
                         </p>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
