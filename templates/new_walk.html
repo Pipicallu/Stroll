@@ -6,6 +6,17 @@
     </div>
     <div class="row">
         <form class="col text-center" method="POST" action="{{url_for('new_walk')}}">
+            <!--upload image-->
+            <div class="row">
+                <div class="col">
+                    <label for="file" class="form-label mb-2">Upload your image:</label>
+                    <input name="file" type="file" class="mb-3 cloudinary-fileupload" data-cloudinary-field="image_id"
+                        data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
+  &quot;callback&quot;: &quot;https://8080-bdc80bb0-9c82-4db1-a0e8-0426e97c248e.ws-eu03.gitpod.io/cloudinary_cors.html&quot;}">
+                    <input type="hidden"  name="image_id" >
+
+                </div>
+            </div>
             <div class="row mb-3">
                 <!--start point-->
                 <div class="col-3 mb-3">
@@ -94,15 +105,13 @@
             <div class="row">
                 <p class=" mr-1">Bike Path:</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="bikePath" id="bikePathY"
-                        value="Y" >
+                    <input class="form-check-input" type="radio" name="bikePath" id="bikePathY" value="Y">
                     <label class="form-check-label" for="bikePathY">
                         Y
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="bikePath" id="bikePathN"
-                        value="N">
+                    <input class="form-check-input" type="radio" name="bikePath" id="bikePathN" value="N">
                     <label class="form-check-label" for="bikePathN">
                         N
                     </label>
@@ -117,4 +126,5 @@
         </form>
     </div>
 </div>
+
 {% endblock %}

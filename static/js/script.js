@@ -83,3 +83,9 @@ $(function(){
 
 /* cloudinary configuration parameters */
 $.cloudinary.config({ cloud_name: 'tumascloud', secure: true});
+
+/* cloudinary upload function */
+
+$(document).ready(function() {
+    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+});
