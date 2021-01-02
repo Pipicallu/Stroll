@@ -262,6 +262,10 @@ i{
 
  /* card */
 
+ .card-wrapper{
+     margin-bottom: 20px;
+ }
+
  .walk-card{
     border: 3px solid  var(--text-color-default);
     border-radius: 7px;
