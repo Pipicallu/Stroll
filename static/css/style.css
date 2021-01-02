@@ -201,7 +201,8 @@ i{
  
  .profile-picture{
     margin: 10px;
-    border: 3px solid #FC6681
+    border: 3px solid #FC6681;
+    object-fit: cover;
  }
 
  .user-stats{
@@ -272,6 +273,11 @@ i{
     color: var(--background-default);
 
 
+ }
+
+ .card-img, .card-img-top {
+    padding: 4px;
+    border-radius: 10px;
  }
 
  /* map */
