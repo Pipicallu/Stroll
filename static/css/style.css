@@ -280,6 +280,13 @@ i{
     border-radius: 10px;
  }
 
+ .card-text{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+ }
+
  /* map */
 
   #map {
