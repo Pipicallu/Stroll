@@ -13,13 +13,13 @@
                     <!-- Button trigger for modal -->
                     <button type="button"
                         onclick="renderRoute({{ walk.start_point.lat }}, {{walk.start_point.lng}}, {{walk.end_point.lat}}, {{ walk.end_point.lng }}, {{ loop.index }} );"
-                        class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ loop.index }}">
+                        class="btn comment-button-styles btn-primary" data-toggle="modal" data-target="#myModal{{ loop.index }}">
                         Expand
                     </button>
                     <!--button trigger for comment section-->
-                    <button class="btn btn-primary ml-1" data-toggle="collapse"
+                    <button class="btn comment-button-styles btn-primary ml-1" data-toggle="collapse"
                         data-target="#comment-section{{ loop.index }}"><i class="far fa-comment-dots"></i></button>
-                    <button class="btn btn-primary "><i class="far fa-heart"></i></button>
+                    <button class="btn comment-button-styles btn-primary "><i class="far fa-heart"></i></button>
                     <p class="card-text"><small class="small-text-style">location: </small>{{ walk.location }}</p>
                 </div>
                 <div class="row">
@@ -33,7 +33,7 @@
                                     <input hidden name="comment_index" type="text" value="{{walk.walk_name}}">
                                 </div>
                                 <div class="comment-button mb-4">
-                                    <button type="submit" class="btn btn-primary col-4">comment</button>
+                                    <button type="submit" class="btn btn-primary comment-button-styles col-4">comment</button>
                                 </div>
                             </form>
                             <div class="row comment-row-sec">

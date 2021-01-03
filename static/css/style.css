@@ -299,6 +299,20 @@ i{
     justify-content: flex-end;
 }
 
+.comment-button-styles{
+    color: #6c64ff;
+    background-color: #eeedff;
+    border: none;
+    transition: all .3s ease-in-out;
+}
+
+.comment-button-styles:hover, .comment-button-styles:focus, .active{
+    background-color: #403e64;
+    border: none;
+    box-shadow: none;
+}
+
+
 /* comment section */
 .comment-row-sec{
     display: contents;
