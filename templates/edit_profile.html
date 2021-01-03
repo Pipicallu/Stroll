@@ -12,7 +12,7 @@
                                     data-cloudinary-field="image_id"
                                     data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
   &quot;callback&quot;: &quot;https://8080-bdc80bb0-9c82-4db1-a0e8-0426e97c248e.ws-eu03.gitpod.io/cloudinary_cors.html&quot;}">
-                                <input type="hidden" name="image_id">
+                                <input type="hidden" name="image_id"  value="{{ user.img_id }}">
                                 <h4 class="fullname"><input type="text" id="fullName" name="fullName"
                                         value="{{user.full_name}}"></h4>
                             </div>
