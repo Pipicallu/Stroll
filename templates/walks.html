@@ -36,13 +36,14 @@
                                     <button type="submit" class="btn btn-primary col-4">comment</button>
                                 </div>
                             </form>
-                            <div class="row">
+                            <div class="row comment-row-sec">
                                 {% for comment in comments %}
                                     {% if comment.comment_index == walk.walk_name %}
-                                        <hr>
+                                    <div class="col">
                                         <p>{{comment.comment_body}}</p>
                                         <hr>
                                         <br>
+                                    </div>
                                     {% endif %}
                                 {% endfor %}
                             </div>

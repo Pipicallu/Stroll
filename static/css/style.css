@@ -299,6 +299,11 @@ i{
     justify-content: flex-end;
 }
 
+/* comment section */
+.comment-row-sec{
+    display: contents;
+}
+
  /* map */
 
   #map {
