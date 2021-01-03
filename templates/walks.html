@@ -17,18 +17,34 @@
                         Expand
                     </button>
                     <!--button trigger for comment section-->
-                     <button class="btn btn-primary ml-1" data-toggle="collapse" data-target="#comment-section{{ loop.index }}"><i
-                                class="far fa-comment-dots"></i></button>
+                    <button class="btn btn-primary ml-1" data-toggle="collapse"
+                        data-target="#comment-section{{ loop.index }}"><i class="far fa-comment-dots"></i></button>
                     <button class="btn btn-primary "><i class="far fa-heart"></i></button>
                     <p class="card-text"><small class="small-text-style">location: </small>{{ walk.location }}</p>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="collapse" id="comment-section{{ loop.index }}">
-                            <div class="col-12 mb-3">
-                                <label hidden for="new_comment" class="form-label mb-2"></label>
-                                <textarea class="form-control" id="new_comment" name="new_comment"
-                                    placeholder="Paint us a word picture..." rows="3"></textarea>
+                            <form method="POST" action="{{url_for('comment')}}">
+                                <div class=" d-flex mb-1">
+                                    <label hidden for="add_comment{{ loop.index }}" class="form-label mb-1"></label>
+                                    <textarea class="form-control col" id="add_comment{{ loop.index }}"
+                                        name="add_comment" placeholder="Paint us a word picture..." rows="3"></textarea>
+                                    <input hidden name="comment_index" type="text" value="{{walk.walk_name}}">
+                                </div>
+                                <div class="comment-button mr">
+                                    <button type="submit" class="btn btn-primary col-4">comment</button>
+                                </div>
+                            </form>
+                            <div class="row">
+                                {% for comment in comments %}
+                                    {% if comment.comment_index == walk.walk_name %}
+                                        <hr>
+                                        <p>{{comment.comment_body}}</p>
+                                        <hr>
+                                        <br>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -98,6 +114,8 @@
             </div>
         </div>
     </div>
+    
     {% endfor %}
 </div>
+
 {% endblock %}

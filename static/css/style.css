@@ -291,6 +291,14 @@ i{
     -webkit-box-orient: vertical;
  }
 
+
+/* comment form */
+
+.comment-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
  /* map */
 
   #map {

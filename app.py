@@ -39,14 +39,16 @@ mongo = PyMongo(app)
 @app.route("/show_walks")
 def show_walks():
     walks = list(mongo.db.walks.find())
+    comments = list(mongo.db.comments.find())
     locations = mongo.db.walks.distinct("location")
     environments = mongo.db.walks.distinct("environment")
     start_point = json.dumps(mongo.db.walks.find_one("start_point"))
     end_point = mongo.db.walks.find_one("end_point")
-    #this passes the walks variable so that it may be used in the template 
+    # this passes the walks variable so that it may be used in the template
     return render_template("walks.html", walks=walks,
                            start_point=start_point, end_point=end_point,
-                           locations=locations, environments=environments)
+                           locations=locations, environments=environments,
+                           comments=comments)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -59,6 +61,23 @@ def search():
     if query == "":
         return redirect(url_for("show_walks"))
 
+    return render_template("walks.html", walks=walks,
+                           start_point=start_point, end_point=end_point)
+
+
+@app.route("/comment", methods=["GET", "POST"])
+def comment():
+    if request.method == "POST":
+        new_comment = {
+            "comment_index": request.form.get("comment_index"),
+            "comment_body": request.form.get("add_comment"),
+            "created_by":  session["user"]
+        }
+        mongo.db.comments.insert_one(new_comment)
+        return redirect(url_for("show_walks"))
+    walks = list(mongo.db.walks.find())
+    start_point = mongo.db.walks.find_one("start_point")
+    end_point = mongo.db.walks.find_one("end_point")
     return render_template("walks.html", walks=walks,
                            start_point=start_point, end_point=end_point)
 
@@ -156,9 +175,9 @@ def profile(UserID):
 
 @app.route("/logout")
 def logout():
-    #log user out of session 
+    # log user out of session
     flash('You have been successfully logged out.')
-    session.pop('user') 
+    session.pop('user')
     return redirect(url_for('login'))
 
 
@@ -271,6 +290,7 @@ def delete_walk(walk_id):
     mongo.db.walks.remove({"_id": ObjectId(walk_id)})
     flash("You have deleted this stroll!")
     return redirect(url_for('my_walks', walks=walks))
+
 
 # If the module (python file being run) is the main
 # one then this is from where to run our application
