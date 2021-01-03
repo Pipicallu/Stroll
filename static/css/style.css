@@ -304,6 +304,15 @@ i{
     display: contents;
 }
 
+.hr-style{
+    border-radius: 50px;
+    border-bottom: 2px solid #eeedff;
+    margin-top: .25px;
+}
+
+.comment-text{
+    margin-bottom: 5px;
+}
  /* map */
 
   #map {

@@ -32,19 +32,19 @@
                                         name="add_comment" placeholder="Paint us a word picture..." rows="3"></textarea>
                                     <input hidden name="comment_index" type="text" value="{{walk.walk_name}}">
                                 </div>
-                                <div class="comment-button mr">
+                                <div class="comment-button mb-4">
                                     <button type="submit" class="btn btn-primary col-4">comment</button>
                                 </div>
                             </form>
                             <div class="row comment-row-sec">
                                 {% for comment in comments %}
-                                    {% if comment.comment_index == walk.walk_name %}
-                                    <div class="col">
-                                        <p>{{comment.comment_body}}</p>
-                                        <hr>
-                                        <br>
-                                    </div>
-                                    {% endif %}
+                                {% if comment.comment_index == walk.walk_name %}
+                                <div class="col">
+                                    <p class="comment-text">"{{comment.comment_body}}" -
+                                        <em><small>{{comment.created_by}}</small></em></p>
+                                    <hr class="hr-style">
+                                </div>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -115,7 +115,7 @@
             </div>
         </div>
     </div>
-    
+
     {% endfor %}
 </div>
 
