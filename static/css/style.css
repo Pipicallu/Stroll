@@ -41,6 +41,10 @@ i{
     text-decoration: none;
 }
 
+ul{
+  background-color: #eeedff;  
+}
+
 .NavBar{
     display: flex;
     justify-content: space-between;
@@ -326,6 +330,13 @@ i{
 
 .comment-text{
     margin-bottom: 5px;
+}
+
+/* modal */
+
+.modal-content{
+    background-color: #6c64ff;
+    color: #eeedff;
 }
  /* map */
 
