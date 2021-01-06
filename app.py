@@ -55,6 +55,9 @@ def show_walks():
 def search():
     query = request.form.get("query")
     walks = list(mongo.db.walks.find({"$text": {"$search": query}}))
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    comments = list(mongo.db.comments.find())
     start_point = mongo.db.walks.find_one("start_point")
     end_point = mongo.db.walks.find_one("end_point")
     #This will allow the user to hit enter when blank and be redirected
@@ -62,7 +65,10 @@ def search():
         return redirect(url_for("show_walks"))
 
     return render_template("walks.html", walks=walks,
-                           start_point=start_point, end_point=end_point)
+                           start_point=start_point, end_point=end_point,
+                           locations=locations, environments=environments,
+                           comments=comments)
+
 
 
 @app.route("/comment", methods=["GET", "POST"])
