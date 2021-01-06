@@ -40,8 +40,8 @@ mongo = PyMongo(app)
 def show_walks():
     walks = list(mongo.db.walks.find())
     comments = list(mongo.db.comments.find())
-    locations = mongo.db.walks.distinct("location")
-    environments = mongo.db.walks.distinct("environment")
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
     start_point = json.dumps(mongo.db.walks.find_one("start_point"))
     end_point = mongo.db.walks.find_one("end_point")
     # this passes the walks variable so that it may be used in the template
