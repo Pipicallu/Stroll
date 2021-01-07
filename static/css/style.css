@@ -408,7 +408,7 @@ ul{
       overflow: hidden;
   }
 
-  .form-container form{
+  .form-container .formDiv{
       position: absolute;
       top: 100px;
       left: 120px;
@@ -499,7 +499,7 @@ input{
     outline: none;
 }
 
-form input, form textarea, form select{
+.formDiv input, form textarea, form select{
     color: var(--background-default);
     text-align: center;
     border-top: none;
@@ -519,7 +519,7 @@ form input, form textarea, form select{
 
 
 
-form input::placeholder, form textarea::placeholder, form select::placeholder {
+.formDiv input::placeholder, form textarea::placeholder, form select::placeholder {
   color: var(--background-default);
   opacity: 1; 
 }
