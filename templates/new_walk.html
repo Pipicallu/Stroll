@@ -1,111 +1,119 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
-    <div class="row">
-        <h3 class="col-12 text-center mb-5">Create New Walk</h3>
-    </div>
-    <div class="row">
-        <form class="col text-center" method="POST" action="{{url_for('new_walk')}}">
-            <!--upload image-->
-            <div class="row">
-                <div class="col">
-                    <label for="file" class="form-label mb-2">Upload your image:</label>
-                    <input name="file" type="file" class="mb-3 cloudinary-fileupload" height="120" data-cloudinary-field="image_id"
-                        data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
-  &quot;callback&quot;: &quot;https://8080-bdc80bb0-9c82-4db1-a0e8-0426e97c248e.ws-eu03.gitpod.io/cloudinary_cors.html&quot;}">
-                    <input type="hidden" name="image_id">
+<div class="d-flex justify-content-center container">
+    <div class="row mt-5 form-container">
+        <form id="form1" class="col d-block mt-4" method="POST" action="{{url_for('new_walk')}}">
+            <h1 class="form-title">Create Your new Walk</h1>
+            <div class=" upload-image">
+                <img src="{{url_for('static', filename='assets/images/uploadimg.svg')}}" class="justify-content-center"
+                    height="200" width="740" alt="walk image" />
+            </div>
+            <div class="img-upload">
+                <label for="file" class=" custom-upload form-label mb-2"><i class="fas fa-cloud-upload-alt"></i> Choose
+                    Image
+                </label>
+                <input name="file" id="file" type="file" class="mb-3 inputfile cloudinary-fileupload " height="120"
+                    data-cloudinary-field="image_id"
+                    data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
+  &quot;callback&quot;: &quot;https://8080-bdc80bb0-9c82-4db1-a0e8-0426e97c248e.ws-eu03.gitpod.io/cloudinary_cors.html&quot;}"
+                    placeholder="upload Image">
+                <input type="hidden" name="image_id">
+            </div>
+            <div class="btn-box">
+                <button id="next1" class="nextButton" type="button">Next</button>
+            </div>
+        </form>
+        <!--form2-->
+        <form id="form2" class="col d-block mt-4" method="POST" action="{{url_for('new_walk')}}">
+            <h1 class="form-title">Add Your Starting Point</h1>
+            <div class="coordinate-box">
 
-                </div>
+                <input type="text" class="mb-5 " id="start-lat" name="start-lat" placeholder="Starting Latitude">
+
+
+                <input type="text" class=" mb-5" id="start-lng" name="start-lng" placeholder="Starting Longitude">
             </div>
-            <div class="row mb-3">
-                <!--start point-->
-                <div class="col-3 mb-3">
-                    <label for="start-lat" class="form-label mb-2">Starting lat</label>
-                    <input type="text" class="form-control form-control-sm" id="start-lat" name="start-lat"
-                        placeholder="Degrees Please">
-                </div>
-                <div class="col-3 mb-3">
-                    <label for="start-lng" class="form-label mb-2">Starting lng</label>
-                    <input type="text" class="form-control form-control-sm" id="start-lng" name="start-lng"
-                        placeholder="Degrees Please">
-                </div>
-                <!--end point-->
-                <div class="col-3 mb-3">
-                    <label for="end-lat" class="form-label mb-2 ">End lat</label>
-                    <input type="text" class="form-control form-control-sm" id="end-lat" name="end-lat"
-                        placeholder="Degrees Please">
-                </div>
-                <div class="col-3 mb-3">
-                    <label for="end-lng" class="form-label mb-2">End lng</label>
-                    <input type="text" class="form-control form-control-sm" id="end-lng" name="end-lng"
-                        placeholder="Degrees Please">
-                </div>
+            <div class="btn-box">
+                <button id="back2" class="nextButton" type="button">back</button>
+                <button id="next2" class="nextButton" type="button">Next</button>
             </div>
-            <div class="col-12 mb-3">
-                <label for="walk_name" class="form-label mb-2">Title</label>
-                <input type="text" class="form-control" id="walk_name" name="walk_name"
-                    placeholder="Name your new Stroll...">
+
+        </form>
+        <!--Form3-->
+        <form id="form3" class="col d-block mt-4" method="POST" action="{{url_for('new_walk')}}">
+            <h1 class="form-title">Add Your End Point</h1>
+            <div class="coordinate-box">
+
+                <input type="text" class="mb-5" id="end-lat" name="end-lat" placeholder="End Latitude">
+
+
+                <input type="text" class="mb-5" id="end-lng" name="end-lng" placeholder="End Longitude">
             </div>
-            <div class="col-12 mb-3">
-                <label for="walk_description" class="form-label mb-2">Add Description</label>
-                <textarea class="form-control" id="walk_description" name="walk_description"
+            <div class="btn-box">
+                <button id="back3" class="nextButton" type="button">back</button>
+                <button id="next3" class="nextButton" type="button">Next</button>
+            </div>
+
+        </form>
+        <!--form4-->
+        <form id="form4" class="col d-block mt-4" method="POST" action="{{url_for('new_walk')}}">
+            <h1 class="form-title">Describe Your Journey</h1>
+
+            <div class="coordinate-box">
+
+                <input type="text" class="mb-5" id="walk_name" name="walk_name" placeholder="Name your new Stroll...">
+
+                <textarea class="mb-5" id="walk_description" name="walk_description"
                     placeholder="Paint us a word picture..." rows="3"></textarea>
+
             </div>
-            <div class="row">
-                <!--environment-->
-                <div class="col-6 mb-3">
-                    <label for="environment" class="form-label mb-2">Environment</label>
-                    <select id="environment" name="environment" class="col-12 form-select" aria-label="environment">
+            <div class="btn-box">
+                <button id="back4" class="nextButton" type="button">back</button>
+                <button id="next4" class="nextButton" type="button">Next</button>
+            </div>
+
+        </form>
+        <!--form5-->
+        <form id="form5" class="col d-block mt-4" method="POST" action="{{url_for('new_walk')}}">
+            <h1 class="form-title">Tell Us Where</h1>
+            <div class="coordinate-box">
+                 <input type="text" class="mb-5" id="location" name="location"
+                        placeholder="Add a location.">
+                 <select id="environment" name="environment" class="mb-5" aria-label="environment">
                         <option disabled selected>choose...</option>
                         {% for environment in environments %}
                         <option value="{{environment.environment}}">{{environment.environment}}</option>
                         {% endfor %}
                     </select>
-                </div>
-                <!--location-->
-                <div class="col-6 mb-3">
-                    <label for="location" class="form-label mb-2">Location</label>
-                    <input type="text" class="form-control form-control-sm" id="location" name="location"
-                        placeholder="Add a location.">
-                </div>
             </div>
-            <div class="row">
-                <!--distance-->
-                <div class="col-6 mb-3">
-                    <label for="distance" class="form-label mb-2">Distance</label>
-                    <input type="text" class="form-control form-control-sm" id="distance" name="distance"
+            <div class="btn-box">
+                <button id="back5" class="nextButton" type="button">back</button>
+                <button id="next5" class="nextButton" type="button">Next</button>
+            </div>
+
+        </form>
+        <!--form6-->
+         <form id="form6" class="col d-block mt-4" method="POST" action="{{url_for('new_walk')}}">
+            <h1 class="form-title">And How long did you walk for?</h1>
+            <div class="coordinate-box">
+                <input type="text" class="mb-5" id="distance" name="distance"
                         placeholder="km">
-                </div>
-                <!-- duration-->
-                <div class="col-6 mb-3">
-                    <label for="duration" class="form-label mb-2">Duration</label>
-                    <input type="text" class="form-control form-control-sm" id="duration" name="duration"
+                <input type="text" class="mb-5" id="duration" name="duration"
                         placeholder="Best time?">
-                </div>
             </div>
-            <!-- cycle duration-->
-            <div class="row">
-                <div class="col-6 mb-3">
-                    <label for="cycle_duration" class="form-label mb-2">Cycle Duration</label>
-                    <input type="text" class="form-control form-control-sm" id="cycle_duration" name="cycle_duration"
+            <div class="btn-box">
+                <button id="back6" class="nextButton" type="button">back</button>
+                <button  id="next6" class="nextButton" type="button">Next</button>
+            </div>
+
+        </form>
+        <!--form7-->
+         <form id="form7" class="col d-block mt-4" method="POST" action="{{url_for('new_walk')}}">
+            <h1 class="form-title">Does it cycle?</h1>
+            <div class="coordinate-box">
+                <input type="text" class="mb-5" id="cycle_duration" name="cycle_duration"
                         placeholder="Best time?">
-                </div>
-                <!-- difficilty-->
-                <div class="col-6 mb-3">
-                    <label for="difficulty" class="form-label mb-2">Difficulty</label>
-                    <select id="difficulty" name="difficulty" class="col-12 form-select" aria-label="difficulty">
-                        <option disabled selected>choose...</option>
-                        {% for difficulty in difficulties %}
-                        <option value="{{difficulty.difficulty}}">{{difficulty.difficulty}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-            <!--bike path-->
-            <div class="row">
-                <p class=" mr-1">Bike Path:</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="bikePath" id="bikePathY" value="Y">
+                    <input class="" type="radio" name="bikePath" id="bikePathY" value="Y">
                     <label class="form-check-label" for="bikePathY">
                         Y
                     </label>
@@ -115,16 +123,130 @@
                     <label class="form-check-label" for="bikePathN">
                         N
                     </label>
-                </div>
+
+
             </div>
-            <!-- Submit button-->
-            <div class="row">
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary btn-lg">submit new walk</button>
-                </div>
+            <div class="btn-box">
+                <button id="back7" class="nextButton" type="button">back</button>
+                <button id="next7" class="nextButton" type="button">Next</button>
             </div>
+
+        </form>
+        <!--form8-->
+        <form id="form8" class="col d-block mt-4" method="POST" action="{{url_for('new_walk')}}">
+            <h1 class="form-title">And Lastly Was It Challenging?</h1>
+            <div class="coordinate-box">
+        
+                <select id="difficulty" name="difficulty" class="col-12 form-select" aria-label="difficulty">
+                        <option disabled selected>choose...</option>
+                        {% for difficulty in difficulties %}
+                        <option value="{{difficulty.difficulty}}">{{difficulty.difficulty}}</option>
+                        {% endfor %}
+                    </select>
+
+            </div>
+            <div class="btn-box">
+                <button id="back8" class="nextButton" type="button">back</button>
+                <button class="nextButton" type="submit">Submit</button>
+            </div>
+
         </form>
     </div>
 </div>
+<script>var form1 = document.getElementById("form1");
+var form2 = document.getElementById("form2");
+var form3 = document.getElementById("form3");
+var form4 = document.getElementById("form4");
+var form5 = document.getElementById("form5");
+var form6 = document.getElementById("form6");
+var form7 = document.getElementById("form7");
+var form8 = document.getElementById("form8");
+
+var next1 = document.getElementById("next1");
+var next2 = document.getElementById("next2");
+var next3 = document.getElementById("next3");
+var next4 = document.getElementById("next4");
+var next5 = document.getElementById("next5");
+var next6 = document.getElementById("next6");
+var next7 = document.getElementById("next7");
+
+var back2 = document.getElementById("back2");
+var back3 = document.getElementById("back3");
+var back4 = document.getElementById("back4");
+var back5 = document.getElementById("back5");
+var back6 = document.getElementById("back6");
+var back7 = document.getElementById("back7");
+var back8 = document.getElementById("back8");
+
+next1.onclick = function(){
+    form1.style.left = "-1000px";
+    form2.style.left = "120px";
+}
+
+back2.onclick = function(){
+    form1.style.left = "120px";
+    form2.style.left = "1000px";
+}
+
+next2.onclick = function(){
+    form2.style.left = "-1000px";
+    form3.style.left = "120px";
+}
+
+back3.onclick = function(){
+    form2.style.left = "120px";
+    form3.style.left = "1000px";
+}
+
+next3.onclick = function(){
+    form3.style.left = "-1000px";
+    form4.style.left = "120px";
+}
+
+back4.onclick = function(){
+    form3.style.left = "120px";
+    form4.style.left = "1000px";
+}
+
+next4.onclick = function(){
+    form4.style.left = "-1000px";
+    form5.style.left = "120px";
+}
+
+back5.onclick = function(){
+    form4.style.left = "120px";
+    form5.style.left = "1000px";
+}
+
+next5.onclick = function(){
+    form5.style.left = "-1000px";
+    form6.style.left = "120px";
+}
+
+back6.onclick = function(){
+    form5.style.left = "120px";
+    form6.style.left = "1000px";
+}
+
+next6.onclick = function(){
+    form6.style.left = "-1000px";
+    form7.style.left = "120px";
+}
+
+back7.onclick = function(){
+    form6.style.left = "120px";
+    form7.style.left = "1000px";
+}
+
+next7.onclick = function(){
+    form7.style.left = "-1000px";
+    form8.style.left = "120px";
+}
+
+back8.onclick = function(){
+    form7.style.left = "120px";
+    form8.style.left = "1000px";
+}
+</script>
 
 {% endblock %}

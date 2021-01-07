@@ -396,3 +396,135 @@ ul{
       font-size: 18px;
       text-decoration: none;
   }
+
+  /* new walk form */
+
+  .form-container{
+      width: 1000px;
+      height: 600px;
+      border-radius: 10px;
+      position: relative;
+      background: var(--text-color-default);
+      overflow: hidden;
+  }
+
+  .form-container form{
+      position: absolute;
+      top: 100px;
+      left: 120px;
+      transition: .5s;
+  }
+
+
+  .form-title{
+      color: var(--background-default);
+      font-size: 80px;
+      margin-bottom: 20px;
+  }
+
+  .form-label{
+      color:var(--background-default);
+  }
+
+  .img-upload{
+      color: var(--background-default);
+      display: flex;
+      justify-content: center;
+  }
+
+ .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.custom-upload{
+    cursor: pointer;
+    border: 2px solid var(--background-default);
+    padding: 10px;
+    border-radius: 4px;
+    margin-right: 215px;
+    transition: .4s;
+}
+
+.custom-upload:focus, 
+.custom-upload:hover {
+    background-color: var(--background-default);
+    color: var(--text-color-default);
+}
+
+.upload-image{
+    margin-bottom: 20px;
+}
+
+.form-hr{
+    width: 150px;
+    border-bottom: 2px solid #eeedff;
+}
+
+.btn-box{
+    text-align: center;
+    width: 78%;
+    padding: 15px;
+    
+    
+}
+
+.nextButton{
+    background: linear-gradient(to right, #f59a64, #f56484);
+    border-radius: 20px;
+    width: 80px;
+    height: 32px;
+    border: none;
+    color: #eeedff;
+    cursor: pointer;
+    outline: none;
+    
+}
+
+#form1{
+    display: none;
+}
+
+.coordinate-box{
+    text-align: center;
+    margin-right: 220px;
+    
+}
+ 
+input{
+    outline: none;
+}
+
+form input, form textarea, form select{
+    color: var(--background-default);
+    text-align: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid var(--background-default);
+    outline: none;
+    background: transparent;
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+
+
+form input::placeholder, form textarea::placeholder, form select::placeholder {
+  color: var(--background-default);
+  opacity: 1; 
+}
+
+
+ #form2, #form3, #form4, #form5, #form6, #form7, #form8{
+     left: 1000px;
+ }
