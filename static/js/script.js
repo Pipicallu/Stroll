@@ -150,15 +150,6 @@ function renderRoute(start_lat, start_lng, end_lat, end_lng, loop_index) {
     });
 }
 
-/* autocomplete jquery */
-// this is done so that the data can be injected dynamically, with each new city added the search will automatically expand.
-   
-var locEnv= locations.concat(environments)
-$(function () {
-    $("#query").autocomplete({
-        source: locEnv
-    });
-});
 
 
 /* cloudinary configuration parameters */
@@ -168,6 +159,16 @@ $.cloudinary.config({ cloud_name: 'tumascloud', secure: true });
 
 $(document).ready(function () {
     $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+});
+
+/* autocomplete jquery */
+// this is done so that the data can be injected dynamically, with each new city added the search will automatically expand.
+   
+var locEnv= locations.concat(environments)
+$(function () {
+    $("#query").autocomplete({
+        source: locEnv
+    });
 });
 
 /* form function */

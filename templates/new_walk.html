@@ -82,8 +82,8 @@
                         placeholder="Add a location.">
                  <select id="environment" name="environment" class="mb-5" aria-label="environment">
                         <option disabled selected>choose...</option>
-                        {% for environment in environments %}
-                        <option value="{{environment.environment}}">{{environment.environment}}</option>
+                        {% for environ in environment %}
+                        <option value="{{environ.environment}}">{{environ.environment}}</option>
                         {% endfor %}
                     </select>
             </div>

@@ -213,11 +213,14 @@ def new_walk():
         mongo.db.walks.insert_one(walk)
         flash("You Posted a New Walk")
         return redirect(url_for('show_walks'))
-    environments = mongo.db.environments.find().sort("environment", 1)
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    environment = mongo.db.environments.find().sort("environment", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
     return render_template("new_walk.html",
-                           environments=environments,
-                           difficulties=difficulties)
+                           environment=environment,
+                           difficulties=difficulties,
+                           locations=locations, environments=environments)
 
 
 @app.route("/my_walks")
@@ -253,11 +256,14 @@ def edit_walk(walk_id):
         flash("You have Updated your walk")
         return redirect(url_for('my_walks'))
     walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
+    locations = list(mongo.db.walks.distinct("location"))
+    environment = list(mongo.db.walks.distinct("environment"))
     environments = mongo.db.environments.find().sort("environment", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
     return render_template("edit_walk.html", walk=walk,
-                           environments=environments,
-                           difficulties=difficulties)
+                           environment=environment,
+                           difficulties=difficulties,
+                           locations=locations, environments=environments)
 
 
 @app.route("/edit_profile/<User_Id>", methods=["GET", "POST"])
@@ -286,8 +292,11 @@ def edit_profile(User_Id):
         mongo.db.users.update({"_id": ObjectId(User_Id)}, userUpdated)
         flash('Profile Updated')
         return redirect(url_for('profile',  UserID=fullName))
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
     user = mongo.db.users.find_one({"_id": ObjectId(User_Id)})
-    return render_template('edit_profile.html', user=user)
+    return render_template('edit_profile.html', user=user,
+                           locations=locations, environments=environments)
 
 
 @app.route("/delete_walk/<walk_id>")
