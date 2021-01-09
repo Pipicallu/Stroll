@@ -173,32 +173,4 @@ $(function () {
 
 /* form function */
 
-var form1 = document.getElementById("form1");
-var form2 = document.getElementById("form2");
-var form3 = document.getElementById("form3");
-var form4 = document.getElementById("form4");
-var form5 = document.getElementById("form5");
-var form6 = document.getElementById("form6");
-var form7 = document.getElementById("form7");
-var form8 = document.getElementById("form8");
 
-var next1 = document.getElementById("next1");
-var next2 = document.getElementById("next2");
-var next3 = document.getElementById("next3");
-var next4 = document.getElementById("next4");
-var next5 = document.getElementById("next5");
-var next6 = document.getElementById("next6");
-var next7 = document.getElementById("next7");
-
-var back2 = document.getElementById("back2");
-var back3 = document.getElementById("back3");
-var back4 = document.getElementById("back4");
-var back5 = document.getElementById("back5");
-var back6 = document.getElementById("back6");
-var back7 = document.getElementById("back7");
-var back8 = document.getElementById("back8");
-
-next1.onclick = function(){
-    form1.style.left = "-1000px";
-    form2.style.left = "40px";
-}
