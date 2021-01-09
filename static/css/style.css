@@ -406,14 +406,14 @@ ul{
       border-radius: 10px;
       position: relative;
       background: var(--text-color-default);
-      overflow: hidden;
+      overflow-x: hidden;
       justify-content: center;
   }
 
  
   
   .form-container .formDiv{
-      display: grid;
+      padding: 0 100px;
       justify-content: center;
       text-align: center;
       position: absolute;
@@ -531,5 +531,58 @@ form .formDiv input, .formDiv textarea, .formDiv select{
      left: 1000px;
  }
 
+ .formDiv .img-fluid{
+     width: 250px;
+ }
+
  /*progress bar*/
 
+ .progressBar{
+     
+     text-align: center;
+ }
+
+ .bullet{
+    border: 2px solid;
+    border-radius: 50px;
+    width: 28px;
+    margin: 0 auto;
+    transition: 0.3s;
+ }
+
+ .bullet::after{
+     border: #f56484;
+     color: ;
+     transform:scaleX(0);
+     animation: appear .03s linear infinite;
+ }
+
+ @keyframes appear{
+     100%{
+         transform: scaleX(1);
+     }
+ }
+
+ .divider::before, .divider::after{
+    content: '';
+    width: 70%;
+    background: var(--text-color-default);
+    height: 4px;
+    position: absolute;
+    left: 65%;
+    top: 50%;
+    z-index: 1;
+ }
+
+ .divider::after{
+     background: #f56484;
+     transform: scaleX(0);
+     transform-origin: left;
+     animation: animate 0.3s linear forwards;
+ }
+
+ @keyframes animate {
+     100%{
+         transform: scaleX(1);
+     }
+ }

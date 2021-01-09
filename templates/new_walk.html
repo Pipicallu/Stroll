@@ -1,11 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div class="progressBar row">
+    <div class="step col">
+        <p class="bullet" >1</p>
+        <span id="divider1" class="divider" ></span>
+    </div>
+    <div class="step col">
+        <p class="bullet">2</p>
+        <span class="divider" ></span>
+    </div>
+    <div class="step col">
+        <p class="bullet">3</p>
+        <span class="divider" ></span>
+    </div>
+    <div class="step col">
+        <p class="bullet">4</p>
+        <span class="divider" ></span>
+        
+    </div>
+    <div class="step col">
+        <p class="bullet">5</p>
+        <span class="divider" ></span>
+    </div>
+    <div class="step col">
+        <p class="bullet">6</p>
+        <span class="divider" ></span>
+    </div>
+    <div class="step col">
+        <p class="bullet">7</p>
+        <span class="divider" ></span>
+    </div>
+    <div class="step col">
+        <p class="bullet">8</p>
+        
+    </div>
+</div>
 <form class="form-container row d-flex" method="POST" action="{{url_for('new_walk')}}">
     <div id="form1" class="col-12 formDiv ">
         <h1 class="form-title">Create Your new Walk</h1>
         <div class=" upload-image">
-            <img src="{{url_for('static', filename='assets/images/uploadimg.svg')}}" class="" height="200" width="740"
+            <img src="{{url_for('static', filename='assets/images/uploadimg.svg')}}" class="img-fluid" 
                 alt="walk image" />
         </div>
         <div class="img-upload">
@@ -17,7 +51,7 @@
                 data-cloudinary-field="image_id"
                 data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
   &quot;callback&quot;: &quot;https://8080-bdc80bb0-9c82-4db1-a0e8-0426e97c248e.ws-eu03.gitpod.io/cloudinary_cors.html&quot;}"
-                placeholder="upload Image">
+                placeholder="upload Image" required>
             <input type="hidden" name="image_id">
         </div>
         <div class="btn-box">
@@ -29,10 +63,10 @@
         <h1 class="form-title">Add Your Starting Point</h1>
         <div class="coordinate-box">
 
-            <input type="text" class="mb-5 " id="start-lat" name="start-lat" placeholder="Starting Latitude">
+            <input type="text" class="mb-5 " id="start-lat" name="start-lat" placeholder="Starting Latitude" required>
 
 
-            <input type="text" class=" mb-5" id="start-lng" name="start-lng" placeholder="Starting Longitude">
+            <input type="text" class=" mb-5" id="start-lng" name="start-lng" placeholder="Starting Longitude" required>
         </div>
         <div class="btn-box">
             <button id="back2" class="nextButton" type="button">back</button>
@@ -45,10 +79,10 @@
         <h1 class="form-title">Add Your End Point</h1>
         <div class="coordinate-box">
 
-            <input type="text" class="mb-5" id="end-lat" name="end-lat" placeholder="End Latitude">
+            <input type="text" class="mb-5" id="end-lat" name="end-lat" placeholder="End Latitude" required>
 
 
-            <input type="text" class="mb-5" id="end-lng" name="end-lng" placeholder="End Longitude">
+            <input type="text" class="mb-5" id="end-lng" name="end-lng" placeholder="End Longitude" required>
         </div>
         <div class="btn-box">
             <button id="back3" class="nextButton" type="button">back</button>
@@ -62,10 +96,10 @@
 
         <div class="coordinate-box">
 
-            <input type="text" class="mb-5" id="walk_name" name="walk_name" placeholder="Name your new Stroll...">
+            <input type="text" class="mb-5" id="walk_name" name="walk_name" placeholder="Name your new Stroll..." required>
 
             <textarea class="mb-5" id="walk_description" name="walk_description"
-                placeholder="Paint us a word picture..." rows="3"></textarea>
+                placeholder="Paint us a word picture..." rows="3" required></textarea>
 
         </div>
         <div class="btn-box">
@@ -78,8 +112,8 @@
     <div id="form5" class="col-12 formDiv  ">
         <h1 class="form-title">Tell Us Where</h1>
         <div class="coordinate-box">
-            <input type="text" class="mb-5" id="location" name="location" placeholder="Add a location.">
-            <select id="environment" name="environment" class="mb-5" aria-label="environment">
+            <input type="text" class="mb-5" id="location" name="location" placeholder="Add a location." required>
+            <select id="environment" name="environment" class="mb-5" aria-label="environment" required>
                 <option disabled selected>choose...</option>
                 {% for environ in environment %}
                 <option value="{{environ.environment}}">{{environ.environment}}</option>
@@ -96,8 +130,8 @@
     <div id="form6" class="col formDiv  ">
         <h1 class="form-title">And How long did you walk for?</h1>
         <div class="coordinate-box">
-            <input type="text" class="mb-5" id="distance" name="distance" placeholder="km">
-            <input type="text" class="mb-5" id="duration" name="duration" placeholder="Best time?">
+            <input type="text" class="mb-5" id="distance" name="distance" placeholder="km" required>
+            <input type="text" class="mb-5" id="duration" name="duration" placeholder="Best time?" required>
         </div>
         <div class="btn-box">
             <button id="back6" class="nextButton" type="button">back</button>
@@ -109,7 +143,7 @@
     <div id="form7" class="col formDiv ">
         <h1 class="form-title">Does it cycle?</h1>
         <div class="coordinate-box">
-            <input type="text" class="mb-5" id="cycle_duration" name="cycle_duration" placeholder="Best time?">
+            <input type="text" class="mb-5" id="cycle_duration" name="cycle_duration" placeholder="Best time?" required>
             <input class="" type="radio" name="bikePath" id="bikePathY" value="Y">
             <input class="" type="radio" name="bikePath" id="bikePathN" value="N">
 
@@ -127,7 +161,7 @@
         <h1 class="form-title">And Lastly Was It Challenging?</h1>
         <div class="coordinate-box">
 
-            <select id="difficulty" name="difficulty" class="col-12 form-select" aria-label="difficulty">
+            <select id="difficulty" name="difficulty" class="col-12 form-select" aria-label="difficulty" required>
                 <option disabled selected>choose...</option>
                 {% for difficulty in difficulties %}
                 <option value="{{difficulty.difficulty}}">{{difficulty.difficulty}}</option>
@@ -141,7 +175,6 @@
         </div>
 
     </div>
-
 </form>
 
 
@@ -171,9 +204,15 @@
     var back7 = document.getElementById("back7");
     var back8 = document.getElementById("back8");
 
+    const divider = document.querySelectorAll("divider")
+    var max = 8
+    current = 1
+
     next1.onclick = function () {
         form1.style.left = "-1000px";
         form2.style.left = "0px";
+        divider[current - 1].classList.add("active")
+        current +=1
 
     }
 
