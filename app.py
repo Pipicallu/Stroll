@@ -257,8 +257,8 @@ def edit_walk(walk_id):
         return redirect(url_for('my_walks'))
     walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
     locations = list(mongo.db.walks.distinct("location"))
-    environment = list(mongo.db.walks.distinct("environment"))
-    environments = mongo.db.environments.find().sort("environment", 1)
+    environments = list(mongo.db.walks.distinct("environment"))
+    environment = mongo.db.environments.find().sort("environment", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
     return render_template("edit_walk.html", walk=walk,
                            environment=environment,

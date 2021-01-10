@@ -501,6 +501,7 @@ ul{
 
 .coordinate-box{
     text-align: center;
+    margin-top: 60px;
     
 }
  
@@ -545,7 +546,8 @@ form .formDiv input, .formDiv textarea, .formDiv select{
      width: 250px;
  }
 .bike-path-container{
-    display: -webkit-inline-box;;
+    display: inline-flex;
+    margin-right: 45px;
 }
  #bikePathY, #bikePathN{
      height: 20px;
