@@ -27,7 +27,7 @@
                 <img src="{{url_for('static', filename='assets/images/logo.svg')}}" alt="logo" />
                 <div class="ml-2 d-flex">
                     <form class="d-flex" action="{{ url_for('search') }}" method="POST">
-                        <input class="form-control me-2" type="search" placeholder="Search"
+                        <input class="form-control search-input me-2" type="search" placeholder="Search"
                             data-locations="{{ locations|safe }}" data-environments="{{ environments|safe }}" name="query"
                             id="query">
                         <button class="btn btn-sm search-button ml-2" type="submit"><i

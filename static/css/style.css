@@ -80,6 +80,16 @@ ul{
     transition: all .3s ease-in-out;
 }
 
+.search-input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #6c64ff;
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+}
+
 .search-button{
     border: none ;
     color: #6c64ff;
@@ -318,6 +328,10 @@ ul{
 
  /* card */
 
+.card{
+    
+}
+
  .card-wrapper{
      margin-bottom: 20px;
  }
@@ -448,6 +462,34 @@ ul{
       font-size: 18px;
       text-decoration: none;
   }
+
+  .user-stats input, .fullname input, .card-body.biography textarea{
+    color: #f56484;
+    text-align: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #6c64ff;
+    outline: none;
+    background: transparent;
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .card-body.biography textarea{
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #eeedff;
+    height: 84px;
+
+  }
+
+
 
   /* new walk form */
 
