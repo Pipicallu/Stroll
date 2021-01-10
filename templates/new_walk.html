@@ -1,182 +1,183 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="progressBar row">
-    <div class="step col">
-        <p class="bullet" >1</p>
-        <span id="divider1" class="divider" ></span>
-    </div>
-    <div class="step col">
-        <p class="bullet">2</p>
-        <span class="divider" ></span>
-    </div>
-    <div class="step col">
-        <p class="bullet">3</p>
-        <span class="divider" ></span>
-    </div>
-    <div class="step col">
-        <p class="bullet">4</p>
-        <span class="divider" ></span>
-        
-    </div>
-    <div class="step col">
-        <p class="bullet">5</p>
-        <span class="divider" ></span>
-    </div>
-    <div class="step col">
-        <p class="bullet">6</p>
-        <span class="divider" ></span>
-    </div>
-    <div class="step col">
-        <p class="bullet">7</p>
-        <span class="divider" ></span>
-    </div>
-    <div class="step col">
-        <p class="bullet">8</p>
-        
-    </div>
-</div>
-<form class="form-container row d-flex" method="POST" action="{{url_for('new_walk')}}">
-    <div id="form1" class="col-12 formDiv ">
-        <h1 class="form-title">Create Your new Walk</h1>
-        <div class=" upload-image">
-            <img src="{{url_for('static', filename='assets/images/uploadimg.svg')}}" class="img-fluid" 
-                alt="walk image" />
+<div class="form-container">
+    <div class="row step-row">
+        <div id="progress"></div>
+        <div class="col step-col">
+            <p id="step1">1</p>
         </div>
-        <div class="img-upload">
-            <label for="file" class=" custom-upload form-label mb-2"><i class="fas fa-cloud-upload-alt"></i>
-                Choose
-                Image
-            </label>
-            <input name="file" id="file" type="file" class="mb-3 inputfile cloudinary-fileupload " height="120"
-                data-cloudinary-field="image_id"
-                data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
+        <div class="col step-col">
+            <p id="step2">2</p>
+        </div>
+        <div class="col step-col">
+            <p id="step3">3</p>
+        </div>
+        <div class="col step-col">
+            <p id="step4">4</p>
+        </div>
+        <div class="col step-col">
+            <p id="step5">5</p>
+        </div>
+        <div class="col step-col">
+            <p id="step6">6</p>
+        </div>
+        <div class="col step-col">
+            <p id="step7">7</p>
+        </div>
+        <div class="col step-col">
+            <p id="step8">8</p>
+        </div>
+    </div>
+    <form class=" row d-flex" method="POST" action="{{url_for('new_walk')}}">
+        <div id="form1" class="col-12 formDiv ">
+            <h1 class="form-title">Create Your new Walk</h1>
+            <div class=" upload-image">
+                <img src="{{url_for('static', filename='assets/images/uploadimg.svg')}}" class="img-fluid"
+                    alt="walk image" />
+            </div>
+            <div class="img-upload">
+                <label for="file" class=" custom-upload form-label mb-2"><i class="fas fa-cloud-upload-alt"></i>
+                    Choose
+                    Image
+                </label>
+                <input name="file" id="file" type="file" class="mb-3 inputfile cloudinary-fileupload " height="120"
+                    data-cloudinary-field="image_id"
+                    data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
   &quot;callback&quot;: &quot;https://8080-bdc80bb0-9c82-4db1-a0e8-0426e97c248e.ws-eu03.gitpod.io/cloudinary_cors.html&quot;}"
-                placeholder="upload Image" required>
-            <input type="hidden" name="image_id">
+                    placeholder="upload Image" required>
+                <input type="hidden" name="image_id">
+            </div>
+            <div class="btn-box">
+                <button id="next1" class="nextButton" type="button">Next</button>
+            </div>
         </div>
-        <div class="btn-box">
-            <button id="next1" class="nextButton" type="button">Next</button>
-        </div>
-    </div>
-    <!--form2-->
-    <div id="form2" class="col-12 formDiv  ">
-        <h1 class="form-title">Add Your Starting Point</h1>
-        <div class="coordinate-box">
+        <!--form2-->
+        <div id="form2" class="col-12 formDiv  ">
+            <h1 class="form-title">Add Your Starting Point</h1>
+            <div class="coordinate-box">
 
-            <input type="text" class="mb-5 " id="start-lat" name="start-lat" placeholder="Starting Latitude" required>
+                <input type="text" class="mb-5 " id="start-lat" name="start-lat" placeholder="Starting Latitude"
+                    required>
 
 
-            <input type="text" class=" mb-5" id="start-lng" name="start-lng" placeholder="Starting Longitude" required>
-        </div>
-        <div class="btn-box">
-            <button id="back2" class="nextButton" type="button">back</button>
-            <button id="next2" class="nextButton" type="button">Next</button>
-        </div>
-
-    </div>
-    <!--Form3-->
-    <div id="form3" class="col-12 formDiv ">
-        <h1 class="form-title">Add Your End Point</h1>
-        <div class="coordinate-box">
-
-            <input type="text" class="mb-5" id="end-lat" name="end-lat" placeholder="End Latitude" required>
-
-
-            <input type="text" class="mb-5" id="end-lng" name="end-lng" placeholder="End Longitude" required>
-        </div>
-        <div class="btn-box">
-            <button id="back3" class="nextButton" type="button">back</button>
-            <button id="next3" class="nextButton" type="button">Next</button>
-        </div>
-
-    </div>
-    <!--form4-->
-    <div id="form4" class="col-12 formDiv  ">
-        <h1 class="form-title">Describe Your Journey</h1>
-
-        <div class="coordinate-box">
-
-            <input type="text" class="mb-5" id="walk_name" name="walk_name" placeholder="Name your new Stroll..." required>
-
-            <textarea class="mb-5" id="walk_description" name="walk_description"
-                placeholder="Paint us a word picture..." rows="3" required></textarea>
+                <input type="text" class=" mb-5" id="start-lng" name="start-lng" placeholder="Starting Longitude"
+                    required>
+            </div>
+            <div class="btn-box">
+                <button id="back2" class="nextButton" type="button">back</button>
+                <button id="next2" class="nextButton" type="button">Next</button>
+            </div>
 
         </div>
-        <div class="btn-box">
-            <button id="back4" class="nextButton" type="button">back</button>
-            <button id="next4" class="nextButton" type="button">Next</button>
-        </div>
+        <!--Form3-->
+        <div id="form3" class="col-12 formDiv ">
+            <h1 class="form-title">Add Your End Point</h1>
+            <div class="coordinate-box">
 
-    </div>
-    <!--form5-->
-    <div id="form5" class="col-12 formDiv  ">
-        <h1 class="form-title">Tell Us Where</h1>
-        <div class="coordinate-box">
-            <input type="text" class="mb-5" id="location" name="location" placeholder="Add a location." required>
-            <select id="environment" name="environment" class="mb-5" aria-label="environment" required>
-                <option disabled selected>choose...</option>
-                {% for environ in environment %}
-                <option value="{{environ.environment}}">{{environ.environment}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="btn-box">
-            <button id="back5" class="nextButton" type="button">back</button>
-            <button id="next5" class="nextButton" type="button">Next</button>
-        </div>
+                <input type="text" class="mb-5" id="end-lat" name="end-lat" placeholder="End Latitude" required>
 
-    </div>
-    <!--form6-->
-    <div id="form6" class="col formDiv  ">
-        <h1 class="form-title">And How long did you walk for?</h1>
-        <div class="coordinate-box">
-            <input type="text" class="mb-5" id="distance" name="distance" placeholder="km" required>
-            <input type="text" class="mb-5" id="duration" name="duration" placeholder="Best time?" required>
-        </div>
-        <div class="btn-box">
-            <button id="back6" class="nextButton" type="button">back</button>
-            <button id="next6" class="nextButton" type="button">Next</button>
-        </div>
 
-    </div>
-    <!--form7-->
-    <div id="form7" class="col formDiv ">
-        <h1 class="form-title">Does it cycle?</h1>
-        <div class="coordinate-box">
-            <input type="text" class="mb-5" id="cycle_duration" name="cycle_duration" placeholder="Best time?" required>
-            <input class="" type="radio" name="bikePath" id="bikePathY" value="Y">
-            <input class="" type="radio" name="bikePath" id="bikePathN" value="N">
+                <input type="text" class="mb-5" id="end-lng" name="end-lng" placeholder="End Longitude" required>
+            </div>
+            <div class="btn-box">
+                <button id="back3" class="nextButton" type="button">back</button>
+                <button id="next3" class="nextButton" type="button">Next</button>
+            </div>
 
         </div>
+        <!--form4-->
+        <div id="form4" class="col-12 formDiv  ">
+            <h1 class="form-title">Describe Your Journey</h1>
 
+            <div class="coordinate-box">
 
-        <div class="btn-box">
-            <button id="back7" class="nextButton" type="button">back</button>
-            <button id="next7" class="nextButton" type="button">Next</button>
-        </div>
+                <input type="text" class="mb-5" id="walk_name" name="walk_name" placeholder="Name your new Stroll..."
+                    required>
 
-    </div>
-    <!--form8-->
-    <div id="form8" class="col formDiv  ">
-        <h1 class="form-title">And Lastly Was It Challenging?</h1>
-        <div class="coordinate-box">
+                <textarea class="mb-5" id="walk_description" name="walk_description"
+                    placeholder="Paint us a word picture..." rows="3" required></textarea>
 
-            <select id="difficulty" name="difficulty" class="col-12 form-select" aria-label="difficulty" required>
-                <option disabled selected>choose...</option>
-                {% for difficulty in difficulties %}
-                <option value="{{difficulty.difficulty}}">{{difficulty.difficulty}}</option>
-                {% endfor %}
-            </select>
+            </div>
+            <div class="btn-box">
+                <button id="back4" class="nextButton" type="button">back</button>
+                <button id="next4" class="nextButton" type="button">Next</button>
+            </div>
 
         </div>
-        <div class="btn-box">
-            <button id="back8" class="nextButton" type="button">back</button>
-            <button class="nextButton" type="submit" onclick="submitForms()">Submit</button>
+        <!--form5-->
+        <div id="form5" class="col-12 formDiv  ">
+            <h1 class="form-title">Tell Us Where</h1>
+            <div class="coordinate-box">
+                <input type="text" class="mb-5" id="location" name="location" placeholder="Add a location." required>
+                <select id="environment" name="environment" class="mb-5" aria-label="environment" required>
+                    <option disabled selected>choose...</option>
+                    {% for environ in environment %}
+                    <option value="{{environ.environment}}">{{environ.environment}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="btn-box">
+                <button id="back5" class="nextButton" type="button">back</button>
+                <button id="next5" class="nextButton" type="button">Next</button>
+            </div>
+
         </div>
+        <!--form6-->
+        <div id="form6" class="col formDiv  ">
+            <h1 class="form-title">And How long did you walk for?</h1>
+            <div class="coordinate-box">
+                <input type="text" class="mb-5" id="distance" name="distance" placeholder="km" required>
+                <input type="text" class="mb-5" id="duration" name="duration" placeholder="Best time?" required>
+            </div>
+            <div class="btn-box">
+                <button id="back6" class="nextButton" type="button">back</button>
+                <button id="next6" class="nextButton" type="button">Next</button>
+            </div>
 
-    </div>
-</form>
+        </div>
+        <!--form7-->
+        <div id="form7" class="col formDiv ">
+            <h1 class="form-title">Does it cycle?</h1>
+            <div class="coordinate-box">
+                <input type="text" class="mb-5" id="cycle_duration" name="cycle_duration" placeholder="Best time?"
+                    required>
+                <h6>bike Path:</h6>
+                <div class="bike-path-container">
+                    <label class="mr-1" for="bikePathY">Yes</label>
+                    <input class="col-6 mr-2" type="radio" name="bikePath" id="bikePathY" value="Y">
+                    <label class="mr-1" for="bikePathN">No</label>
+                    <input class="col-6 mr-2" type="radio" name="bikePath" id="bikePathN" value="N">
+                </div>
+            </div>
 
+
+            <div class="btn-box">
+                <button id="back7" class="nextButton" type="button">back</button>
+                <button id="next7" class="nextButton" type="button">Next</button>
+            </div>
+
+        </div>
+        <!--form8-->
+        <div id="form8" class="col formDiv  ">
+            <h1 class="form-title">And Lastly Was It Challenging?</h1>
+            <div class="coordinate-box">
+
+                <select id="difficulty" name="difficulty" class="col-12 form-select" aria-label="difficulty" required>
+                    <option disabled selected>choose...</option>
+                    {% for difficulty in difficulties %}
+                    <option value="{{difficulty.difficulty}}">{{difficulty.difficulty}}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="btn-box">
+                <button id="back8" class="nextButton" type="button">back</button>
+                <button class="nextButton" type="submit" onclick="submitForms()">Submit</button>
+            </div>
+
+        </div>
+    </form>
+</div>
 
 <script>
     var form1 = document.getElementById("form1");
@@ -203,85 +204,116 @@
     var back6 = document.getElementById("back6");
     var back7 = document.getElementById("back7");
     var back8 = document.getElementById("back8");
+    var progress = document.getElementById("progress")
 
-    const divider = document.querySelectorAll("divider")
-    var max = 8
-    current = 1
+
+    var step2 = document.getElementById("step2")
+    var step3 = document.getElementById("step3")
+    var step4 = document.getElementById("step4")
+    var step5 = document.getElementById("step5")
+    var step6 = document.getElementById("step6")
+    var step7 = document.getElementById("step7")
+    var step8 = document.getElementById("step8")
 
     next1.onclick = function () {
         form1.style.left = "-1000px";
         form2.style.left = "0px";
-        divider[current - 1].classList.add("active")
-        current +=1
-
+        progress.style.width = "25%";
+        step2.style.opacity = "1";
     }
 
     back2.onclick = function () {
         form1.style.left = "0px";
         form2.style.left = "1000px";
+        progress.style.width = "12.5%";
+        step2.style.opacity = "0";
     }
 
     next2.onclick = function () {
         form2.style.left = "-1000px";
         form3.style.left = "0px";
+        progress.style.width = "37.5%";
+        step3.style.opacity = "1";
     }
 
     back3.onclick = function () {
         form2.style.left = "0px";
         form3.style.left = "1000px";
+        progress.style.width = "25%";
+        step3.style.opacity = "0";
     }
 
     next3.onclick = function () {
         form3.style.left = "-1000px";
         form4.style.left = "0px";
+        progress.style.width = "50%";
+        step4.style.opacity = "1";
     }
 
     back4.onclick = function () {
         form3.style.left = "0px";
         form4.style.left = "1000px";
+        progress.style.width = "37.5%";
+        step4.style.opacity = "0";
     }
 
     next4.onclick = function () {
         form4.style.left = "-1000px";
         form5.style.left = "0px";
+        progress.style.width = "62.5%";
+        step5.style.opacity = "1";
     }
 
     back5.onclick = function () {
         form4.style.left = "0px";
         form5.style.left = "1000px";
+        progress.style.width = "50%";
+        step5.style.opacity = "0";
     }
 
     next5.onclick = function () {
         form5.style.left = "-1000px";
         form6.style.left = "0px";
+        progress.style.width = "75%";
+        step6.style.opacity = "1";
     }
 
     back6.onclick = function () {
         form5.style.left = "0px";
         form6.style.left = "1000px";
+        progress.style.width = "62.5%";
+        step6.style.opacity = "0";
     }
 
     next6.onclick = function () {
         form6.style.left = "-1000px";
         form7.style.left = "0px";
+        progress.style.width = "87.5%";
+        step7.style.opacity = "1";
     }
 
     back7.onclick = function () {
         form6.style.left = "0px";
         form7.style.left = "1000px";
+        progress.style.width = "75%";
+        step7.style.opacity = "0";
     }
 
     next7.onclick = function () {
         form7.style.left = "-1000px";
         form8.style.left = "0px";
+        progress.style.width = "100%";
+        step8.style.opacity = "1";
     }
 
     back8.onclick = function () {
         form7.style.left = "0px";
         form8.style.left = "1000px";
+        progress.style.width = "87.5%";
+        step8.style.opacity = "0";
     }
 
-   
+
 </script>
 
 {% endblock %}

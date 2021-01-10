@@ -402,12 +402,13 @@ ul{
   .form-container{
       max-width: 1000px;
       height: 600px;
-      margin: 8% auto;
+      margin: 2% auto;
       border-radius: 10px;
       position: relative;
       background: var(--text-color-default);
       overflow-x: hidden;
       justify-content: center;
+      box-shadow: 0 4px 10px 2px #00000073;
   }
 
  
@@ -426,6 +427,10 @@ ul{
       color: var(--background-default);
       font-size: 80px;
       margin-bottom: 20px;
+  }
+
+  .formDiv h6{
+      color: var(--background-default);
   }
 
   .form-label{
@@ -455,6 +460,8 @@ ul{
     
     transition: .4s;
 }
+
+
 
 .custom-upload:focus, 
 .custom-upload:hover {
@@ -519,6 +526,9 @@ form .formDiv input, .formDiv textarea, .formDiv select{
     line-height: 1.5;
 }
 
+.formDiv label{
+    color: var(--background-default);
+}
 
 
 .formDiv input::placeholder, form textarea::placeholder, form select::placeholder {
@@ -534,55 +544,65 @@ form .formDiv input, .formDiv textarea, .formDiv select{
  .formDiv .img-fluid{
      width: 250px;
  }
-
+.bike-path-container{
+    display: -webkit-inline-box;;
+}
+ #bikePathY, #bikePathN{
+     height: 20px;
+ }
  /*progress bar*/
 
- .progressBar{
-     
+ .step-row{
+     height: 50px;
+     margin: 0 auto;
+     display: flex;
+     align-items: center;
+     box-shadow: 0 1px 6px 1px #00000063;
+     position: relative;
+ }
+
+ .step-col{
      text-align: center;
+     color: var(--background-default);
  }
 
- .bullet{
-    border: 2px solid;
-    border-radius: 50px;
-    width: 28px;
+ #step1{
+    border: 2px solid var(--background-default);
+    width: 27px;
     margin: 0 auto;
-    transition: 0.3s;
+    border-radius: 50px;
+    
+
  }
 
- .bullet::after{
-     border: #f56484;
-     color: ;
-     transform:scaleX(0);
-     animation: appear .03s linear infinite;
+ #step2, #step3, #step4, #step5, #step6, #step7, #step8{
+    border: 2px solid var(--background-default);
+    width: 27px;
+    margin: 0 auto;
+    border-radius: 50px;
+    opacity: 0;
+    transition: 0.5s;
+    transition-delay: .2s;
+
  }
 
- @keyframes appear{
-     100%{
-         transform: scaleX(1);
-     }
- }
-
- .divider::before, .divider::after{
-    content: '';
-    width: 70%;
-    background: var(--text-color-default);
-    height: 4px;
+ #progress{
     position: absolute;
-    left: 65%;
-    top: 50%;
-    z-index: 1;
+    height: 100%;
+    width: 12.5%;
+    background: linear-gradient(to right, #f59a64, #f56484) ;
+    transition: 1s;
+
  }
 
- .divider::after{
-     background: #f56484;
-     transform: scaleX(0);
-     transform-origin: left;
-     animation: animate 0.3s linear forwards;
- }
-
- @keyframes animate {
-     100%{
-         transform: scaleX(1);
-     }
+ #progress::after{
+     content: "";
+     height: 0;
+     width: 0;
+     border-top: 25px solid transparent;
+     border-bottom: 25px solid transparent;
+     position: absolute;
+     right: -20px;
+     top: 0;
+     border-left: 20px solid #f56484;
  }
