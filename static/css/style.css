@@ -190,10 +190,21 @@ ul{
  }
 
  /* user profile */
+.profile-outline{
+    background-color: #BBB8EB;
+    max-height: 700px;
+    border-radius: 30px;
+}
 
  .user-profile{
      text-align: -webkit-center;
      padding: 80px 50px;
+ }
+
+ .profile-decor{
+     position: absolute;
+    bottom: 78px;
+    height: 112px;
  }
 
  .pic-and-name{
@@ -202,11 +213,16 @@ ul{
      align-items: center;
      margin-bottom: 20px;
  }
+
+ .fullname{
+    font-size: 30px;
+ }
  
  .profile-picture{
     margin: 10px;
     border: 3px solid #FC6681;
     object-fit: cover;
+    box-shadow: 0 4px 10px 2px #00000033;
  }
 
  .user-stats{
@@ -223,6 +239,24 @@ ul{
      max-width: 1000px;
      position: relative;
      z-index: 1;
+     
+    
+ }
+
+ .user-stat-number{
+    font-size: 42px;
+    color: #FC6681;
+    border: 4px solid;
+    border-radius: 50px;
+    width: 60px;
+    margin: 0 auto;
+    box-shadow: 0px 2px 4px 2px #00000029;
+ }
+
+ .user-stat-label{
+    font-size: 30px;
+    margin-top: 22px;
+
  }
 
  .user-bio{
@@ -236,7 +270,7 @@ ul{
     position: relative;
     bottom: 150px;
     z-index: 0;
-    
+    box-shadow: 0 4px 10px 2px #00000033;
  }
 
  .card-body.biography{
@@ -244,21 +278,39 @@ ul{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 100px;
+    padding: 70px 100px 70px 100px;
     line-height: 1.8rem;
     letter-spacing: .3px;
+    font-size: 24px;
     
 
  }
 
 .my-walks button{
-     color: #eeedff;
-     background-color: #6c64ff;
-     position: relative;
-     bottom: 150px;
-     left: 2rem;
-     margin: 20px 0;
+     display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background: #eeedff;
+    position: relative;
+    bottom: 225px;
+    width: 144px;
+    box-shadow: 0px 6px 7px 1px #00000021;
  }
+
+ .my-walks button a{
+     color: var(--text-color-default);
+ }
+
+ .my-walks button:hover{
+    background: linear-gradient(to right, #f59a64, #f56484);
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
+ }
+.my-walks button a:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
 
  .btn-dark{
     border: none;
@@ -390,7 +442,7 @@ ul{
 
 
   .edit-profile-button:hover{
-      background-color: #f56681;
+      background: linear-gradient(to right, #f59a64, #f56484);
       border: none;
       color: #ffffff;
       font-size: 18px;
@@ -566,22 +618,24 @@ form .formDiv input, .formDiv textarea, .formDiv select{
  .step-col{
      text-align: center;
      color: var(--background-default);
+     font-size: 21px;
  }
 
  #step1{
-    border: 2px solid var(--background-default);
-    width: 27px;
+    
+    font-weight: bold;
     margin: 0 auto;
-    border-radius: 50px;
+    
     
 
  }
 
  #step2, #step3, #step4, #step5, #step6, #step7, #step8{
-    border: 2px solid var(--background-default);
-    width: 27px;
+   
+    
     margin: 0 auto;
-    border-radius: 50px;
+    
+    font-weight: bold;
     opacity: 0;
     transition: 0.5s;
     transition-delay: .2s;
