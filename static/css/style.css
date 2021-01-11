@@ -42,7 +42,41 @@ i{
 }
 
 ul{
-  background-color: #eeedff;  
+  background-color: transparent;  
+}
+
+.body-border{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 6px solid;
+    border-bottom: 8px solid;
+    z-index: 5;
+    overflow: scroll;
+}
+
+/* scrollbar customisations */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+  z-index: 0;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent; 
+  z-index: 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: transparent; 
 }
 
 .NavBar{
@@ -69,7 +103,9 @@ ul{
 }
 
 .NavBar-links a:hover{
-    color: #6c63ff9e;
+    color: #f56483a4;
+    bottom: 4px;
+    
 }
 
 .NavBar-links a{
@@ -77,8 +113,14 @@ ul{
     color: var(--text-color-default);
     padding: 1.5rem;
     display: block;
-    transition: all .3s ease-in-out;
+    bottom: 0px;
+    position: relative;
+    transition: all .2s ease-in-out;
     
+}
+
+.text-color-switch{
+    border-color: #eeedff!important;
 }
 
 .search-input{
@@ -109,9 +151,9 @@ ul{
   z-index: 4; 
   left: 0;
   top: 0;
-  background: linear-gradient(to right, #f59a64, #f56484);;  
+  background: linear-gradient(to right, #6c64ff, #f56484);;  
   overflow-x: hidden;
-  
+  transition: 5s;
 }
 
 /* hamburger menu */
@@ -187,11 +229,14 @@ ul{
  @media (max-width:1000px){
      .menu-btn{
          display: flex;
+         
      }
 
      .NavBar-links{
          display: none;
          width: 100%;
+         
+         
      }
 
      .NavBar{
@@ -203,27 +248,34 @@ ul{
         width: 100%;
         flex-direction: column;
         margin: 6% auto;
-        z-index: 5;
+        
+        
      }
 
      .NavBar-links li{
          text-align: center;
+         
         
      }
+
+    
 
      .NavBar-links li a{
          padding: .5rem 1rem;
          color: #eeedff;
-         background: linear-gradient(to right, #f59a64, #f56484)
+         background: transparent;
+        
      }
      
      .NavBar-links.active{
          display: flex;
          font-size: 30px;
+         opacity: 1;
      }
 
      #nav-link-wrapper .active{
-         display: flex;
+         
+         
      }
  }
 

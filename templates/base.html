@@ -24,7 +24,7 @@
         <!--NavBar section-->
 
 
-        <nav class="NavBar">
+        <nav class="NavBar sticky-top">
             <div class="brand-title d-flex">
                 <img src="{{url_for('static', filename='assets/images/logo.svg')}}" alt="logo" />
                 <div class="ml-2 d-flex">
@@ -45,20 +45,20 @@
             <div class="NavBar-links">
                 <div id="nav-link-wrapper"></div>
                 <ul>
-                    <li class="hvr-sink">
+                    <li class="">
                         <a href="{{url_for('show_walks')}}">walks.</a>
                     </li>
                     {% if session.user: %}
-                    <li class="hvr-sink"><a href="{{url_for('profile', UserID=session['user'])}}">profile.</a></li>
-                    <li class="hvr-sink"><a href="{{url_for('new_walk')}}">new walk.</a></li>
-                    <li class="hvr-sink"><a href="{{url_for('logout')}}">logout.</a></li>
+                    <li class=""><a href="{{url_for('profile', UserID=session['user'])}}">profile.</a></li>
+                    <li class=""><a href="{{url_for('new_walk')}}">new walk.</a></li>
+                    <li class=""><a href="{{url_for('logout')}}">logout.</a></li>
                     {% else %}
-                    <li class="hvr-sink"><a href="{{url_for('login')}}">login.</a></li>
-                    <li class="hvr-sink">
+                    <li class=""><a href="{{url_for('login')}}">login.</a></li>
+                    <li class="">
                         <a href="{{url_for('register')}}">register.</a>
                     </li>
                     {% endif %}
-                    <li class="hvr-sink"><a href="#">support.</a></li>
+                    <li class=""><a href="#">support.</a></li>
                 </ul>
 
             </div>
