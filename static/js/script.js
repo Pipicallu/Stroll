@@ -1,4 +1,5 @@
 const menuBtn = document.querySelector('.menu-btn');
+
 let menuOpen = false;
 
 menuBtn.addEventListener('click', () => {
@@ -18,6 +19,9 @@ const navbarWrapper = document.getElementById('nav-link-wrapper')
 menuBtn.addEventListener('click', () => {
     navbarLinks.classList.toggle('active');
     navbarWrapper.classList.toggle('active');
+    menuBtn.style.borderColor = "#eeedff";
+    
+    
 
 });
 
