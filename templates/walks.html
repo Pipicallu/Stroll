@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+
+<div class="row">
+    <div class="col-12 outdoor">
+        <img src="{{url_for('static', filename='assets/images/Outdoor.svg')}}" alt="" class="landing-img img-fluid">
+    </div>
+    <div class="col-12 urban">
+        <button type="button"  id="urban-button"></button>
+       <img src="{{url_for('static', filename='assets/images/urban.svg')}}" alt="" class="landing-img img-fluid"> 
+    </div>
+</div>
 <div class="row">
     {% for walk in walks %}
     <div class="card-wrapper col-lg-4 col-md-12">
