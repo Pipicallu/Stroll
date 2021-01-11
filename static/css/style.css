@@ -64,7 +64,7 @@ ul{
 
 .NavBar-links li{
     list-style: none;
-    
+    z-index: 100;
     
 }
 
@@ -78,6 +78,7 @@ ul{
     padding: 1.5rem;
     display: block;
     transition: all .3s ease-in-out;
+    
 }
 
 .search-input{
@@ -100,6 +101,19 @@ ul{
     color: #eeedff;
     background-color: #6c64ff;
 }
+
+#nav-link-wrapper{
+  height: 100%;
+  width: 100%;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  background: linear-gradient(to right, #f59a64, #f56484);;  
+  overflow-x: hidden;
+  
+}
+
 /* hamburger menu */
 .menu-btn{
     position: absolute;
@@ -113,6 +127,8 @@ ul{
     cursor: pointer;
     transition: all .5s ease-in-out;
     border: 2px solid var(--text-color-default);
+    z-index: 5;
+    
 }
 
 .menu-btn_burger{
@@ -184,10 +200,16 @@ ul{
      .NavBar-links ul{
          width: 100%;
          flex-direction: column;
+         margin: 0 auto;
+         position: absolute;
+         top: 50%;
+         bottom: 50%;
+         z-index: 1;
      }
 
      .NavBar-links li{
-         text-align: right;
+         text-align: center;
+        
      }
 
      .NavBar-links li a{
@@ -196,6 +218,17 @@ ul{
      
      .NavBar-links.active{
          display: flex;
+     }
+
+     #nav-link-wrapper .active{
+         display: flex;
+     }
+ }
+
+ 
+ @media (min-width:1000px){
+     #nav-link-wrapper{
+         display: none;
      }
  }
 

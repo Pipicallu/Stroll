@@ -14,8 +14,11 @@ menuBtn.addEventListener('click', () => {
 /* nav bar display */
 
 const navbarLinks = document.getElementsByClassName('NavBar-links')[0]
+const navbarWrapper = document.getElementById('nav-link-wrapper')
 menuBtn.addEventListener('click', () => {
     navbarLinks.classList.toggle('active');
+    navbarWrapper.classList.toggle('active');
+
 });
 
 /* walk Modal */
