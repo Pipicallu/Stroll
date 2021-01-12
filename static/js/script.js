@@ -30,10 +30,13 @@ $(window).scroll(function(){
     $('.NavBar-links a').toggleClass('scroll-Text', $(this).scrollTop()>50);
     $('.menu-btn').toggleClass('menu-btn-scroll', $(this).scrollTop()>50);
     $('.menu-btn_burger').toggleClass('menu-btn-burger-scroll', $(this).scrollTop()>50);
-    $('.menu-btn_burger::before, .menu-btn_burger::after').toggleClass('menu-btn-burger-scroll', $(this).scrollTop()>50);
+    $('.brand-title img').toggleClass('svg-filled', $(this).scrollTop()>50);
+    $('.search-button').toggleClass('scroll-Text', $(this).scrollTop()>50);
+    $('.search-input').toggleClass('search-input-scrolled', $(this).scrollTop()>50);
 })
 
 /* scroll to  */
+
 
 $("#outdoor-button").click(function() {
     console.log("clicked")

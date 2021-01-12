@@ -94,6 +94,10 @@ input[type="button"]:focus{
     transition: .4s;
 }
 
+.svg-filled{
+    filter: invert(63%) sepia(79%) saturate(0) hue-rotate(-187deg) brightness(167%) contrast(119%);
+}
+
 .scrolled{
     background-color: #6c64ffde;
    
@@ -104,7 +108,7 @@ input[type="button"]:focus{
 }
 
 .brand-title{
-    padding: .75rem 0rem;
+    padding: .75rem 0.5rem;
 }
 
 .NavBar-links ul{
@@ -148,6 +152,14 @@ input[type="button"]:focus{
     border-radius: 0;
     outline: none;
     background: transparent;
+}
+
+.form-control{
+    height: calc(1.5em + 0.5rem + 2px);
+}
+
+.search-input-scrolled{
+    border-bottom: 2px solid #eeedff;
 }
 
 .search-button{
