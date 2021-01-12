@@ -22,11 +22,16 @@ menuBtn.addEventListener('click', () => {
     navbarWrapper.classList.toggle('active');
     menuBtn.classList.toggle('text-color-switch');
     
-    
-    
-    
 
 });
+
+$(window).scroll(function(){
+    $('nav').toggleClass('scrolled', $(this).scrollTop()>50);
+    $('.NavBar-links a').toggleClass('scroll-Text', $(this).scrollTop()>50);
+    $('.menu-btn').toggleClass('menu-btn-scroll', $(this).scrollTop()>50);
+    $('.menu-btn_burger').toggleClass('menu-btn-burger-scroll', $(this).scrollTop()>50);
+    $('.menu-btn_burger::before, .menu-btn_burger::after').toggleClass('menu-btn-burger-scroll', $(this).scrollTop()>50);
+})
 
 /* scroll to  */
 

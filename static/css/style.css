@@ -89,6 +89,18 @@ input[type="button"]:focus{
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
+    height: 50px;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+.scrolled{
+    background-color: #6c64ffde;
+   
+}
+
+.scroll-Text{
+     color: #eeedff!important;
 }
 
 .brand-title{
@@ -164,7 +176,7 @@ input[type="button"]:focus{
 /* hamburger menu */
 .menu-btn{
     position: absolute;
-    top: 1rem;
+    top: 0.5rem;
     right: 1rem;
     display: none;
     justify-content: center;
@@ -176,6 +188,10 @@ input[type="button"]:focus{
     border: 2px solid var(--text-color-default);
     z-index: 5;
     
+}
+
+.menu-btn-scroll{
+    border: 2px solid var(--background-default);
 }
 
 .menu-btn_burger{
@@ -195,6 +211,10 @@ input[type="button"]:focus{
     background: var(--text-color-default);
     border-radius: 3px;
     transition: all .3s ease-in-out;
+}
+
+.menu-btn-burger-scroll{
+    background: var(--background-default);
 }
 
 .menu-btn_burger::before{
@@ -1081,6 +1101,11 @@ form .formDiv input, .formDiv textarea, .formDiv select{
 #progress::after {
    border-top: 20px solid transparent;
    border-bottom: 20px solid transparent;
+}
+
+.search-input{
+    width: 72%;
+
 }
 
 }
