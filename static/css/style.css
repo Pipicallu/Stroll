@@ -721,12 +721,34 @@ input[type="button"]:focus{
 }
 
 
-
 .custom-upload:focus, 
 .custom-upload:hover {
     background-color: var(--background-default);
     color: var(--text-color-default);
 }
+
+.img-upload-for-profile{
+      color: #f56484!important;
+      display: flex;
+      justify-content: center;
+  }
+
+.custom-upload-for-profile{
+    cursor: pointer;
+    border: 2px solid #f56484;
+    padding: 10px;
+    border-radius: 4px;
+    
+    transition: .4s;
+}
+
+.custom-upload-for-profile:focus, 
+.custom-upload-for-profile:hover {
+    background: linear-gradient(to right, #f59a64, #f56484);
+    color: var(--background-default);
+    border: none;
+}
+
 
 .upload-image{
     margin-bottom: 20px;
