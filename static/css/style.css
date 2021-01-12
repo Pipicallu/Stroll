@@ -491,97 +491,6 @@ input[type="button"]:focus{
     border: none;
  }
 
- /*profile responsiveness*/
- @media (max-width:1199px){
-    .profile-decor{
-        height: 92px;
-    }
- }
- @media (max-width:992px){
-    .profile-decor{
-        height: 73px;
-        bottom: 69px;
-        right: 181px;
-    }
-
-    .profile-picture{
-        width: 120px;
-        height: 120px;
-    }
-
-    .user-stat-number{
-        font-size: 32px;
-        width: 47px;
-    }
-
-    .user-stat-label{
-        font-size: 24px;
-
-    }
-
-    .card-body.biography{
-        font-size: 20px;
-    }
-
-    .fullname{
-        font-size: 24px;
-    }
- }
-
-  @media (max-width:766px){
-
-      .card-body.biography{
-        padding: 1.25rem;
-      }
-
-      .profile-outline{
-          max-height: fit-content;
-      }
-
-      .profile-decor {
-          height: 93px;
-          bottom: 12px;
-          right: 40px;
-      }
-
-  }
- 
-@media (max-width: 564px){
-    .user-profile {
-        padding: 97px 13px;
-  }
-
-    .user-bio {
-        text-align: -webkit-center;
-        padding: 0px 13px;
-  }
-
-    .card-body.biography {
-        font-size: 16px;
-  }
-
-}
-
-@media (max-width: 411px){
-
-    .profile-decor {
-        height: 93px;
-        bottom: 12px;
-        right: 13px;
-}
-
-    .my-walks button{
-        width: 112px;
-}
-
-   .user-stat-label {
-    font-size: 22px;
-  }
-
-  h4 {  
-    font-size: 22px;
-  }
-}
 
  
 
@@ -1043,4 +952,135 @@ form .formDiv input, .formDiv textarea, .formDiv select{
 
 .userAuth .card-footer a{
     color: #f56484;
+}
+
+ /*profile responsiveness*/
+ @media (max-width:1199px){
+    .profile-decor{
+        height: 92px;
+    }
+ }
+
+ @media (max-width:966px){
+    .form-title{
+        font-size: 61px;
+    }
+ }
+
+
+ @media (max-width:992px){
+    .profile-decor{
+        height: 73px;
+        bottom: 69px;
+        right: 181px;
+    }
+
+    .profile-picture{
+        width: 120px;
+        height: 120px;
+    }
+
+    .user-stat-number{
+        font-size: 32px;
+        width: 47px;
+    }
+
+    .user-stat-label{
+        font-size: 24px;
+
+    }
+
+    .card-body.biography{
+        font-size: 20px;
+    }
+
+    .fullname{
+        font-size: 24px;
+    }
+ }
+
+  @media (max-width:766px){
+
+      .card-body.biography{
+        padding: 1.25rem;
+      }
+
+      .profile-outline{
+          max-height: fit-content;
+      }
+
+      .profile-decor {
+          height: 93px;
+          bottom: 12px;
+          right: 40px;
+      }
+
+  }
+ 
+@media (max-width: 564px){
+    
+    .user-profile {
+        padding: 97px 13px;
+  }
+
+    .user-bio {
+        text-align: -webkit-center;
+        padding: 0px 13px;
+  }
+
+    .card-body.biography {
+        font-size: 16px;
+  }
+
+  .form-container .formDiv{
+        padding: 0 28px;
+  }
+
+  .step-col{
+      font-size: 15px;
+  }
+
+  .formDiv .img-fluid {
+    width: 203px;
+}
+
+}
+
+@media (max-width: 411px){
+
+    .profile-decor {
+        height: 93px;
+        bottom: 12px;
+        right: 13px;
+}
+
+    .my-walks button{
+        width: 112px;
+}
+
+   .user-stat-label {
+    font-size: 22px;
+  }
+
+  h4 {  
+    font-size: 22px;
+  }
+
+  .form-title {
+    font-size: 53px;
+}
+
+.step-col {
+    font-size: 12px;
+    margin: 4% auto;
+}
+
+.step-row {
+    height: 40px;
+}
+#progress::after {
+   border-top: 20px solid transparent;
+   border-bottom: 20px solid transparent;
+}
+
 }
