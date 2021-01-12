@@ -7,18 +7,22 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="pic-and-name col-12 col-md-3">
-                                <label for="file" class=" custom-upload form-label mb-2"><i class="fas fa-cloud-upload-alt"></i>
-                    Choose
-                    Image
-                </label>
-                                <input name="file" type="file" class="mb-3  cloudinary-fileupload"
+                                <div class="img-upload">
+                                <label for="file" class="custom-upload form-label mb-2"><i
+                                        class="fas fa-cloud-upload-alt"></i>
+                                    Choose
+                                    Image
+                                </label>
+                                <input name="file" id="file" type="file" class="mb-3 inputfile cloudinary-fileupload"
                                     data-cloudinary-field="image_id"
                                     data-form-data="{ &quot;upload_preset&quot;:  &quot;cloudUnsigned&quot;, 
   &quot;callback&quot;: &quot;https://8080-bdc80bb0-9c82-4db1-a0e8-0426e97c248e.ws-eu03.gitpod.io/cloudinary_cors.html&quot;}">
-                                <input type="hidden" name="image_id"  value="{{ user.img_id }}">
+                                <input type="hidden" name="image_id" value="{{ user.img_id }}">
+                                </div>
                                 <h4 class="fullname"><input type="text" id="fullName" name="fullName"
                                         value="{{user.full_name}}"></h4>
                             </div>
+
                             <div class="stroll-total user-stats col-4 col-md-3">
                                 <h4><input type="text" name="strolls" id="strolls" value="{{user.strolls}}"></h4>
                                 <h4 class="">Strolls</h4>
