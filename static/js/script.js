@@ -28,6 +28,23 @@ menuBtn.addEventListener('click', () => {
 
 });
 
+/* scroll to  */
+
+$("#outdoor-button").click(function() {
+    console.log("clicked")
+    $('html, body').animate({
+        scrollTop: $("#card-section").offset().top},
+        2000);
+});
+
+$("#urban-button").click(function() {
+    console.log("clicked")
+    $('html, body').animate({
+        scrollTop: $("#card-section").offset().top},
+        2000);
+});
+
+
 /* walk Modal */
 
 $('#myModal').on('shown.bs.modal', function () {

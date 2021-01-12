@@ -45,8 +45,13 @@ ul{
   background-color: transparent;  
 }
 
-.body-border{
-    position: fixed;
+input[type="button"]:focus{
+   outline: 0!important;
+
+}
+
+
+/* .body-border{
     width: 100%;
     height: 100%;
     top: 0;
@@ -54,9 +59,8 @@ ul{
     border: 6px solid;
     border-bottom: 8px solid;
     z-index: 5;
-    overflow: scroll;
-    overflow-x: hidden;
-}
+    
+} */
 
 /* scrollbar customisations */
 ::-webkit-scrollbar {
@@ -297,6 +301,7 @@ ul{
      margin-bottom: 20px;
      transition: .5s;
      opacity: .8;
+     width: 69%;
  }
  
  .urban:hover{
@@ -309,25 +314,30 @@ ul{
      position: relative;
      z-index: 2;
      text-align: end;
-     right: 33%;
+     right: 40%;
      transition: .5s;
      opacity: .8;
+    
 
  }
 
+ .outdoor img{
+      width: 62%;
+ }
+
  .outdoor:hover{
-     right: 31%;
+     right: 38%;
      opacity: 1;
 
  }
 
  .landing-img{
      height: 100vh;
-     width: 69%;
+     
      margin-bottom: 30px;
  }
 
- #urban-button{
+ #urban-button, #urban-button:focus{
     position: absolute;
     width: 30%;
     height: 100vh;
@@ -335,8 +345,25 @@ ul{
     border: transparent;
     cursor: pointer;
     font-size: 100%;
-    left: 19%;
+    left: 35%;
+    outline: 0 !important;
  }
+
+ #outdoor-button, #outdoor-button:focus{
+    position: absolute;
+    width: 30%;
+    height: 100vh;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 100%;
+    right: 217px;
+    outline: 0 !important;
+    
+ }
+
+
+
  /* user profile */
 .profile-outline{
     background-color: #BBB8EB;
@@ -842,3 +869,62 @@ form .formDiv input, .formDiv textarea, .formDiv select{
      top: 0;
      border-left: 20px solid #f56484;
  }
+
+ /* log in */
+
+ .userAuth .card-header {
+     background-color: #6c64ff;
+     color: #eeedff;
+     border-bottom: none;
+     font-size: 50px;
+     padding: .75rem 1.25rem;
+     margin-bottom: 0;
+     
+ }
+
+ .userAuth .card {
+     margin: 10% auto;
+     border: none;
+     position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: .25rem;
+    box-shadow: 0 3px 6px 2px #00000047;
+
+ }
+
+
+ .userAuth .card-body{
+    background: #6c64ff;
+    color: #eeedff
+ }
+
+ .userAuth .card-body .btn-primary {
+    color: #fff;
+    background: linear-gradient(to right, #f59a64, #f56484);
+}
+
+
+.userAuth .card-body .btn-primary:hover {
+    color: #fff;
+    background: linear-gradient(to right, #f59a64, #f56484);
+    border-color: none;
+ }
+
+ .userAuth .card-footer {
+    padding: .75rem 1.25rem;
+    background-color: #6c64ff;
+    color: #eeedff;
+    border: none;
+ }
+
+
+.userAuth .card-footer a{
+    color: #f56484;
+}
