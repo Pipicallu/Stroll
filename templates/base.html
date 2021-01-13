@@ -26,7 +26,7 @@
 
         <nav class="NavBar sticky-top">
             <div class="brand-title d-flex">
-                <img src="{{url_for('static', filename='assets/images/logo.svg')}}" alt="logo" />
+                <a href="{{url_for('show_walks')}}"><img src="{{url_for('static', filename='assets/images/logo.svg')}}" alt="logo" /></a>
                 <div class="ml-2 d-flex">
                     <form class="d-flex" action="{{ url_for('search') }}" method="POST">
                         <input class="form-control search-input me-2" type="search" placeholder="Search"

@@ -40,7 +40,7 @@
                         <div class="collapse" id="comment-section{{ loop.index }}">
                             <form method="POST" action="{{url_for('comment')}}">
                                 <div class=" d-flex mb-1">
-                                    {% if session["user"] %}
+                                {% if session["user"] %}
                                     <label hidden for="add_comment{{ loop.index }}" class="form-label mb-1"></label>
                                     <textarea class="form-control col" id="add_comment{{ loop.index }}"
                                         name="add_comment" placeholder="Paint us a word picture..." rows="3"></textarea>
@@ -122,9 +122,19 @@
                         Bike Path: <i class="fas fa-times-circle"></i>
                     </div>
                     {% endif %}
+                    {% if walk.difficulty == "1" %}
                     <div class=" col-6">
-                        Difficulty: {{ walk.difficulty }}
+                        Difficulty: <i class="fas fa-star"></i>
                     </div>
+                    {% elif walk.difficulty == "2" %}
+                    <div class=" col-6">
+                        Difficulty: <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    {% else %}
+                    <div class=" col-6">
+                        Difficulty: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="row modal-map">
                     <div class="col-12 map-visual" id="map{{loop.index}}">
