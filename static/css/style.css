@@ -1266,6 +1266,13 @@ position: relative;
     top: 30px;
 }
 
+.stroll-tagline{
+    font-size: 20px;
+    position: relative;
+    top: 51px;
+    color: #6d69b3;
+}
+
 .stroll-introducing-image{
     height: 437px;
     position: relative;

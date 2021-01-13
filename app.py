@@ -36,6 +36,11 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/landing_page")
+def landing_page():
+    return render_template('landing_page.html')
+
+
 @app.route("/show_walks")
 def show_walks():
     walks = list(mongo.db.walks.find())
@@ -307,9 +312,7 @@ def delete_walk(walk_id):
     return redirect(url_for('my_walks', walks=walks))
 
 
-@app.route("/landing_page")
-def landing_page():
-    return render_template('landing_page.html')
+
 
 
 # If the module (python file being run) is the main

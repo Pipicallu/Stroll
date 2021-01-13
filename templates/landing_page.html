@@ -35,9 +35,10 @@
 <div class="stroll-row row">
     <div class="stroll-div col-12">
         <h1 class="stroll-heading">Introducing Stroll!</h1>
+        <p class="stroll-tagline">One community. Walking alone, together.</p>
         <img class="stroll-introducing-image" src="{{url_for('static', filename='assets/images/celebrate.svg')}}" alt="park image">
         <div class="signup-box">
-            <button class="signup-button-style">Sign up now</button>
+            <button class="signup-button-style"><a href="{{url_for('register')}}">Sign up now</a></button>
         </div>
     </div>
 </div>
