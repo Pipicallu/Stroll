@@ -173,6 +173,17 @@ input[type="button"]:focus{
     background-color: #6c64ff;
 }
 
+.ui-widget.ui-widget-content {
+    border: 3px solid #6c64ff;
+    color: #6c64ff;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+    position: relative;
+    padding: 3px 1em 3px .4em;
+    z-index: 5;
+}
+
 #nav-link-wrapper{
   height: 100%;
   width: 100%;
@@ -1154,4 +1165,128 @@ form .formDiv input, .formDiv textarea, .formDiv select{
     right: 0.7rem;
 }
 
+}
+
+/*landing Page*/
+
+.heading-text{
+    font-size: 78px;
+    padding: 0px 89px;
+    margin-top: 3%;
+    margin-bottom: 8%;
+}
+
+.paragraph-text{
+    font-size: 20px;
+    padding: 0px 147px;
+    color: #6d69b3;
+}
+
+.social-distancing-bg{
+    position: relative;
+    top: 100px;
+    right: 47px;
+    background: #8864f540;
+    border-radius: 37px;
+}
+
+.social-distance-image{
+    position: relative;
+    top: 311px;
+    left: 227px;
+    z-index: 10;
+    height: 214px;
+}
+
+.empty-street-image{
+    height: 357px;
+    bottom: 130px;
+    left: -72px;
+    position: relative;
+    z-index: 1;
+}
+
+.park-row{
+    margin-top: 102px;
+}
+
+.park-bg{
+    position: relative;
+    top: 165px;
+    left: 72px;
+    background: #f5648480;
+    border-radius: 37px;
+}
+
+.park-image{
+    height: 573px;
+    position: relative;
+    top: 78px;    
+
+}
+
+.journey-heading{
+    font-size: 78px;
+    padding: 0px 42px;
+    position: relative;
+    
+}
+
+.journey-text{
+    margin-top: 40px;
+    font-size: 20px;
+    padding: 0px 157px;
+    color: #6d69b3;
+}
+
+.journey-div{
+    position: relative;
+    text-align: end;
+    top: 97px;
+}
+
+.stroll-row{
+position: relative;
+    text-align: center;
+    top: 281px;
+}
+
+
+.stroll-div{
+    background: #ffc86463;
+    max-width: 1131px;
+    border-radius: 37px;
+    margin: 6% auto;
+    padding: 0 70px;
+}
+
+.stroll-heading{
+    position: relative;
+    font-size: 88px;
+    top: 30px;
+}
+
+.stroll-introducing-image{
+    height: 437px;
+    position: relative;
+    top: 104px;
+}
+
+.signup-box{
+    display: flex;
+    justify-content: space-around;
+    margin: 3% auto;
+    max-width: 50%;
+    height: 62px;
+    align-items: center;
+}
+
+.signup-button-style{
+    background: linear-gradient(to right, #f59a64, #f56484);
+    border-radius: 20px;
+    width: 146px;
+    height: 43px;
+    border: none;
+    color: #eeedff;
+    z-index: 20;
 }

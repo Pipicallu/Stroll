@@ -307,6 +307,11 @@ def delete_walk(walk_id):
     return redirect(url_for('my_walks', walks=walks))
 
 
+@app.route("/landing_page")
+def landing_page():
+    return render_template('landing_page.html')
+
+
 # If the module (python file being run) is the main
 # one then this is from where to run our application
 if __name__ == "__main__":
