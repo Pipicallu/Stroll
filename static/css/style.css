@@ -537,10 +537,9 @@ input[type="button"]:focus{
  }
 
  .walk-card{
-    border: 3px solid  var(--text-color-default);
-    border-radius: 7px;
     background-color: var(--text-color-default);
     color: var(--background-default);
+    box-shadow: 0 1px 5px 0px #00000094;
  }
 
  .small-text-style {
@@ -549,10 +548,6 @@ input[type="button"]:focus{
 
  }
 
- .card-img, .card-img-top {
-    padding: 4px;
-    border-radius: 10px;
- }
 
  .card-text{
     overflow: hidden;
@@ -1029,6 +1024,36 @@ form .formDiv input, .formDiv textarea, .formDiv select{
     .fullname{
         font-size: 24px;
     }
+
+    .urban{
+        display: none;
+    }
+
+    .outdoor{
+        right: 0;
+    }
+
+    .outdoor img {
+        width: 100%;
+   }
+
+   .landing-img {
+    height: 92vh;
+    
+   }
+   
+   .outdoor:hover{
+     right: 0%;
+     bottom: 2%;
+     opacity: 1;
+
+ }
+ #outdoor-button, #outdoor-button:focus {
+    right: 300px;
+    width: 43%;
+ }
+  
+
  }
 
   @media (max-width:766px){
@@ -1076,6 +1101,10 @@ form .formDiv input, .formDiv textarea, .formDiv select{
     width: 203px;
 }
 
+#outdoor-button, #outdoor-button:focus{
+    right: 137px;
+}
+
 }
 
 @media (max-width: 411px){
@@ -1118,6 +1147,11 @@ form .formDiv input, .formDiv textarea, .formDiv select{
 .search-input{
     width: 72%;
 
+}
+
+.menu-btn {
+    top: 0.7rem;
+    right: 0.7rem;
 }
 
 }
