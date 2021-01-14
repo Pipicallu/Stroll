@@ -215,6 +215,7 @@ input[type="button"]:focus{
 
 .menu-btn-scroll{
     border: 2px solid var(--background-default);
+    background: var(--background-default);
 }
 
 .menu-btn_burger{
@@ -236,9 +237,7 @@ input[type="button"]:focus{
     transition: all .3s ease-in-out;
 }
 
-.menu-btn-burger-scroll{
-    background: var(--background-default);
-}
+
 
 .menu-btn_burger::before{
     transform: translateY(-6px);

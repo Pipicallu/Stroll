@@ -5,9 +5,11 @@ let menuOpen = false;
 menuBtn.addEventListener('click', () => {
     if (!menuOpen) {
         menuBtn.classList.add('open');
+        menuBtn.classList.remove('menu-btn-scroll')
         menuOpen = true;
     } else {
         menuBtn.classList.remove('open');
+        menuBtn.classList.add('menu-btn-scroll')
         menuOpen = false;
     }
 });
@@ -29,7 +31,6 @@ $(window).scroll(function(){
     $('nav').toggleClass('scrolled', $(this).scrollTop()>50);
     $('.NavBar-links a').toggleClass('scroll-Text', $(this).scrollTop()>50);
     $('.menu-btn').toggleClass('menu-btn-scroll', $(this).scrollTop()>50);
-    $('.menu-btn_burger').toggleClass('menu-btn-burger-scroll', $(this).scrollTop()>50);
     $('.brand-title img').toggleClass('svg-filled', $(this).scrollTop()>50);
     $('.search-button').toggleClass('scroll-Text', $(this).scrollTop()>50);
     $('.search-input').toggleClass('search-input-scrolled', $(this).scrollTop()>50);

@@ -49,20 +49,28 @@
             <div class="NavBar-links">
                 <div id="nav-link-wrapper"></div>
                 <ul>
+                    
+                    
+                    {% if session.user: %}
                     <li class="">
                         <a href="{{url_for('show_walks')}}">walks.</a>
                     </li>
-                    {% if session.user: %}
-                    <li class=""><a href="{{url_for('profile', UserID=session['user'])}}">profile.</a></li>
                     <li class=""><a href="{{url_for('new_walk')}}">new walk.</a></li>
+                    <li class=""><a href="{{url_for('profile', UserID=session['user'])}}">profile.</a></li>
                     <li class=""><a href="{{url_for('logout')}}">logout.</a></li>
                     {% else %}
+                    <li class="">
+                        <a href="{{url_for('landing_page')}}">home.</a>
+                    </li>
+                    <li class="">
+                        <a href="{{url_for('show_walks')}}">walks.</a>
+                    </li>
                     <li class=""><a href="{{url_for('login')}}">login.</a></li>
                     <li class="">
                         <a href="{{url_for('register')}}">register.</a>
                     </li>
                     {% endif %}
-                    <li class=""><a href="#">support.</a></li>
+                    
                 </ul>
 
             </div>
