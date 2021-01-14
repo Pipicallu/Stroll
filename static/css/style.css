@@ -1297,3 +1297,380 @@ position: relative;
     color: #eeedff;
     z-index: 20;
 }
+
+@media (max-width: 1240px){
+    .empty-street-image {
+    height: 321px;
+    bottom: 130px;
+    left: -89px;
+    position: relative;
+    z-index: 1;
+}
+
+.park-image {
+    height: 484px;
+    position: relative;
+    top: 78px;
+}
+
+.journey-text {
+    margin-top: 40px;
+    font-size: 20px;
+    padding: 0px 84px;
+    color: #6d69b3;
+}
+}
+
+@media (max-width: 1101px){
+
+
+    .empty-street-image {
+    height: 270px;
+    bottom: 55px;
+    left: -55px;
+    position: relative;
+    z-index: 1;
+}
+
+.social-distance-image {
+    position: relative;
+    top: 311px;
+    left: 227px;
+    z-index: 10;
+    height: 185px;
+}
+
+.paragraph-text {
+    font-size: 18px;
+    padding: 0px 147px;
+    color: #6d69b3;
+}
+
+.park-image {
+    height: 405px;
+    position: relative;
+    top: 78px;
+}
+
+.journey-text {
+    margin-top: 40px;
+    margin-left: 33px;
+    font-size: 18px;
+    padding: 0px 85px;
+    color: #6d69b3;
+}
+
+
+}
+
+
+/* landing page responsiveness */
+@media (max-width: 1019px){
+    .heading-text {
+    font-size: 70px;
+    padding: 0px 89px;
+    margin-top: 3%;
+    margin-bottom: 8%;
+}
+
+.journey-heading {
+    font-size: 70px;
+    padding: 0px 14px;
+    position: relative;
+}
+}
+
+@media (max-width: 970px){
+    .heading-text {
+    font-size: 62px;
+    padding: 0px 89px;
+    margin-top: 3%;
+    margin-bottom: 8%;
+}
+.paragraph-text {
+    font-size: 16px;
+    padding: 0px 103px;
+    color: #6d69b3;
+}
+
+.empty-street-image {
+    height: 252px;
+    bottom: 55px;
+    left: -89px;
+    position: relative;
+    z-index: 1;
+}
+.social-distance-image {
+    position: relative;
+    top: 285px;
+    left: 142px;
+    z-index: 10;
+    height: 169px;
+}
+.park-image {
+    height: 360px;
+    position: relative;
+    top: 56px;
+}
+.journey-heading {
+    font-size: 62px;
+    padding: 0px 14px;
+    position: relative;
+}
+.journey-text {
+    margin-top: 40px;
+    margin-left: 33px;
+    font-size: 16px;
+    padding: 0px 85px;
+    color: #6d69b3;
+}
+}
+
+@media (max-width: 860px){
+    .heading-text {
+    font-size: 57px;
+    padding: 0px 20px;
+    margin-top: 3%;
+    margin-bottom: 8%;
+}
+.paragraph-text {
+    font-size: 16px;
+    padding: 0px 70px;
+    margin-right: 29px;
+    color: #6d69b3;
+}
+.empty-street-image {
+    height: 239px;
+    bottom: 55px;
+    left: -89px;
+    position: relative;
+    z-index: 1;
+}
+.social-distance-image {
+    position: relative;
+    top: 285px;
+    left: 142px;
+    z-index: 10;
+    height: 158px;
+}
+.journey-heading {
+    font-size: 57px;
+    padding: 0px 14px;
+    position: relative;
+}
+.journey-text {
+    margin-top: 40px;
+    margin-left: 33px;
+    font-size: 16px;
+    padding: 0px 72px;
+    color: #6d69b3;
+}
+.park-image {
+    height: 337px;
+    position: relative;
+    top: 56px;
+}
+}
+
+@media(max-width: 771px){
+.social-distance-image {
+    position: relative;
+    top: 26px;
+    left: 279px;
+    z-index: 10;
+    height: 113px;
+}
+.empty-street-image {
+    height: 160px;
+    bottom: 74px;
+    left: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.social-row{
+    background: #d4cbfd;
+    border-radius: 37px;
+    margin: 4%;
+    margin-bottom: 12pc;
+}
+
+.social-distancing-bg {
+    position: relative;
+    top: 100px;
+    right: 0px;
+    background: none;
+    border-radius: 37px;
+}
+
+.park-row {
+    margin-top: 111px;
+    margin: 4%;
+    background: #f5648480;
+    border-radius: 37px;
+}
+.journey-div {
+    position: relative;
+    text-align: end;
+    top: -202px;
+    right: -39px;
+}
+
+.journey-heading {
+    font-size: 57px;
+    padding: 0px 14px;
+    position: relative;
+}
+.park-image {
+    height: 249px;
+    position: relative;
+    top: 17px;
+
+}
+
+.park-bg {
+    position: relative;
+    top: 203px;
+    border-radius: 37px;
+    left: 0;
+    background: none;
+}
+.stroll-row {
+    position: relative;
+    text-align: center;
+    top: 9pc;
+    margin: 4%;
+}
+.stroll-div{
+    margin: 0;
+    padding: 0;
+}
+.stroll-heading {
+    position: relative;
+    font-size: 57px;
+    top: 30px;
+}
+.stroll-introducing-image {
+    height: 266px;
+    position: relative;
+    top: 104px;
+}
+}
+
+@media (max-width: 596px){
+    .heading-text {
+    font-size: 50px;
+    padding: 0px 20px;
+    margin-top: 3%;
+    margin-bottom: 8%;
+}
+
+.paragraph-text {
+    font-size: 16px;
+    padding: 0px 46px;
+    margin-right: 29px;
+    color: #6d69b3;
+}
+.empty-street-image {
+    height: 135px;
+    bottom: 74px;
+    left: 14px;
+    position: relative;
+    z-index: 1;
+}
+.social-distance-image {
+    display: none;
+}
+.journey-heading {
+    font-size: 50px;
+    padding: 8px 35px;
+    position: relative;
+}
+.journey-text {
+    margin-top: 40px;
+    margin-left: 33px;
+    font-size: 16px;
+    padding: 0px 43px;
+    color: #6d69b3;
+}
+.park-image {
+    height: 206px;
+    position: relative;
+    top: 31px;
+}
+.social-distance-image{
+    display: none;
+}
+
+.stroll-heading {
+    position: relative;
+    font-size: 38px;
+    top: 30px;
+}
+.stroll-tagline {
+    font-size: 16px;
+    position: relative;
+    top: 51px;
+    color: #6d69b3;
+}
+.stroll-introducing-image {
+    height: 234px;
+    position: relative;
+    top: 85px;
+}
+}
+
+@media (max-width: 444px){
+    .heading-text {
+    font-size: 38px;
+    padding: 0px 11px;
+    margin-top: 3%;
+    margin-bottom: 7%;
+}
+.paragraph-text {
+    font-size: 16px;
+    padding: 0px 20px;
+    margin-right: 29px;
+    color: #6d69b3;
+}
+.empty-street-image {
+    height: 116px;
+    bottom: 74px;
+    left: 14px;
+    position: relative;
+    z-index: 1;
+}
+.journey-heading {
+    font-size: 38px;
+    padding: 8px 35px;
+    position: relative;
+}
+.journey-text {
+    margin-top: 23px;
+    margin-left: 33px;
+    font-size: 16px;
+    padding: 0px 34px;
+    color: #6d69b3;
+}
+.park-image {
+    height: 194px;
+    position: relative;
+    top: 71px;
+}
+.stroll-heading {
+    position: relative;
+    font-size: 38px;
+    top: 30px;
+}
+.stroll-introducing-image {
+    height: 176px;
+    position: relative;
+    top: 66px;
+}
+.stroll-tagline {
+    font-size: 16px;
+    position: relative;
+    top: 51px;
+    color: #6d69b3;
+}
+}
