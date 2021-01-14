@@ -216,6 +216,7 @@ input[type="button"]:focus{
 .menu-btn-scroll{
     border: 2px solid var(--background-default);
     background: var(--background-default);
+    border-radius: 2px;
 }
 
 .menu-btn_burger{
