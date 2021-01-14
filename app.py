@@ -4,7 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_googlemaps  import GoogleMaps
+from flask_googlemaps import GoogleMaps
 import cloudinary as Cloud
 from bson.objectid import ObjectId
 
@@ -27,8 +27,6 @@ Cloud.config.update = ({
     'api_key': os.environ.get('CLOUDINARY_API_KEY'),
     'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
 })
-
-
 
 
 GoogleMaps(app)
@@ -310,9 +308,6 @@ def delete_walk(walk_id):
     mongo.db.walks.remove({"_id": ObjectId(walk_id)})
     flash("You have deleted this stroll!")
     return redirect(url_for('my_walks', walks=walks))
-
-
-
 
 
 # If the module (python file being run) is the main
