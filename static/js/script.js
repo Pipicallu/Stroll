@@ -41,14 +41,14 @@ $(window).scroll(function(){
 $("#outdoor-button").click(function() {
     console.log("clicked")
     $('html, body').animate({
-        scrollTop: $("#card-section").offset().top},
+        scrollTop: $("#stroll-story").offset().top},
         2000);
 });
 
 $("#urban-button").click(function() {
     console.log("clicked")
     $('html, body').animate({
-        scrollTop: $("#card-section").offset().top},
+        scrollTop: $("#stroll-signup").offset().top},
         2000);
 });
 

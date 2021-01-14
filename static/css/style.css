@@ -405,6 +405,11 @@ input[type="button"]:focus{
     
  }
 
+ /* walks page */
+ #card-section{
+     margin-top: 40px;
+ }
+
 
 
  /* user profile */

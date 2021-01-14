@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="row">
+<div  class="row">
     <div class="col-12 outdoor">
         <button type="button" id="outdoor-button"></button>
         <img src="{{url_for('static', filename='assets/images/Outdoor.svg')}}" alt="" class="landing-img img-fluid">
@@ -11,7 +11,7 @@
         <img src="{{url_for('static', filename='assets/images/urban.svg')}}" alt="" class="landing-img img-fluid">
     </div>
 </div>
-<div class="row social-row">
+<div id="stroll-story" class="row social-row">
     <div class=" col-sm-12 col-md-6 ">
     <h1 class="heading-text">In a time of social distancing...</h1>
     <p class="paragraph-text">Many of are streets lay bare & empty. Throughout lockdown more and more of us are forced into isolation. All over the country
@@ -38,7 +38,7 @@
         <p class="stroll-tagline">One community. Walking alone, together.</p>
         <img class="stroll-introducing-image" src="{{url_for('static', filename='assets/images/celebrate.svg')}}" alt="park image">
         <div class="signup-box">
-            <button class="signup-button-style"><a href="{{url_for('register')}}">Sign up now</a></button>
+            <button id="stroll-signup" class="signup-button-style"><a href="{{url_for('register')}}">Sign up now</a></button>
         </div>
     </div>
 </div>
