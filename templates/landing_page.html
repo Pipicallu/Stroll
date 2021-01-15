@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
+<!--Hero section-->
 <div  class="row">
     <div class="col-12 outdoor">
         <button type="button" id="outdoor-button"></button>
         <img src="{{url_for('static', filename='assets/images/Outdoor.svg')}}" alt="" class="landing-img img-fluid">
-
     </div>
     <div class="col-12 urban">
         <button type="button" id="urban-button"></button>
         <img src="{{url_for('static', filename='assets/images/urban.svg')}}" alt="" class="landing-img img-fluid">
     </div>
 </div>
+<!--story section-->
 <div id="stroll-story" class="row social-row">
     <div class=" col-sm-12 col-md-6 ">
     <h1 class="heading-text">In a time of social distancing...</h1>
