@@ -399,7 +399,11 @@ This site is currently deployed on [Heroku](https://www.heroku.com/) using the *
     - **SECRET_KEY** : `<your own secret key>`
     - **MY_ADDRESS** : `<your own email address>`
     - **SEND_TO** : `<recipient email address>`
-    - **PASSWORD** : `<you own email password>`
+    - **PASSWORD** : `<your own email password>`
+    - **GOOGLE_MAPS_KEY** : `<Your own google maps key>`
+    - **CLOUDINARY_CLOUD_NAME**: `<Your own cloudiary name>`
+    - **CLOUDINARY_API_KEY** : `<Your own api key>`
+    - **CLOUDINARY_API_SECRET**: `<Your own secret key>`
 5. Your app should be successfully deployed to Heroku at this point.
 
 **Credit to Codeinstitute tutor Tim for the following addendum**

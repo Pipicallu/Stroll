@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 {% for walk in walks %}
-<div class="card">
+{% if walk %}
+<div class=" my-walk-margin card">
     <div class="card walk-card">
         {% if walk.img_id == "" %}
-                <img src="{{url_for('static', filename='assets/images/uploadimg.svg')}}" alt="not found">
+                <img src="{{url_for('static', filename='assets/images/sunnyday.svg')}}" alt="not found">
                 {% else %}
                 <img src="https://res.cloudinary.com/tumascloud/{{walk.img_id}}" width="120" class="card-img-top"
                     alt="not found">
@@ -89,6 +90,9 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <h1>Looks as though you haven't added any walks yet!</h1>
+    {% endif %}
     {% endfor %}
 
     {% endblock %}
