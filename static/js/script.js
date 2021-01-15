@@ -1,28 +1,62 @@
 const menuBtn = document.querySelector('.menu-btn');
+
 let menuOpen = false;
 
 menuBtn.addEventListener('click', () => {
     if (!menuOpen) {
         menuBtn.classList.add('open');
+        menuBtn.classList.remove('menu-btn-scroll');
         menuOpen = true;
     } else {
         menuBtn.classList.remove('open');
+        menuBtn.classList.add('menu-btn-scroll');
         menuOpen = false;
     }
 });
 
 /* nav bar display */
 
-const navbarLinks = document.getElementsByClassName('NavBar-links')[0]
+const navbarLinks = document.getElementsByClassName('NavBar-links')[0];
+const navbarWrapper = document.getElementById('nav-link-wrapper');
+
 menuBtn.addEventListener('click', () => {
     navbarLinks.classList.toggle('active');
+    navbarWrapper.classList.toggle('active');
+    menuBtn.classList.toggle('text-color-switch');
+    
+
 });
+
+$(window).scroll(function(){
+    $('nav').toggleClass('scrolled', $(this).scrollTop()>50);
+    $('.NavBar-links a').toggleClass('scroll-Text', $(this).scrollTop()>50);
+    $('.menu-btn').toggleClass('menu-btn-scroll', $(this).scrollTop()>50);
+    $('.brand-title img').toggleClass('svg-filled', $(this).scrollTop()>50);
+    $('.search-button').toggleClass('scroll-Text', $(this).scrollTop()>50);
+    $('.search-input').toggleClass('search-input-scrolled', $(this).scrollTop()>50);
+});
+
+/* scroll to  */
+
+
+$("#outdoor-button").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#stroll-story").offset().top},
+        2000);
+});
+
+$("#urban-button").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#stroll-signup").offset().top},
+        2000);
+});
+
 
 /* walk Modal */
 
 $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-})
+    $('#myInput').trigger('focus');
+});
 
 
 /* map */
@@ -50,6 +84,86 @@ function renderRoute(start_lat, start_lng, end_lat, end_lng, loop_index) {
     var mapOptions = {
         zoom: 13.4,
         center: startPoint,
+        styles: [
+            { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+            { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+            { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+            {
+                featureType: "administrative.locality",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#d59563" }],
+            },
+            {
+                featureType: "poi",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#d59563" }],
+            },
+            {
+                featureType: "poi.park",
+                elementType: "geometry",
+                stylers: [{ color: "#263c3f" }],
+            },
+            {
+                featureType: "poi.park",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#6b9a76" }],
+            },
+            {
+                featureType: "road",
+                elementType: "geometry",
+                stylers: [{ color: "#38414e" }],
+            },
+            {
+                featureType: "road",
+                elementType: "geometry.stroke",
+                stylers: [{ color: "#212a37" }],
+            },
+            {
+                featureType: "road",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#9ca5b3" }],
+            },
+            {
+                featureType: "road.highway",
+                elementType: "geometry",
+                stylers: [{ color: "#746855" }],
+            },
+            {
+                featureType: "road.highway",
+                elementType: "geometry.stroke",
+                stylers: [{ color: "#1f2835" }],
+            },
+            {
+                featureType: "road.highway",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#f3d19c" }],
+            },
+            {
+                featureType: "transit",
+                elementType: "geometry",
+                stylers: [{ color: "#2f3948" }],
+            },
+            {
+                featureType: "transit.station",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#d59563" }],
+            },
+            {
+                featureType: "water",
+                elementType: "geometry",
+                stylers: [{ color: "#17263c" }],
+            },
+            {
+                featureType: "water",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#515c6d" }],
+            },
+            {
+                featureType: "water",
+                elementType: "labels.text.stroke",
+                stylers: [{ color: "#17263c" }],
+            },
+        ],
     };
 
     var map = new google.maps.Map(document.getElementById('map' + loop_index), mapOptions);
@@ -70,13 +184,27 @@ function renderRoute(start_lat, start_lng, end_lat, end_lng, loop_index) {
     });
 }
 
+
+
+/* cloudinary configuration parameters */
+$.cloudinary.config({ cloud_name: 'tumascloud', secure: true });
+
+/* cloudinary upload function */
+
+$(document).ready(function () {
+    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+});
+
 /* autocomplete jquery */
 // this is done so that the data can be injected dynamically, with each new city added the search will automatically expand.
-let locations = document.querySelectorAll('[data-locations]')
-let environments = document.querySelectorAll('[data-environments]')
-$(function(){
+   
+var locEnv= locations.concat(environments);
+$(function () {
     $("#query").autocomplete({
-        source: locations, environments
+        source: locEnv
     });
 });
+
+/* form function */
+
 

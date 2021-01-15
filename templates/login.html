@@ -1,9 +1,10 @@
 {% extends "base.html" %} {% block content %}
+<div  class="container userAuth">
 <div class="row">
   <form class="col-12" method="POST" action="{{ url_for('login') }}">
-    <div class="card text-center">
-      <div class="card-header">Create New User</div>
-      <div class="card-body">
+    <div class="card log-in-card text-center">
+      <div class="card-header ">Sign in</div>
+      <div class="card-body ">
         <!--USERNAME-->
         <div class="form-group">
           <label for="UserID">Username</label>
@@ -32,13 +33,13 @@
             placeholder="Password"
           />
         </div>
-
-        <button type="submit" class="btn btn-primary">Sign In</button>
+        <button type="submit" class="btn btn-primary ">Sign In</button>
       </div>
-      <div class="card-footer text-muted">
+      <div class="card-footer ">
       Not already a user? Then <a href="{{url_for('register')}}">register</a> here!
       </div>
     </div>
   </form>
+</div>
 </div>
 {% endblock %}

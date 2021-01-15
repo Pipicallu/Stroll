@@ -4,7 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_googlemaps  import GoogleMaps
+from flask_googlemaps import GoogleMaps
 import cloudinary as Cloud
 from bson.objectid import ObjectId
 
@@ -29,38 +29,64 @@ Cloud.config.update = ({
 })
 
 
-
-
 GoogleMaps(app)
 mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/landing_page")
+def landing_page():
+    return render_template('landing_page.html')
+
+
 @app.route("/show_walks")
 def show_walks():
-    hydePark = Cloud.CloudinaryImage("HydePark.jpg")
     walks = list(mongo.db.walks.find())
-    locations = mongo.db.walks.distinct("location")
-    environments = mongo.db.walks.distinct("environment")
+    comments = list(mongo.db.comments.find())
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
     start_point = json.dumps(mongo.db.walks.find_one("start_point"))
     end_point = mongo.db.walks.find_one("end_point")
-    #this passes the walks variable so that it may be used in the template 
+    # this passes the walks variable so that it may be used in the template
     return render_template("walks.html", walks=walks,
                            start_point=start_point, end_point=end_point,
-                           hydePark=hydePark,
-                           locations=locations, environments=environments)
+                           locations=locations, environments=environments,
+                           comments=comments)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     walks = list(mongo.db.walks.find({"$text": {"$search": query}}))
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    comments = list(mongo.db.comments.find())
     start_point = mongo.db.walks.find_one("start_point")
     end_point = mongo.db.walks.find_one("end_point")
     #This will allow the user to hit enter when blank and be redirected
     if query == "":
         return redirect(url_for("show_walks"))
 
+    return render_template("walks.html", walks=walks,
+                           start_point=start_point, end_point=end_point,
+                           locations=locations, environments=environments,
+                           comments=comments)
+
+
+
+@app.route("/comment", methods=["GET", "POST"])
+def comment():
+    if request.method == "POST":
+        new_comment = {
+            "comment_index": request.form.get("comment_index"),
+            "comment_body": request.form.get("add_comment"),
+            "created_by":  session["user"]
+        }
+        mongo.db.comments.insert_one(new_comment)
+        return redirect(url_for("show_walks"))
+    walks = list(mongo.db.walks.find())
+    start_point = mongo.db.walks.find_one("start_point")
+    end_point = mongo.db.walks.find_one("end_point")
     return render_template("walks.html", walks=walks,
                            start_point=start_point, end_point=end_point)
 
@@ -89,7 +115,8 @@ def register():
             "strolls": startingNumber,
             "cycles": startingNumber,
             "posts": startingNumber,
-            "bio": bio
+            "bio": bio,
+            "img_id": ""
         }
         mongo.db.users.insert_one(register)
         # put the user information into a session cookie so that they are remembered by the website.
@@ -128,6 +155,8 @@ def profile(UserID):
     postsUpdated = str(len(userPosts))
     usernumber = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
+    profilePic = mongo.db.users.find_one(
+        {"username": session["user"]})["img_id"]
     fullName = mongo.db.users.find_one(
         {"username": session["user"]})["full_name"]
     cycles = mongo.db.users.find_one(
@@ -147,16 +176,17 @@ def profile(UserID):
     if session["user"]:
         return render_template("profile.html", UserID=fullName,
                                cycles=cycles, strolls=strolls,
-                               posts=posts, bio=bio, usernumber=usernumber)
+                               posts=posts, bio=bio, usernumber=usernumber,
+                               profilePic=profilePic)
     else:
         return redirect(url_for('login'))
 
 
 @app.route("/logout")
 def logout():
-    #log user out of session 
+    # log user out of session
     flash('You have been successfully logged out.')
-    session.pop('user') 
+    session.pop('user')
     return redirect(url_for('login'))
 
 
@@ -165,6 +195,7 @@ def new_walk():
     if request.method == "POST":
         bikePath = "Y" if request.form.get("bikePath") == "Y" else "N"
         walk = {
+            "img_id": request.form.get("image_id"),
             "start_point": {"lat": request.form.get("start-lat"),
                             "lng": request.form.get("start-lng")},
             "end_point":  {"lat": request.form.get("end-lat"),
@@ -185,11 +216,14 @@ def new_walk():
         mongo.db.walks.insert_one(walk)
         flash("You Posted a New Walk")
         return redirect(url_for('show_walks'))
-    environments = mongo.db.environments.find().sort("environment", 1)
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    environment = mongo.db.environments.find().sort("environment", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
     return render_template("new_walk.html",
-                           environments=environments,
-                           difficulties=difficulties)
+                           environment=environment,
+                           difficulties=difficulties,
+                           locations=locations, environments=environments)
 
 
 @app.route("/my_walks")
@@ -203,6 +237,7 @@ def edit_walk(walk_id):
     if request.method == "POST":
         bikePath = "Y" if request.form.get("bikePath") == "Y" else "N"
         submit = {
+            "img_id": request.form.get("image_id"),
             "start_point": {"lat": request.form.get("start-lat"),
                             "lng": request.form.get("start-lng")},
             "end_point":  {"lat": request.form.get("end-lat"),
@@ -224,11 +259,14 @@ def edit_walk(walk_id):
         flash("You have Updated your walk")
         return redirect(url_for('my_walks'))
     walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
-    environments = mongo.db.environments.find().sort("environment", 1)
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    environment = mongo.db.environments.find().sort("environment", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
     return render_template("edit_walk.html", walk=walk,
-                           environments=environments,
-                           difficulties=difficulties)
+                           environment=environment,
+                           difficulties=difficulties,
+                           locations=locations, environments=environments)
 
 
 @app.route("/edit_profile/<User_Id>", methods=["GET", "POST"])
@@ -244,6 +282,7 @@ def edit_profile(User_Id):
         {"_id": ObjectId(User_Id)})['username']
     if request.method == "POST":
         userUpdated = {
+          "img_id": request.form.get("image_id"),
           "email_address": email,
           "full_name": request.form.get('fullName'),
           "username": username,
@@ -256,8 +295,11 @@ def edit_profile(User_Id):
         mongo.db.users.update({"_id": ObjectId(User_Id)}, userUpdated)
         flash('Profile Updated')
         return redirect(url_for('profile',  UserID=fullName))
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
     user = mongo.db.users.find_one({"_id": ObjectId(User_Id)})
-    return render_template('edit_profile.html', user=user)
+    return render_template('edit_profile.html', user=user,
+                           locations=locations, environments=environments)
 
 
 @app.route("/delete_walk/<walk_id>")
@@ -266,6 +308,7 @@ def delete_walk(walk_id):
     mongo.db.walks.remove({"_id": ObjectId(walk_id)})
     flash("You have deleted this stroll!")
     return redirect(url_for('my_walks', walks=walks))
+
 
 # If the module (python file being run) is the main
 # one then this is from where to run our application

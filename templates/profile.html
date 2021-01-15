@@ -1,4 +1,5 @@
 {% extends "base.html" %} {% block content %}
+<div class="profile-outline container mt-2">
 <div class="container">
     <div class="row">
         <div class="user-profile col-12">
@@ -6,24 +7,29 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="pic-and-name col-12 col-md-3">
-                            <img src="{{url_for('static', filename='assets/images/avatar.svg')}}" width="120"
-                                height="120" class="rounded-circle float-left profile-picture " alt="avatar" />
+                            {% if profilePic == "" %}
+                            <img  src="{{url_for('static', filename='assets/images/avatar.svg')}}" width="150"
+                                height="150" class="img-fluid rounded-circle float-left profile-picture " alt="avatar" />
+                            {% else %}
+                            <img src="https://res.cloudinary.com/tumascloud/{{profilePic}}" width="150"
+                                height="150" class="rounded-circle float-left profile-picture " alt="avatar" />
+                            {% endif %}
                             <h4 class="fullname">{{ UserID }}</h4>
-                            <button type="button" class="edit-profile-button btn btn-primary"><a class="edit-profile-href" href="{{url_for('edit_profile', User_Id=usernumber)}}"><i class="fas fa-edit"></i></a></button>
+                            <button type="button" class="edit-profile-button btn btn-primary"><a class="edit-profile-href" href="{{url_for('edit_profile', User_Id=usernumber)}}"><i class="fas fa-edit"></i> Edit</a></button>
                         </div>
                         <div class="stroll-total user-stats col-4 col-md-3">
-                            <h4>{{strolls}}</h4>
-                            <h4 class="">Strolls</h4>
+                            <h4 class="user-stat-number">{{strolls}}</h4>
+                            <h4 class="user-stat-label">Strolls</h4>
                         </div>
                         <div class="cycle-total user-stats col-4 col-md-3">
-                            <h4>{{cycles}}</h4>
-                            <h4 class="">Cycles</h4>
+                            <h4 class="user-stat-number">{{cycles}}</h4>
+                            <h4 class="user-stat-label">Cycles</h4>
                         </div>
                         <div class="post-total user-stats col-4 col-md-3">
-                            <h4>{{posts}}</h4>
-                            <h4 class="">posts</h4>
+                            <h4 class="user-stat-number">{{posts}}</h4>
+                            <h4 class="user-stat-label">posts</h4>
                         </div>
-                        <div class="row"></div>
+                        
                     </div>
                 </div>
             </div>
@@ -37,12 +43,20 @@
                     </p>
                 </div>
             </div>
+            
+        <img class="img-fluid  profile-decor" src="{{url_for('static', filename='assets/images/profilestroll.svg')}}" alt="">
+
         </div>
+
     </div>
     <div class="row">
         <div class="col-12 my-walks">
             <button type="button" class="btn btn-lg btn-dark"><a href="{{url_for('my_walks')}}">My Walks</a></button>
         </div>
+
     </div>
+    
+</div>
+
 </div>
 {% endblock %}
