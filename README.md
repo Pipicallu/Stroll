@@ -1,4 +1,4 @@
-# Stroll 
+# [Stroll](https://stroll-app.herokuapp.com/)
 
 The web app that allows users to share their favourite walking routes all over the world! The concept of this app came about to help people find a new way to stay active, aswell as to keep healthy and mentally sound throughout the COVID crisis. With more and more people finding themselves in isolation and lockdowns becoming increasingly frequent, The idea of a site that would allow users to share information about one of the world's most common passtimes could foster the idea of both community and healthy mental practice whilst keeping people engaged throughout a global pandemic. 
 
@@ -405,6 +405,7 @@ This site is currently deployed on [Heroku](https://www.heroku.com/) using the *
     - **CLOUDINARY_API_KEY** : `<Your own api key>`
     - **CLOUDINARY_API_SECRET**: `<Your own secret key>`
 5. Your app should be successfully deployed to Heroku at this point.
+6. please run the file over an HTTPS protocol to enable image uploading - You may find a link to the site [here](http://stroll-app.herokuapp.com/show_walks).
 
 **Credit to Codeinstitute tutor Tim for the following addendum**
 
