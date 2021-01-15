@@ -405,7 +405,7 @@ This site is currently deployed on [Heroku](https://www.heroku.com/) using the *
     - **CLOUDINARY_API_KEY** : `<Your own api key>`
     - **CLOUDINARY_API_SECRET**: `<Your own secret key>`
 5. Your app should be successfully deployed to Heroku at this point.
-6. please run the file over an HTTPS protocol to enable image uploading - You may find a link to the site [here](http://stroll-app.herokuapp.com/show_walks).
+6. Please run the file over an HTTPS protocol to enable image uploading - You may find a link to the site [here](http://stroll-app.herokuapp.com/show_walks).
 
 **Credit to Codeinstitute tutor Tim for the following addendum**
 
