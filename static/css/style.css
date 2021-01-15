@@ -533,8 +533,8 @@ input[type="button"]:focus{
 
  /* card */
 
-.card{
-    
+.card-img-top{
+    max-height: 300px;
 }
 
  .card-wrapper{
@@ -604,6 +604,16 @@ input[type="button"]:focus{
     background-color: #6c64ff;
     color: #eeedff;
 }
+
+.close-button{
+    background: linear-gradient(to right, #f59a64, #f56484);
+    border-radius: 20px;
+    width: 96px;
+    height: 43px;
+    border: none;
+    color: #eeedff;
+    z-index: 20;
+}
  /* map */
 
   #map {
@@ -618,6 +628,10 @@ input[type="button"]:focus{
   }
 
   /* my walks edit/del */
+
+  .my-walk-margin{
+      margin-top: 30px;
+  }
 
   .edit-del-buttons{
       text-align: end;
@@ -687,6 +701,17 @@ input[type="button"]:focus{
     background-color: #eeedff;
     height: 84px;
 
+  }
+
+  .save-changes-button{
+    background: linear-gradient(to right, #f59a64, #f56484);
+    border-radius: 20px;
+    width: 146px;
+    margin: 0 auto;
+    height: 43px;
+    border: none;
+    color: #eeedff;
+    z-index: 20;
   }
 
 
