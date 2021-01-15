@@ -504,6 +504,20 @@ python3 app.py
 - My friend and trusted mentor [MrJerB](https://github.com/MrJerB) who has been my friend throughout childhoond, adulthood and beyond. He is an incredible Software developer who has always taken time out of his day to explain and teach me how to seek out the right ways to learn. 
 
 
+## Personal Reflections
+
+This project thought me a great deal. It felt like such a leap from the previous two milestone projects whereby I was used to mainly frontend work with little or no thought to the back end. It is certainly wonderful to see how far my understanding has grown In just a few months and I truly feel like I am finally taking my first steps into fullstack web-development. Understanding the relationship between both front and back end has me really appreciating the scalability and level of work it takes to maintain the large scale web apps that as users we all take for granted.
+
+## Learns.
+
+Time mananagement and scope - Looking back I beleive this is an area which I could certainly improve my skills in, I often times found myself Jumping for features that intrigued or excited me like autocomplete/Certain ui elements, whilst letting featured like pagination and profile deletion fall by the wayside it is certainly something I will take forward into my next project. My solution will be to give more time to the planning phase and make use of my agile training to prioritise which features are to be prioritised for shimpent.
+
+Thank you CodeInstitute.
+
+
+
+
+
 
 
 
