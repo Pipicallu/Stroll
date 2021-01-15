@@ -1,98 +1,106 @@
 {% extends "base.html" %}
 {% block content %}
 {% if walks %}
-{% for walk in walks %}
-<div class=" my-walk-margin card">
-    <div class="card walk-card">
-        {% if walk.img_id == "" %}
+<div id="card-section" class="row">
+    {% for walk in walks %}
+    <div class="card-wrapper col-lg-4 col-md-12">
+        <div class="card">
+            <div class="card walk-card">
+                {% if walk.img_id == "" %}
                 <img src="{{url_for('static', filename='assets/images/sunnyday.svg')}}" alt="not found">
                 {% else %}
                 <img src="https://res.cloudinary.com/tumascloud/{{walk.img_id}}" width="120" class="card-img-top"
                     alt="not found">
-                    {%endif%}
-        <div class="card-body">
-            <div class="row">
-                <h5 class="card-title col-9">{{ walk.walk_name }}</h5>
-                 <div class="edit-del-buttons col-3">
-                    <button type="button" class="btn btn-sm btn-success"><a class="edit-tag" href="{{url_for('edit_walk', walk_id=walk._id)}}">Edit <i class="fas fa-edit"></i></a></button>
-                    <button type="button" class="btn btn-sm btn-danger"><a class="edit-tag" href="{{url_for('delete_walk', walk_id=walk._id)}}">Del <i class="fas fa-trash"></i></a></button>
+                {%endif%}
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="card-title col-9">{{ walk.walk_name }}</h5>
+                        <div class="edit-del-buttons col-3">
+                            <button type="button" class="btn btn-sm btn-success"><a class="edit-tag"
+                                    href="{{url_for('edit_walk', walk_id=walk._id)}}">Edit <i
+                                        class="fas fa-edit"></i></a></button>
+                            <button type="button" class="btn btn-sm btn-danger"><a class="edit-tag"
+                                    href="{{url_for('delete_walk', walk_id=walk._id)}}">Del <i
+                                        class="fas fa-trash"></i></a></button>
+                        </div>
+                    </div>
+                    <p class="card-text">{{ walk.walk_description }}</p>
+                    <!-- Button trigger for modal -->
+                    <button type="button"
+                        onclick="renderRoute({{ walk.start_point.lat }}, {{walk.start_point.lng}}, {{walk.end_point.lat}}, {{ walk.end_point.lng }}, {{ loop.index }} );"
+                        class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ loop.index }}">
+                        Expand
+                    </button>
+                    <p class="card-text"><small class="small-text-style">Created by: </small>{{ walk.created_by }}</p>
                 </div>
             </div>
-            <p class="card-text">{{ walk.walk_description }}</p>
-            <!-- Button trigger for modal -->
-            <button type="button"
-                onclick="renderRoute({{ walk.start_point.lat }}, {{walk.start_point.lng}}, {{walk.end_point.lat}}, {{ walk.end_point.lng }}, {{ loop.index }} );"
-                class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ loop.index }}">
-                Expand
-            </button>
-            <p class="card-text"><small class="small-text-style">Created by: </small>{{ walk.created_by }}</p>
+        </div>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ walk.walk_name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ walk.walk_description }}
+                <p><em>{{ walk.created_by }}</em></p>
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        Environment: {{ walk.environment}}
+
+                    </div>
+                    <div class=" col-6">
+                        Location: {{ walk.location}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        Distance: {{ walk.distance}}
+                    </div>
+                    <div class=" col-6">
+                        Duration: {{ walk.duration}} <br>
+                        Cycle Duration: {{ walk.cycle_duration }}
+                    </div>
+                </div>
+                <div class="row">
+                    {% if walk.bike_path == "Y" %}
+                    <div class="col-6">
+                        Bike Path: <i class="fas fa-check-circle"></i>
+                    </div>
+                    {% else %}
+                    <div class="col-6">
+                        Bike Path: <i class="fas fa-times-circle"></i>
+                    </div>
+                    {% endif %}
+                    <div class=" col-6">
+                        Difficulty: {{ walk.difficulty }}
+                    </div>
+                </div>
+                <div class="row modal-map">
+                    <div class="col-12 map-visual" id="map{{loop.index}}">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ walk.walk_name }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{ walk.walk_description }}
-                    <p><em>{{ walk.created_by }}</em></p>
 
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-6">
-                            Environment: {{ walk.environment}}
-
-                        </div>
-                        <div class=" col-6">
-                            Location: {{ walk.location}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            Distance: {{ walk.distance}}
-                        </div>
-                        <div class=" col-6">
-                            Duration: {{ walk.duration}} <br>
-                            Cycle Duration: {{ walk.cycle_duration }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        {% if walk.bike_path == "Y" %}
-                        <div class="col-6">
-                            Bike Path: <i class="fas fa-check-circle"></i>
-                        </div>
-                        {% else %}
-                        <div class="col-6">
-                            Bike Path: <i class="fas fa-times-circle"></i>
-                        </div>
-                        {% endif %}
-                        <div class=" col-6">
-                            Difficulty: {{ walk.difficulty }}
-                        </div>
-                    </div>
-                    <div class="row modal-map">
-                        <div class="col-12 map-visual" id="map{{loop.index}}">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    {% endfor %}
-    {% else %}
-    <h1 class="no-walks-text">Sorry, but you don't seem to have any walks added.</h1>
-    {% endif %}
-    {% endblock %}
+{% endfor %}
+{% else %}
+<h1 class="no-walks-text">Sorry, but you don't seem to have any walks added.</h1>
+{% endif %}
+{% endblock %}
