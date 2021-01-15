@@ -242,7 +242,7 @@ def new_walk():
 
 @app.route("/my_walks")
 def my_walks():
-    walks = mongo.db.walks.find({"created_by": session["user"]})
+    walks = list(mongo.db.walks.find({"created_by": session["user"]}))
     locations = list(mongo.db.walks.distinct("location"))
     environments = list(mongo.db.walks.distinct("environment"))
     return render_template("my_walks.html", walks=walks,
