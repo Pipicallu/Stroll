@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+{% if walks %}
 {% for walk in walks %}
-{% if walk %}
 <div class=" my-walk-margin card">
     <div class="card walk-card">
         {% if walk.img_id == "" %}
@@ -90,9 +90,9 @@
             </div>
         </div>
     </div>
-    {% else %}
-    <h1>Looks as though you haven't added any walks yet!</h1>
-    {% endif %}
+    
     {% endfor %}
-
+    {% else %}
+    <h1 class="no-walks-text">Sorry, but you don't seem to have any walks added.</h1>
+    {% endif %}
     {% endblock %}

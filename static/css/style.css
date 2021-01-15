@@ -19,6 +19,7 @@
 /* Main CSS */
 html{
     overflow-x: hidden;
+    min-width: 346px;
 }
 
 body {
@@ -180,7 +181,7 @@ input[type="button"]:focus{
   z-index: 4; 
   left: 0;
   top: 0;
-  background: linear-gradient(to right, #6c64ff, #f56484);;  
+  background: linear-gradient(to right, #6c64ff, #6d69b3);;  
   overflow-x: hidden;
   transition: 5s;
 }
@@ -529,6 +530,10 @@ input[type="button"]:focus{
  }
 
 
+.no-walks-text{
+    text-align: center;
+    margin: 16% auto;
+}
  
 
  /* card */
