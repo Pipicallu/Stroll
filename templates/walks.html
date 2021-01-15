@@ -5,8 +5,12 @@
     <div class="card-wrapper col-lg-4 col-md-12">
         <div class="card">
             <div class="card walk-card">
+                {% if walk.img_id == "" %}
+                <img src="{{url_for('static', filename='assets/images/outdoor.svg')}}" alt="not found">
+                {% else %}
                 <img src="https://res.cloudinary.com/tumascloud/{{walk.img_id}}" width="120" class="card-img-top"
                     alt="not found">
+                    {%endif%}
                 <div class="card-body">
                     <h5 class="card-title">{{ walk.walk_name }}</h5>
                     <p class="card-text">{{ walk.walk_description }}</p>
