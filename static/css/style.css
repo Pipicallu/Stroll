@@ -747,6 +747,11 @@ input[type="button"]:focus{
       transition: .5s;
   }
 
+  .formDiv select option{
+    color: #6c63ff;
+}
+
+
   .form-title{
       color: var(--background-default);
       font-size: 80px;
