@@ -121,7 +121,106 @@ As Always the font choice needed to be specific. I wanted the font to feel both 
 
 For this project I used <a href= "https://www.figma.com/">figma</a> as a free online tool to complete my wireframes. Its Easy to use navigation had me creating high fidelity wireframes and concepts within minutes. As I was using Undraw for the illustrations of this site the stylistic choices for the website came very naturally. 
 
-You can find all my wireframes here
+You can find all my wireframes here including the original concepts of what was to be included in my walks collection.
 
-![Image of wireframe](static/assets/images/Wireframe.png)
+![Image of wireframe](static/assets/images/wireframe.png)
 
+# features
+
+## Features
+
+I've added a few extra features to my project that weren't part of the requirements, because I felt they made the project 'complete' for better user interaction.
+
+### Existing Features
+
+**Register Account**
+- Anybody can register for free and create their own unique account. I have built-in authentication and authorization to check certain criteria is met before an account is validated. All passwords are hashed for security purposes!
+
+**Log In to Account**
+- For existing users, I have more authentication and authorization incorporated to check that the hashed passwords and username match the database.
+
+**Edit_Profile**
+- Users are allowed to fully edit their profile as personal record eventually functionality will be added so that users can share their profiles amongst one another.
+- The posts entry also automatically updates on refresh according to the amount of posts made by the user. 
+
+**Comment section**
+- users are also able to comment under their preferred walks. Another use of defensive programming is used here which disables the comment input if the user is not signed in. 
+
+**Log Out of Account**
+- Users can easily log out of their account with the click of a button.
+
+**View all Walks**
+- On the *walks* page, all user inputted strolls are displayed and fully interactive 
+
+**Search Walks**
+- If a user would like to search for something specific, whether it's a particular walk, a certain environment, or for locations and cities, then the Search button is perfect!
+
+**Autocomplete**
+- I have an in built autocomplete function that uses injected information from the database, If the user inputs a new location or city for example this will be added to the autocomplete array
+
+**Interactive Google-Map api**
+- Using Googles directions api I have been able to add dynamic directions rendered once users provide the start and end co-ordinated when adding walk, I have used an onclick function to render each map individually with {{loop.index}} to create unique numbered id's. This allows the site to be more performant as each map only renders when the onclick event is triggered.
+
+**full image hosting**
+- With the use of the Cloudinary api all images are hosted and users are able to upload their own images rather than relying on some sort of url.
+
+**Add a Walk**
+- [**C**RUD] Create or 'add' a new Walk. Through the use of my very own multistep form with built in progressbar to  provide the user with feedback as they navigate the form for an overall interactive and engaging UX Defensive programming in place means users must adhere to minimal requirements when adding a new Walk.
+
+**View a Walk**
+- [C**R**UD] Read or 'review' walks, either from the main page, or the user profile. From here, users also have additional options.
+
+**Edit a Walk**
+- [CR**U**D] Update or 'edit' their own user Walks on this page accesible through the my walks button found on their profile which is the first page users are re-directed to on login. This is also accomplished using the same multistep form design with progress bar. 
+
+**Delete a Walk**
+- [CRU**D**] Delete or 'remove' a user's own Walk. From the my walks page accessible through their user profile.
+
+### Features Left to Implement
+
+**Pagination**
+- A feature that would help improve scalability and compactness of design, It is a shame that I haven't been able to add this as of yet before meeting my deadline however, It will certainly be the next feature implemented.
+**Edit/Delete Comments**
+- A follow up feature so that users comments arent set in stone! This will increase interactivity and allow for full comment functionality
+**Admin User**
+- The creation of an admin user will allow me to monitor the site more closely and ensure the website isnt used nefariously
+**Delete Profile**
+- Just a function to allow a user to leave the community if they wish
+**Interactive Map for adding and editing coordinates**
+- This is the feature that I am most eager to add as the current UX which has users inputting co-ordinates is contrary to the otherwise sleek experience of the app. 
+
+## Technologies Used
+
+- [GitPod](https://gitpod.io/) - Used as my primary IDE for coding.
+- [GitHub](https://github.com/) - Used as remote storage of my code online.
+- [Figma](https://www.figma.com/) - Used for editing images and to Make wireframes.
+
+### Front-End Technologies
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Used as the base for markup text.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles.
+- [jQuery 3.4.0](https://code.jquery.com/jquery/) - Used as the primary JavaScript functionality.
+- [jQuery-ui ](https://code.jquery.com/jquery/) - used for the autocomplete function.
+- [Bootstrap](https://getbootstrap.com/) - Used as the overall design framework.
+- [GoogleMaps Api](https://cloud.google.com/maps-platform/): Used for Admin rendering all maps and the processing of Geospatial data
+- [NPM](https://www.npmjs.com/): Used to install package Json node_modules for cloudinary
+- [Cloudinary](https://cloudinary.com/): Used to host all images uploaded to the site.
+
+
+### Back-End Technologies
+
+- **Flask**
+    - [Flask](http://flask.pocoo.org/) - Used as a microframework.
+    - [Flask Blueprints](http://flask.pocoo.org/docs/1.0/blueprints/) - Used to split the python code for routes.
+    - [Flask Talisman](https://github.com/GoogleCloudPlatform/flask-talisman) - Used for security headers (HTTPS vs HTTP).
+    - [Jinja 2.10](http://jinja.pocoo.org/docs/2.10/) - Used for templating with Flask.
+    - [Werkzeug 0.16](https://werkzeug.palletsprojects.com/en/0.16.x/) - Used for password hashing, authentication, and authorization.
+- **Heroku**
+    - [Heroku](https://www.heroku.com) - Used for app hosting.
+- **Python**    
+    - [Python 3.6.7](https://www.python.org/) - Used as the back-end programming language.
+    - [MongoDB Atlas](https://www.mongodb.com/) - Used to store my database in the 'cloud'.
+    - [PyMongo 3.8.0](https://api.mongodb.com/python/current/) - Used as the Python API for MongoDB..
+
+
+##### back to [top](#table-of-contents)
