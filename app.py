@@ -36,7 +36,10 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/landing_page")
 def landing_page():
-    return render_template('landing_page.html')
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    return render_template('landing_page.html', locations=locations,
+                           environments=environments)
 
 
 @app.route("/show_walks")
@@ -123,19 +126,24 @@ def register():
         session["user"] = request.form.get('UserID').lower()
         flash("Registration Successful!")
         return redirect(url_for('profile', UserID=session["user"]))
-    return render_template("register.html")
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    return render_template("register.html", environments=environments,
+                           locations=locations)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-    # here we are checking to see if there is already an existing user in the db
+    # here we are checking to see if there is
+    #  already an existing user in the db
         existing_user = mongo.db.users.find_one(
                 {"username": request.form.get("UserID").lower()})
         if existing_user:
-    # here we are checking to see that the password matches against the one placed in the form
+         # here we are checking to see that the password matches,
+         #  against the one placed in the form
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+             existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get('UserID').lower()
                 flash("Welcome {}".format(request.form.get('UserID')))
                 return redirect(url_for('profile', UserID=session["user"]))
@@ -145,11 +153,16 @@ def login():
         else:
             flash("Incorrect Username and/or Password, Please try again.")
             return redirect(url_for("login"))
-    return render_template("login.html")
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    return render_template("login.html", environments=environments,
+                           locations=locations)
 
 
 @app.route("/profile/<UserID>", methods=["GET", "POST"])
 def profile(UserID):
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
     i = 0
     userPosts = list(mongo.db.walks.find({"created_by": session["user"]}))
     postsUpdated = str(len(userPosts))
@@ -177,7 +190,8 @@ def profile(UserID):
         return render_template("profile.html", UserID=fullName,
                                cycles=cycles, strolls=strolls,
                                posts=posts, bio=bio, usernumber=usernumber,
-                               profilePic=profilePic)
+                               profilePic=profilePic, locations=locations,
+                               environments=environments)
     else:
         return redirect(url_for('login'))
 
@@ -229,7 +243,10 @@ def new_walk():
 @app.route("/my_walks")
 def my_walks():
     walks = mongo.db.walks.find({"created_by": session["user"]})
-    return render_template("my_walks.html", walks=walks)
+    locations = list(mongo.db.walks.distinct("location"))
+    environments = list(mongo.db.walks.distinct("environment"))
+    return render_template("my_walks.html", walks=walks,
+                           locations=locations, environments=environments)
 
 
 @app.route("/edit_walk/<walk_id>", methods=["GET", "POST"])
