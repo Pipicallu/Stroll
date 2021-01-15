@@ -198,7 +198,7 @@ I've added a few extra features to my project that weren't part of the requireme
 ### Front-End Technologies
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Used as the base for markup text.
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles along with Many media queries written to create responsivity amongst elements that were relatively positioned.
 - [jQuery 3.4.0](https://code.jquery.com/jquery/) - Used as the primary JavaScript functionality.
 - [jQuery-ui ](https://code.jquery.com/jquery/) - used for the autocomplete function.
 - [Bootstrap](https://getbootstrap.com/) - Used as the overall design framework.
@@ -226,3 +226,72 @@ I've added a few extra features to my project that weren't part of the requireme
 
 **HTML**
 - [W3C HTML Validator](https://validator.w3.org) - Unfortunately the W3C Validator for HTML does not understand the Jinja templating syntax, so it therefore shows a lot of errors with regards to `{{ variables }}`, `{% for %} {% endfor %}`, etc. Aside from the Jinja warnings and errors, all of the remaining code is perfectly validating. Also due to the Jinja templating, certain elements cannot be 'beautified' across multiple lines, and must remain on a single line.
+- other known "errors":
+- Head element missing child element of title, which it isn't. Probably due to the jinja templating.
+-  Warning - Section lacks heading as some sections don't need one
+- Warning - The type attribute is unnecessary for JavaScript resources.
+- Any duplicate id's thrown up are in reference to the Jinja conditional logic statements that required me to repeat the same inputs
+- In Walks.html there is a duplicate div element - as part of a jinja logic statement
+ 
+**CSS**
+ All the CSS for the site was tested using https://jigsaw.w3.org/css-validator/validator and returned no errors. 
+  * However warnings are flagged about certain vendor extensions that the Validator classes as unknown. This however is unimportant to me as tey helped me over-come a massive bug that was causing the css animations to crash on mobile devices.
+
+**JS**
+ All the JavaScript for the site was tested using https://jshint.com/. Presently there are no errors save a few warnings. Which are of no concern as most modern browsers support ECMA 6. As well as a few undefined variables retrieved in callback with google maps api.
+
+**Metrics**
+- There are 11 functions in this file.
+
+- Function with the largest signature take 5 arguments, while the median is 0.
+
+- Largest function has 8 statements in it, while the median is 1.
+
+- The most complex function has a cyclomatic complexity value of 2 while the median is 1.
+
+7 warnings found on the following lines:
+1.	'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+3.	'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+5.	'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+19.	'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+20.	'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+22.	'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+64.	'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+
+I used <a href="http://ami.responsivedesign.is/">Am I Responsive</a> and <a href="https://www.responsinator.com/">Responsinator</a> to ensure that my app worked on multiple devices. The latter was expecially helpful when wanting to check out horizontal orientations on mobile devices.  
+
+  As well as chrome developer tools, which has the provision to test on:
+  * Samsung Galaxy - Responsive
+  * Pixel 2 - Responsive
+  * Pixel 2 XL - Responsive
+  * iPhone 5s/Se/6/7/8/X - Responsive
+  * iPad 9.7" - Responsive
+  * iPad Pro - Responsive
+  * Surface Duo - Responsive
+  * Galaxy Fold - Responsive
+
+### Compatibility
+
+To ensure a broad range of users can successfully use this site, I tested it across the 6 major browsers in both desktop and mobile configuration.
+
+- Chrome - *latest version*
+- Edge - *latest version*
+- Firefox - *latest version*
+- Safari - *latest version*
+- Opera - *latest version*
+
+### Links/Buttons
+All links work and are accounted for
+
+### Images
+All images render correctly, all image links work.
+
+## Chrome Developer Tools.
+
+This is where the majority of my debugging took place throughout this project I have run into my fair share of hurdles.
+
+<a href="https://www.youtube.com/watch?v=AX7uybwukkk">This Video</a> was recommended to me by one of the tutors at code institute. Its use of the debugger tool together with console logging the bugged variables helped me out of the majority of my bugs with only one major one requiring tutor support. Below are a list of the bugs I encountered and the steps I took to over come them 
+
+* Duplicate ID of MAP - This was probably one of the biggest head scratchers I had to face, as any new map added wouldn't render, That was until I used the id of map + {{loop.index}} when calling a new instance of map, I also thought of unpacking each templated variable into an onclick function called render route so that this way the map would only have to render when the expand button had been clicked.
+* Bootstrap was traded in for css grid when making the navbar as there were issues when designing a custom burger button. Because of bootstrap the button just wouldnt trigger.
+* Overflow issue - needed to add overflow-x hidden to html element as certain animation were causing space to appear off screen.
