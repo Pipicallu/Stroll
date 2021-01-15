@@ -182,6 +182,8 @@ I've added a few extra features to my project that weren't part of the requireme
 - A feature that would help improve scalability and compactness of design, It is a shame that I haven't been able to add this as of yet before meeting my deadline however, It will certainly be the next feature implemented.
 **Edit/Delete Comments**
 - A follow up feature so that users comments arent set in stone! This will increase interactivity and allow for full comment functionality
+**Favourite**
+The button is there I am yet to build the functionality to allow users to favourite a walk and add it to a seperate list of favourites.
 **Admin User**
 - The creation of an admin user will allow me to monitor the site more closely and ensure the website isnt used nefariously
 **Delete Profile**
@@ -295,3 +297,213 @@ This is where the majority of my debugging took place throughout this project I 
 * Duplicate ID of MAP - This was probably one of the biggest head scratchers I had to face, as any new map added wouldn't render, That was until I used the id of map + {{loop.index}} when calling a new instance of map, I also thought of unpacking each templated variable into an onclick function called render route so that this way the map would only have to render when the expand button had been clicked.
 * Bootstrap was traded in for css grid when making the navbar as there were issues when designing a custom burger button. Because of bootstrap the button just wouldnt trigger.
 * Overflow issue - needed to add overflow-x hidden to html element as certain animation were causing space to appear off screen.
+* Cloudinary Api wasnt not rendering images until I realised that there were duplicate links running jquery. On a side note understanding Cloudinary's api was one of the key parts of making this project, Having two apis in a project was never something I had done before and reading through the documentation and figuring out the jquery sdk was really satisfying although frustrating at times as there are several other requirements that need to be met before you are able to use Cloudinary --> here's a link for any future students reading this (hope it makes it easier)
+
+## User Testing
+Below Please find a list of questions I used to check if users were able to navigate the site properly:
+
+**Landing Page**
+Here I wanted to make sure that my users primarily understood the information architecture presented before them.
+* Decribe what you see before you.
+* What kind of app do you think this is? 
+* what is your first impulse? 
+* Can you describe what you think the function of the app is?
+* Do you think this app has a name?
+* Describe the main features of the page
+* What do you think the buttons do? 
+* What do you feel when you ready the landing content?
+* How do you sign up?
+
+**Walks**
+Here I wanted to make sure that the user was able to interact with the site's main feature.
+* Describe what you see before you
+* What does each card represent?
+* can you tell me the location of each walk? 
+* Can you find out more? 
+* What do the buttons right of expand mean? 
+* pick a random aspect of the walk and relay the information back to me.
+* what does the star rating uunder difficulty represent
+* Pre/Post log in - Can you comment? 
+* what users posted these Comments?
+* Pick any walk and give me the addresses of starting points A and B
+* what does the map say?
+* How would you close the modal?
+
+**login**
+Here I wanted to make sure the users where comfortable logging in.
+* Describe what you see before you
+* What type of form is this?
+* Where do I place my username?
+* Where do I place my password?
+* I dont have an account please take me to register.
+* Please Submit the form
+
+**Register**
+Here I wanted to make sure the users where comfortable Registering a new account.
+* Describe what you see before you
+* What type of form is this?
+* Where do I place my username?
+* Where do I place my password?
+* Where do I place my name & surname?
+* I already have an account please take me to login.
+
+**Profile & Edit/Profile**
+This was one of the most Important pages as it contained the most embedded functionality.
+* Describe what you see before you 
+* What is the purpose of this page?
+* What do the numbers indicate?
+* Can I add a bio?
+* how many buttons can you see?
+* How do you edit your profile?
+* Upload a photo 
+* you've completed 3 walks and 4 cycles please add that information.
+* what do you think the my walks button does? 
+
+**New Walk**
+The Key to this was to ensure that users felt comfortable interacting with the multi-step form
+* What type of form is this?
+* how do you progress through the form?
+* Is there a progress bar?
+* What does the progress bar indicate?
+* Where do you input the information?
+* I need to change the Title of my walk, could you cycle back to that step in the form?
+* please submit the form.
+
+**Edit/delete Walk**
+As the Edit Walk form is Identical to the New walk form my key metrics for testing was ensuring that the user was able to locate where to edit their walks naturally For this they were given a test profile with some pre-made walks to edit.
+
+* On what page am I likely to edit my own walks? 
+* Navigate to that page? 
+* Where is it indicating that I should edit my walk? 
+* Press the button
+* what do I see before me?
+* what is different about this form ?
+* please go back to the my walks page
+* please delete the walk titled The Line.
+
+# Deployment
+
+This site is currently deployed on [Heroku](https://www.heroku.com/) using the **master** branch on GitHub. To implement this project on Heroku, the following steps were taken:
+
+1. Create a **requirements.txt** file so Heroku can install the required dependencies to run the app.
+    - ` pip3 freeze --local > requirements.txt`
+    - My file can be found [here](https://github.com/Pipicallu/Stroll/blob/master/requirements.txt).
+2. Create a **Procfile** to tell Heroku what type of application is being deployed, and how to run it.
+    - `echo web: python run.py > Procfile`
+    - My file can be found [here](https://github.com/Pipicallu/Stroll/blob/master/Procfile).
+3. Sign up for a free Heroku account, create your project app, and click the **Deploy** tab, at which point you can *Connect GitHub* as the Deployment Method, and select *Enable Automatic Deployment*.
+4. In the Heroku **Settings** tab, click on the *Reveal Config Vars* button to configure environmental variables as follows:
+    - **IP** : `0.0.0.0`
+    - **PORT** : `8080`
+    - **MONGO_URI** : `<link to your Mongo DB>`
+    - **SECRET_KEY** : `<your own secret key>`
+    - **MY_ADDRESS** : `<your own email address>`
+    - **SEND_TO** : `<recipient email address>`
+    - **PASSWORD** : `<you own email password>`
+5. Your app should be successfully deployed to Heroku at this point.
+
+**Credit to Codeinstitute tutor Tim for the following addendum**
+
+**NOTE** : You might receive errors sending emails if you have your Google Account setup with **2-Factor Authentication**, **Less Secure Apps** disabled, or **DisplayUnlockCaptcha** disabled.
+
+**Possible Fix** *(which has worked for me)*
+- Turn Off [2-Factor Authentication](https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome)
+- Turn On [Less Secure Apps](https://myaccount.google.com/lesssecureapps)
+- Turn On [DisplayUnlockCaptcha](https://accounts.google.com/DisplayUnlockCaptcha)
+
+I would recommend to create a secondary Google account for this purpose, instead of using your actual account (keep your actual account secure!). This is purely used for sending emails as a backup when new recipes are created or updated, in case the database somehow accidentally has an item deleted.
+
+**How to run this project locally**
+
+To run this project on your own IDE follow the instructions below:
+
+Ensure you have the following tools: 
+- An IDE such as [Visual Studio Code](https://code.visualstudio.com/)
+
+The following **must be installed** on your machine:
+- [PIP](https://pip.pypa.io/en/stable/installing/)
+- [Python 3](https://www.python.org/downloads/)
+- [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+- An account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or MongoDB running locally on your machine. 
+    - How to set up your Mongo Atlas account [here](https://docs.atlas.mongodb.com/).
+
+### Instructions
+1. Save a copy of the github repository located at https://github.com/Pipicallu/Stroll by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. If you have Git installed on your system, you can clone the repository with the following command.
+```
+git clone https://github.com/Pipicallu/Stroll
+```
+
+2. If possible open a terminal session in the unzip folder or cd to the correct location.
+
+3. A virtual environment is recommended for the Python interpreter, I recommend using Pythons built in virtual environment. Enter the command:
+```
+python -m .venv venv
+```  
+_NOTE: Your Python command may differ, such as python3 or py_
+
+4. Activate the .venv with the command:
+```
+.venv\Scripts\activate 
+```
+_Again this **command may differ depending on your operating system**, please check the [Python Documentation on virtual environments](https://docs.python.org/3/library/venv.html) for further instructions._
+
+4. If needed, Upgrade pip locally with
+```
+pip install --upgrade pip.
+```
+
+5. Install all required modules with the command 
+```
+pip -r requirements.txt.
+```
+
+6. In your local IDE create a file called `.flaskenv`.
+
+7. Inside the .flaskenv file, create a SECRET_KEY variable and a MONGO_URI to link to your own database. Please make sure to call your database `Stroll`, with 4 collections called `users`, ` environments`, `difficulties` and `Walks`. 
+
+8. You can now run the application with the command
+```
+python3 app.py
+```
+
+9. You can visit the website at `http://127.0.0.1:5000`
+
+
+# Credit
+
+## Contents
+
+- The text, images, links and other data in the database was sourced from various local websites including but not limited to = 
+
+- [Undraw](https://undraw.co/illustrations) - For all the sites illustrations and graphics
+- [Time out London](https://www.timeout.com/) - For all the Walk Ideas Inputted as well as the walk photos.
+- [Dafont](https://www.dafontfree.io) - for the use of the Kayak font
+
+- All walk other text was written by myself.
+
+## Media
+### Animations
+
+- [animated burger button](https://www.youtube.com/watch?v=dIyVTjJAkLw&t=58s&ab_channel=codeSTACKr)
+- [On scroll animation](https://www.youtube.com/watch?v=HINs4W_pGGU&ab_channel=TechnoSolution)
+- [Responsive NavBar](https://www.youtube.com/watch?v=At4B7A4GOPg&t=470s&ab_channel=WebDevSimplified)
+- [Mulstep Form idea](https://www.youtube.com/watch?v=T76bbMVMX6M&t=1s&ab_channel=EasyTutorials)
+- [Map Stylings](https://developers.google.com/maps/documentation/javascript/overview)
+- [Hover CSS, Nav Bar styles for links](https://ianlunn.github.io/Hover/)
+
+## code.
+- [Autocomplete Jquery Functionality](https://www.youtube.com/watch?v=EFioC-IO6fE&t=161s&ab_channel=BrandanJones)
+- [Cloudinary's JQuery SDK](https://cloudinary.com/documentation/jquery_integration)
+- [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) - This was used as the main frame work to design forms as well as the walk gards and most of the responsive UI elements
+
+
+## acknowledgements
+
+- The fine tutors Of Code institute, namely Tim, Haley, Kevin and Stephen, who had plenty of patience with me when I got stuck on various bugs in my project.
+- pecial thanks to my mentor Allen Thomas Varghese, who has always encouraged me, guided me and told me that my designs were fancy!
+- My friend and trusted mentor [MrJerB](https://github.com/MrJerB) who has been my friend throughout childhoond, adulthood and beyond. He is an incredible Software developer who has always taken time out of his day to explain and teach me how to seek out the right ways to learn. 
+
+
+
+
+
