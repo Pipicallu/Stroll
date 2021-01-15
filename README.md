@@ -222,5 +222,7 @@ I've added a few extra features to my project that weren't part of the requireme
     - [MongoDB Atlas](https://www.mongodb.com/) - Used to store my database in the 'cloud'.
     - [PyMongo 3.8.0](https://api.mongodb.com/python/current/) - Used as the Python API for MongoDB..
 
+# Testing
 
-##### back to [top](#table-of-contents)
+**HTML**
+- [W3C HTML Validator](https://validator.w3.org) - Unfortunately the W3C Validator for HTML does not understand the Jinja templating syntax, so it therefore shows a lot of errors with regards to `{{ variables }}`, `{% for %} {% endfor %}`, etc. Aside from the Jinja warnings and errors, all of the remaining code is perfectly validating. Also due to the Jinja templating, certain elements cannot be 'beautified' across multiple lines, and must remain on a single line.
