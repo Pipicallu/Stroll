@@ -66,7 +66,7 @@ def search():
     comments = list(mongo.db.comments.find())
     start_point = mongo.db.walks.find_one("start_point")
     end_point = mongo.db.walks.find_one("end_point")
-    #This will allow the user to hit enter when blank and be redirected
+    # This will allow the user to hit enter when blank and be redirected
     if query == "":
         return redirect(url_for("show_walks"))
 
@@ -74,7 +74,6 @@ def search():
                            start_point=start_point, end_point=end_point,
                            locations=locations, environments=environments,
                            comments=comments)
-
 
 
 @app.route("/comment", methods=["GET", "POST"])
@@ -97,7 +96,7 @@ def comment():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        #looks in the users collection to check if username already exists.
+        # looks in the users collection to check if username already exists.
         bio = "Update your Bio and tell the community a little about yourself!"
         startingNumber = int("0")
         existing_user = mongo.db.users.find_one(
@@ -122,7 +121,8 @@ def register():
             "img_id": ""
         }
         mongo.db.users.insert_one(register)
-        # put the user information into a session cookie so that they are remembered by the website.
+        # put the user information into a session
+        # cookie so that they are remembered by the website.
         session["user"] = request.form.get('UserID').lower()
         flash("Registration Successful!")
         return redirect(url_for('profile', UserID=session["user"]))
@@ -135,13 +135,13 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-    # here we are checking to see if there is
-    #  already an existing user in the db
+        # here we are checking to see if there
+        # is already an existing user in the db
         existing_user = mongo.db.users.find_one(
                 {"username": request.form.get("UserID").lower()})
         if existing_user:
-         # here we are checking to see that the password matches,
-         #  against the one placed in the form
+            # here we are checking to see that the password matches,
+            #  against the one placed in the form
             if check_password_hash(
              existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get('UserID').lower()
@@ -332,4 +332,4 @@ def delete_walk(walk_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
