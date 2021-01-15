@@ -17,6 +17,10 @@
   --text-color-default: #6c63ff;
 }
 /* Main CSS */
+html{
+    overflow-x: hidden;
+}
+
 body {
   background-color: var(--background-default);
   color: var(--text-color-default);
@@ -27,11 +31,7 @@ h1 {
   font-family: titleFont;
 }
 
-/* body{
-    border: 5px solid var(--text-color-default);
-    height: 100vh;
-} */
-/* navbar */
+
 a {
     text-decoration: none;
     color: #eeedff;
@@ -50,17 +50,6 @@ input[type="button"]:focus{
 
 }
 
-
-/* .body-border{
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border: 6px solid;
-    border-bottom: 8px solid;
-    z-index: 5;
-    
-} */
 
 /* scrollbar customisations */
 ::-webkit-scrollbar {
@@ -982,7 +971,7 @@ form .formDiv input, .formDiv textarea, .formDiv select{
 .userAuth .card-body .btn-primary:hover {
     color: #fff;
     background: linear-gradient(to right, #f59a64, #f56484);
-    border-color: none;
+    
  }
 
  .userAuth .card-footer {

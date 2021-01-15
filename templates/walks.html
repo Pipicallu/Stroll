@@ -45,19 +45,17 @@
                                 <input hidden name="comment_index" type="text" value="{{walk.walk_name}}">
                                 </div>
                                 {% endif %}
-
-
-                        </form>
-                        <div class="row comment-row-sec">
-                            {% for comment in comments %}
-                            {% if comment.comment_index == walk.walk_name %}
-                            <div class="col">
-                                <p class="comment-text">"{{comment.comment_body}}" -
-                                    <em><small>{{comment.created_by}}</small></em></p>
-                                <hr class="hr-style">
-                            </div>
-                            {% endif %}
-                            {% endfor %}
+                            </form>
+                                 <div class="row comment-row-sec">
+                                 {% for comment in comments %}
+                                 {% if comment.comment_index == walk.walk_name %}
+                                    <div class="col">
+                                        <p class="comment-text">"{{comment.comment_body}}" -
+                                        <em><small>{{comment.created_by}}</small></em></p>
+                                        <hr class="hr-style">
+                                    </div>
+                                 {% endif %}
+                                 {% endfor %}
                         </div>
                     </div>
                 </div>

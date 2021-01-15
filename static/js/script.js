@@ -5,11 +5,11 @@ let menuOpen = false;
 menuBtn.addEventListener('click', () => {
     if (!menuOpen) {
         menuBtn.classList.add('open');
-        menuBtn.classList.remove('menu-btn-scroll')
+        menuBtn.classList.remove('menu-btn-scroll');
         menuOpen = true;
     } else {
         menuBtn.classList.remove('open');
-        menuBtn.classList.add('menu-btn-scroll')
+        menuBtn.classList.add('menu-btn-scroll');
         menuOpen = false;
     }
 });
@@ -34,20 +34,18 @@ $(window).scroll(function(){
     $('.brand-title img').toggleClass('svg-filled', $(this).scrollTop()>50);
     $('.search-button').toggleClass('scroll-Text', $(this).scrollTop()>50);
     $('.search-input').toggleClass('search-input-scrolled', $(this).scrollTop()>50);
-})
+});
 
 /* scroll to  */
 
 
 $("#outdoor-button").click(function() {
-    console.log("clicked")
     $('html, body').animate({
         scrollTop: $("#stroll-story").offset().top},
         2000);
 });
 
 $("#urban-button").click(function() {
-    console.log("clicked")
     $('html, body').animate({
         scrollTop: $("#stroll-signup").offset().top},
         2000);
@@ -57,8 +55,8 @@ $("#urban-button").click(function() {
 /* walk Modal */
 
 $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-})
+    $('#myInput').trigger('focus');
+});
 
 
 /* map */
@@ -200,7 +198,7 @@ $(document).ready(function () {
 /* autocomplete jquery */
 // this is done so that the data can be injected dynamically, with each new city added the search will automatically expand.
    
-var locEnv= locations.concat(environments)
+var locEnv= locations.concat(environments);
 $(function () {
     $("#query").autocomplete({
         source: locEnv
