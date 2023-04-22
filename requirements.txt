@@ -4,7 +4,7 @@ dnspython==2.1.0
 Flask==1.1.2
 flask-googlemaps==0.4.1
 Flask-PyMongo==2.3.0
-future==0.18.2
+future==0.18.3
 googlemaps==4.4.2
 htmlmin==0.1.12
 itsdangerous==1.1.0
